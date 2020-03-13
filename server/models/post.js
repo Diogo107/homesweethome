@@ -23,7 +23,7 @@ const schema = new mongoose.Schema(
     }
   },
   {
-    timestamps: true
+    timestamp: { type: Date, default: Date.now }
   }
 );
 
