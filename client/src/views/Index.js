@@ -15,13 +15,13 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+import React from 'react';
 // node.js library that concatenates classes (strings)
-import classnames from "classnames";
+import classnames from 'classnames';
 // javascipt plugin for creating charts
-import Chart from "chart.js";
+import Chart from 'chart.js';
 // react plugin used to create charts
-import { Line, Bar } from "react-chartjs-2";
+import { Line, Bar } from 'react-chartjs-2';
 // reactstrap components
 import {
   Button,
@@ -36,24 +36,19 @@ import {
   Container,
   Row,
   Col
-} from "reactstrap";
+} from 'reactstrap';
 
 // core components
-import {
-  chartOptions,
-  parseOptions,
-  chartExample1,
-  chartExample2
-} from "variables/charts.js";
+import { chartOptions, parseOptions, chartExample1, chartExample2 } from 'variables/charts.js';
 
-import Header from "components/Headers/Header.js";
+import Header from 'components/Headers/Header.js';
 
 class Index extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       activeNav: 1,
-      chartExample1Data: "data1"
+      chartExample1Data: 'data1'
     };
     if (window.Chart) {
       parseOptions(Chart, chartOptions());
@@ -63,8 +58,7 @@ class Index extends React.Component {
     e.preventDefault();
     this.setState({
       activeNav: index,
-      chartExample1Data:
-        this.state.chartExample1Data === "data1" ? "data2" : "data1"
+      chartExample1Data: this.state.chartExample1Data === 'data1' ? 'data2' : 'data1'
     });
   };
   render() {
@@ -79,16 +73,14 @@ class Index extends React.Component {
                 <CardHeader className="bg-transparent">
                   <Row className="align-items-center">
                     <div className="col">
-                      <h6 className="text-uppercase text-light ls-1 mb-1">
-                        Overview
-                      </h6>
+                      <h6 className="text-uppercase text-light ls-1 mb-1">Overview</h6>
                       <h2 className="text-white mb-0">Sales value</h2>
                     </div>
                     <div className="col">
                       <Nav className="justify-content-end" pills>
                         <NavItem>
                           <NavLink
-                            className={classnames("py-2 px-3", {
+                            className={classnames('py-2 px-3', {
                               active: this.state.activeNav === 1
                             })}
                             href="#pablo"
@@ -100,7 +92,7 @@ class Index extends React.Component {
                         </NavItem>
                         <NavItem>
                           <NavLink
-                            className={classnames("py-2 px-3", {
+                            className={classnames('py-2 px-3', {
                               active: this.state.activeNav === 2
                             })}
                             data-toggle="tab"
@@ -132,9 +124,7 @@ class Index extends React.Component {
                 <CardHeader className="bg-transparent">
                   <Row className="align-items-center">
                     <div className="col">
-                      <h6 className="text-uppercase text-muted ls-1 mb-1">
-                        Performance
-                      </h6>
+                      <h6 className="text-uppercase text-muted ls-1 mb-1">Performance</h6>
                       <h2 className="mb-0">Total orders</h2>
                     </div>
                   </Row>
@@ -142,10 +132,7 @@ class Index extends React.Component {
                 <CardBody>
                   {/* Chart */}
                   <div className="chart">
-                    <Bar
-                      data={chartExample2.data}
-                      options={chartExample2.options}
-                    />
+                    <Bar data={chartExample2.data} options={chartExample2.options} />
                   </div>
                 </CardBody>
               </Card>
@@ -186,8 +173,7 @@ class Index extends React.Component {
                       <td>4,569</td>
                       <td>340</td>
                       <td>
-                        <i className="fas fa-arrow-up text-success mr-3" />{" "}
-                        46,53%
+                        <i className="fas fa-arrow-up text-success mr-3" /> 46,53%
                       </td>
                     </tr>
                     <tr>
@@ -195,8 +181,7 @@ class Index extends React.Component {
                       <td>3,985</td>
                       <td>319</td>
                       <td>
-                        <i className="fas fa-arrow-down text-warning mr-3" />{" "}
-                        46,53%
+                        <i className="fas fa-arrow-down text-warning mr-3" /> 46,53%
                       </td>
                     </tr>
                     <tr>
@@ -204,8 +189,7 @@ class Index extends React.Component {
                       <td>3,513</td>
                       <td>294</td>
                       <td>
-                        <i className="fas fa-arrow-down text-warning mr-3" />{" "}
-                        36,49%
+                        <i className="fas fa-arrow-down text-warning mr-3" /> 36,49%
                       </td>
                     </tr>
                     <tr>
@@ -213,8 +197,7 @@ class Index extends React.Component {
                       <td>2,050</td>
                       <td>147</td>
                       <td>
-                        <i className="fas fa-arrow-up text-success mr-3" />{" "}
-                        50,87%
+                        <i className="fas fa-arrow-up text-success mr-3" /> 50,87%
                       </td>
                     </tr>
                     <tr>
@@ -222,8 +205,7 @@ class Index extends React.Component {
                       <td>1,795</td>
                       <td>190</td>
                       <td>
-                        <i className="fas fa-arrow-down text-danger mr-3" />{" "}
-                        46,53%
+                        <i className="fas fa-arrow-down text-danger mr-3" /> 46,53%
                       </td>
                     </tr>
                   </tbody>
@@ -265,11 +247,7 @@ class Index extends React.Component {
                         <div className="d-flex align-items-center">
                           <span className="mr-2">60%</span>
                           <div>
-                            <Progress
-                              max="100"
-                              value="60"
-                              barClassName="bg-gradient-danger"
-                            />
+                            <Progress max="100" value="60" barClassName="bg-gradient-danger" />
                           </div>
                         </div>
                       </td>
@@ -281,11 +259,7 @@ class Index extends React.Component {
                         <div className="d-flex align-items-center">
                           <span className="mr-2">70%</span>
                           <div>
-                            <Progress
-                              max="100"
-                              value="70"
-                              barClassName="bg-gradient-success"
-                            />
+                            <Progress max="100" value="70" barClassName="bg-gradient-success" />
                           </div>
                         </div>
                       </td>
@@ -309,11 +283,7 @@ class Index extends React.Component {
                         <div className="d-flex align-items-center">
                           <span className="mr-2">75%</span>
                           <div>
-                            <Progress
-                              max="100"
-                              value="75"
-                              barClassName="bg-gradient-info"
-                            />
+                            <Progress max="100" value="75" barClassName="bg-gradient-info" />
                           </div>
                         </div>
                       </td>
@@ -325,11 +295,7 @@ class Index extends React.Component {
                         <div className="d-flex align-items-center">
                           <span className="mr-2">30%</span>
                           <div>
-                            <Progress
-                              max="100"
-                              value="30"
-                              barClassName="bg-gradient-warning"
-                            />
+                            <Progress max="100" value="30" barClassName="bg-gradient-warning" />
                           </div>
                         </div>
                       </td>
