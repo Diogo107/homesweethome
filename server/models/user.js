@@ -13,9 +13,21 @@ const schema = new mongoose.Schema({
     lowercase: true,
     trim: true
   },
+  phoneNumber: {
+    type: Number,
+    trim: true
+  },
   passwordHash: {
     type: String
   }
 });
 
 module.exports = mongoose.model('User', schema);
+
+// Sugested Array of buildings
+/* 
+Appartments:{
+  type: Array,
+  required: true
+}
+ */

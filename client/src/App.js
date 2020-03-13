@@ -14,6 +14,7 @@ function App() {
         <Route path="/admin" render={props => <AdminLayout {...props} />} />
         <Route path="/auth" render={props => <AuthLayout {...props} />} />
         <Redirect from="/" to="/admin/index" />
+        <Route path="/" exact component={Home} />
       </Switch>
     </div>
   );
