@@ -17,6 +17,10 @@ const schema = new mongoose.Schema({
     type: Number,
     trim: true
   },
+  code: {
+    type: String,
+    trim: true
+  },
   passwordHash: {
     type: String
   }
