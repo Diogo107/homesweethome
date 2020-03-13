@@ -74,7 +74,7 @@ class Register extends React.Component {
               <div className="text-center text-muted mb-4">
                 <small>Sign up</small>
               </div>
-              <Form role="form" onSubmit={this.sendMessage}>
+              <Form role="form" onSubmit={this.sendMessage} method="POST">
                 <FormGroup>
                   <InputGroup className="input-group-alternative mb-3">
                     <InputGroupAddon addonType="prepend">
@@ -133,6 +133,7 @@ class Register extends React.Component {
                       type="text"
                       name="code"
                       onChange={this.handleInputChange}
+                      required
                     />
                   </InputGroup>
                 </FormGroup>

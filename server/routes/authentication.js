@@ -1,13 +1,12 @@
 'use strict';
 
 const { Router } = require('express');
-
 const bcryptjs = require('bcryptjs');
 const User = require('./../models/user');
-
 const router = new Router();
 
 router.post('/sign-up', (req, res, next) => {
+  console.log('i has dammm right');
   const { name, email, password } = req.body;
   bcryptjs
     .hash(password, 10)
