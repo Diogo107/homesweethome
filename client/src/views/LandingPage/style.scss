@@ -1,0 +1,25 @@
+nav{
+  display: flex;
+  justify-content: space-between;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: transparent;
+}
+
+nav div {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  align-content: center;
+}
+
+
+header{
+  background-image: url('../../assets/img/landing-page/background.jpg');
+  padding-top: 20px;
+  padding-bottom: 800px;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
