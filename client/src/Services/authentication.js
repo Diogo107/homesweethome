@@ -1,4 +1,5 @@
 import axios from 'axios';
+const cors = require('cors');
 
 const instance = axios.create({
   baseURL: '/api/authentication'
@@ -10,6 +11,7 @@ const signUp = data => {
     instance
       .post('/sign-up', data)
       .then(result => {
+        console.log('result');
         const user = result.data.user;
         resolve(user);
       })

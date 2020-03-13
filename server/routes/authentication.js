@@ -6,19 +6,22 @@ const User = require('./../models/user');
 const router = new Router();
 
 router.post('/sign-up', (req, res, next) => {
-  console.log('i has dammm right');
-  const { name, email, password } = req.body;
+  console.log('i has dammm right', req.body);
+  const { name, email, phoneNumber, code, passwordHash } = req.body;
   bcryptjs
-    .hash(password, 10)
+    .hash(passwordHash, 10)
     .then(hash => {
       return User.create({
         name,
         email,
+        phoneNumber,
+        code,
         passwordHash: hash
       });
     })
     .then(user => {
       req.session.user = user._id;
+      console.log('did i got this far? :o');
       res.json({ user });
     })
     .catch(error => {

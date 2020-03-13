@@ -13,7 +13,7 @@ const basicAuthenticationDeserializer = require('./middleware/basic-authenticati
 const bindUserToViewLocals = require('./middleware/bind-user-to-view-locals.js');
 const indexRouter = require('./routes/index');
 const authenticationRouter = require('./routes/authentication');
-
+const cors = require('cors');
 const app = express();
 
 app.use(serveFavicon(join(__dirname, 'public/images', 'favicon.ico')));
@@ -39,7 +39,8 @@ app.use(
 );
 app.use(basicAuthenticationDeserializer);
 app.use(bindUserToViewLocals);
-console.log('Im on the app...............');
+
+app.use(cors());
 app.use('/', indexRouter);
 app.use('/api/authentication', authenticationRouter);
 
