@@ -23,8 +23,8 @@ const schema = new mongoose.Schema(
     }
   },
   {
-    timestamps: true
+    timestamp: { type: Date, default: Date.now }
   }
 );
 
-module.exports = mongoose.model('Post', schema);
+module.exports = mongoose.model('Annoucement', schema);

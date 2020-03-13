@@ -13,7 +13,7 @@ const schema = new mongoose.Schema(
       type: String,
       trim: true
     },
-    document: {
+    doc: {
       type: String,
       default: 'https://ya-webdesign.com/images/avatar-png-1.png'
     },
@@ -23,8 +23,8 @@ const schema = new mongoose.Schema(
     }
   },
   {
-    timestamps: true
+    timestamp: { type: Date, default: Date.now }
   }
 );
 
-module.exports = mongoose.model('Post', schema);
+module.exports = mongoose.model('Doc', schema);
