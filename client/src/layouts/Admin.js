@@ -30,22 +30,23 @@ class Admin extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      loaded: false,
       user: this.props.user
     };
     this.componentDidMount = this.componentDidMount.bind(this);
     this.fetchData = this.fetchData.bind(this);
   }
 
-  componentDidMount(props) {
-    console.log('props', props);
-    this.fetchData();
-    this.setState({});
+  async componentDidMount() {
+    await this.fetchData();
+    this.setState({
+      loaded: true
+    });
   }
 
   fetchData() {
     const user = this.props.user;
-    console.log('Research', this.props.user);
-    console.log('user', user);
+    console.log('FetchData - Admin', this.props.user);
   }
 
   componentDidUpdate(e) {
@@ -73,29 +74,33 @@ class Admin extends React.Component {
   render() {
     return (
       <>
-        {console.log('this state admin', this.state)}
-        <Sidebar
-          {...this.props}
-          routes={routes}
-          logo={{
-            innerLink: '/admin/index',
-            imgSrc: require('assets/img/brand/argon-react.png'),
-            imgAlt: '...'
-          }}
-        />
-        <div className="main-content" ref="mainContent">
-          <AdminNavbar
-            {...this.props}
-            brandText={this.getBrandText(this.props.location.pathname)}
-          />
-          <Switch>
-            {this.getRoutes(routes)}
-            <Redirect from="*" to="/admin/index" />
-          </Switch>
-          <Container fluid>
-            <AdminFooter />
-          </Container>
-        </div>
+        {this.state.loaded && (
+          <>
+            <Sidebar
+              {...this.props}
+              routes={routes}
+              logo={{
+                innerLink: '/admin/index',
+                imgSrc: require('assets/img/brand/argon-react.png'),
+                imgAlt: '...'
+              }}
+            />
+            <div className="main-content" ref="mainContent">
+              <AdminNavbar
+                {...this.props}
+                user={this.state.user}
+                brandText={this.getBrandText(this.props.location.pathname)}
+              />
+              <Switch>
+                {this.getRoutes(routes)}
+                <Redirect from="*" to="/admin/index" user={this.state.user} />
+              </Switch>
+              <Container fluid>
+                <AdminFooter />
+              </Container>
+            </div>
+          </>
+        )}
       </>
     );
   }

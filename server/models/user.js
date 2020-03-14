@@ -13,6 +13,10 @@ const schema = new mongoose.Schema({
     lowercase: true,
     trim: true
   },
+  picture: {
+    type: String,
+    default: 'https://source.unsplash.com/random/400x400/face'
+  },
   phoneNumber: {
     type: Number,
     trim: true

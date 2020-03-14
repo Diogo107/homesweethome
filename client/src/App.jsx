@@ -39,6 +39,7 @@ class App extends Component {
       user
     });
   }
+
   fetchData() {}
 
   render() {

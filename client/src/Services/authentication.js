@@ -34,6 +34,7 @@ const signOut = () =>
     instance
       .post('/sign-out')
       .then(result => {
+        console.log('Still in the client, sorry.....');
         resolve();
       })
       .catch(reject);

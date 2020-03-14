@@ -15,8 +15,9 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link, Redirect } from 'react-router-dom';
+import { signOut } from './../../Services/authentication';
 // reactstrap components
 import {
   DropdownMenu,
@@ -33,18 +34,50 @@ import {
   Nav,
   Container,
   Media
-} from "reactstrap";
+} from 'reactstrap';
 
 class AdminNavbar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loaded: false,
+      user: this.props.user
+    };
+    this.componentDidMount = this.componentDidMount.bind(this);
+    this.fetchData = this.fetchData.bind(this);
+    this.handleSignOut = this.handleSignOut.bind(this);
+  }
+
+  async componentDidMount() {
+    await this.fetchData();
+    this.setState({
+      loaded: true
+    });
+  }
+
+  fetchData() {
+    const user = this.props.user;
+    console.log('FetchData - Nav', this.props.user);
+  }
+
+  handleSignOut() {
+    signOut()
+      .then(() => {
+        this.props.history.push('/');
+        //this.props.updateUserInformation(null);
+      })
+      .then(Redirect('/'))
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
   render() {
     return (
       <>
         <Navbar className="navbar-top navbar-dark" expand="md" id="navbar-main">
           <Container fluid>
-            <Link
-              className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block"
-              to="/"
-            >
+            <Link className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" to="/">
               {this.props.brandText}
             </Link>
             <Form className="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
@@ -64,15 +97,10 @@ class AdminNavbar extends React.Component {
                 <DropdownToggle className="pr-0" nav>
                   <Media className="align-items-center">
                     <span className="avatar avatar-sm rounded-circle">
-                      <img
-                        alt="..."
-                        src={require("assets/img/theme/team-4-800x800.jpg")}
-                      />
+                      <img alt="..." src={(this.state.user && this.state.user.picture) || ''} />
                     </span>
                     <Media className="ml-2 d-none d-lg-block">
-                      <span className="mb-0 text-sm font-weight-bold">
-                        Jessica Jones
-                      </span>
+                      <span className="mb-0 text-sm font-weight-bold">{this.state.user.name}</span>
                     </Media>
                   </Media>
                 </DropdownToggle>
@@ -97,7 +125,7 @@ class AdminNavbar extends React.Component {
                     <span>Support</span>
                   </DropdownItem>
                   <DropdownItem divider />
-                  <DropdownItem href="#pablo" onClick={e => e.preventDefault()}>
+                  <DropdownItem href="#pablo" onClick={this.handleSignOut} method="POST">
                     <i className="ni ni-user-run" />
                     <span>Logout</span>
                   </DropdownItem>
