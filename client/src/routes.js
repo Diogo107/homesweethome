@@ -22,6 +22,7 @@ import Register from "views/examples/Register.js";
 import Login from "views/examples/Login.js";
 import Tables from "views/examples/Tables.js";
 import Icons from "views/examples/Icons.js";
+import createBuilding from "views/examples/createBuilding.js"
 
 var routes = [
   {
@@ -36,6 +37,13 @@ var routes = [
     name: "Icons",
     icon: "ni ni-planet text-blue",
     component: Icons,
+    layout: "/admin"
+  },
+  {
+    path: "/createBuilding",
+    name: "Create Building",
+    icon: "ni ni-planet text-blue",
+    component: createBuilding,
     layout: "/admin"
   },
   {

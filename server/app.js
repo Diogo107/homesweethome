@@ -41,7 +41,7 @@ app.use(basicAuthenticationDeserializer);
 app.use(bindUserToViewLocals);
 
 app.use(cors());
-app.use('/', indexRouter);
+app.use('/api', indexRouter);
 app.use('/api/authentication', authenticationRouter);
 
 // Catch missing routes and forward to error handler

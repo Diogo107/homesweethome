@@ -1,22 +1,7 @@
-/*!
 
-=========================================================
-* Argon Dashboard React - v1.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-dashboard-react
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from 'react';
-import { signUp } from './../../Services/authentication';
+import { building } from './../../Services/otherServices';
+
 // reactstrap components
 import {
   Button,
@@ -33,15 +18,16 @@ import {
   Col
 } from 'reactstrap';
 
-class Register extends React.Component {
+class Building extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       name: '',
-      email: '',
-      phoneNumber: '',
-      code: '',
-      passwordHash: ''
+      address: '',
+      numberOfApartment: '',
+      admin: '',
+      residents: '',
+      picture: ''
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.sendMessage = this.sendMessage.bind(this);
@@ -57,12 +43,12 @@ class Register extends React.Component {
   }
 
   sendMessage(event) {
-    
+  
     event.preventDefault();
-    const { name, email, phoneNumber, code, passwordHash } = this.state;
-    console.log({ name, email, phoneNumber, code, passwordHash });
-    signUp({ name, email, phoneNumber, code, passwordHash });
+    const { name, address, numberOfApartment, admin, residents, picture } = this.state;
+    building({  name, address, numberOfApartment, admin, residents, picture });
     this.props.history.push('/');
+ 
   }
 
   render() {
@@ -98,10 +84,9 @@ class Register extends React.Component {
                       </InputGroupText>
                     </InputGroupAddon>
                     <Input
-                      placeholder="Email"
-                      type="email"
-                      autoComplete="new-email"
-                      name="email"
+                      placeholder="Address"
+                      type="text"
+                      name="address"
                       onChange={this.handleInputChange}
                     />
                   </InputGroup>
@@ -114,9 +99,9 @@ class Register extends React.Component {
                       </InputGroupText>
                     </InputGroupAddon>
                     <Input
-                      placeholder="Phone Number"
+                      placeholder="Number of apartments"
                       type="number"
-                      name="phoneNumber"
+                      name="numberOfApartment"
                       onChange={this.handleInputChange}
                     />
                   </InputGroup>
@@ -129,9 +114,9 @@ class Register extends React.Component {
                       </InputGroupText>
                     </InputGroupAddon>
                     <Input
-                      placeholder="App Code"
+                      placeholder="Admin"
                       type="text"
-                      name="code"
+                      name="admin"
                       onChange={this.handleInputChange}
                       required
                     />
@@ -145,42 +130,33 @@ class Register extends React.Component {
                       </InputGroupText>
                     </InputGroupAddon>
                     <Input
-                      placeholder="Password"
-                      type="password"
-                      autoComplete="new-password"
-                      name="passwordHash"
+                      placeholder="Residents"
+                      type="text"
+                      name="residents"
                       onChange={this.handleInputChange}
                     />
                   </InputGroup>
                 </FormGroup>
-                <div className="text-muted font-italic">
-                  <small>
-                    password strength: <span className="text-success font-weight-700">strong</span>
-                  </small>
-                </div>
-                <Row className="my-4">
-                  <Col xs="12">
-                    <div className="custom-control custom-control-alternative custom-checkbox">
-                      <input
-                        className="custom-control-input"
-                        id="customCheckRegister"
-                        type="checkbox"
-                        required
-                      />
-                      <label className="custom-control-label" htmlFor="customCheckRegister">
-                        <span className="text-muted">
-                          I agree with the{' '}
-                          <a href="#pablo" onClick={e => e.preventDefault()}>
-                            Privacy Policy
-                          </a>
-                        </span>
-                      </label>
-                    </div>
-                  </Col>
-                </Row>
+                <FormGroup>
+                  <InputGroup className="input-group-alternative">
+                    <InputGroupAddon addonType="prepend">
+                      <InputGroupText>
+                        <i className="ni ni-lock-circle-open" />
+                      </InputGroupText>
+                    </InputGroupAddon>
+                    <Input
+                      placeholder="Picture"
+                      type="file"
+                      name="picture"
+                      id="picture"
+                      onChange={this.handleInputChange}
+                    />
+                  </InputGroup>
+                </FormGroup>
+                
                 <div className="text-center">
                   <Button className="mt-4" color="primary" type="submit">
-                    Create account
+                    Create Building
                   </Button>
                 </div>
               </Form>
@@ -192,4 +168,4 @@ class Register extends React.Component {
   }
 }
 
-export default Register;
+export default Building;
