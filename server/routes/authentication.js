@@ -6,7 +6,6 @@ const User = require('./../models/user');
 const router = new Router();
 
 router.post('/sign-up', (req, res, next) => {
-  console.log('i has dammm right', req.body);
   const { name, email, phoneNumber, code, passwordHash } = req.body;
   bcryptjs
     .hash(passwordHash, 10)
@@ -21,7 +20,6 @@ router.post('/sign-up', (req, res, next) => {
     })
     .then(user => {
       req.session.user = user._id;
-      console.log('did i got this far? :o');
       res.json({ user });
     })
     .catch(error => {
@@ -31,14 +29,14 @@ router.post('/sign-up', (req, res, next) => {
 
 router.post('/sign-in', (req, res, next) => {
   let user;
-  const { email, password } = req.body;
+  const { email, passwordHash } = req.body;
   User.findOne({ email })
     .then(document => {
       if (!document) {
         return Promise.reject(new Error("There's no user with that email."));
       } else {
         user = document;
-        return bcryptjs.compare(password, user.passwordHash);
+        return bcryptjs.compare(passwordHash, user.passwordHash);
       }
     })
     .then(result => {

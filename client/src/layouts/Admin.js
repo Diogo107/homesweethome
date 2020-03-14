@@ -15,18 +15,39 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import React from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
 // reactstrap components
-import { Container } from "reactstrap";
+import { Container } from 'reactstrap';
 // core components
-import AdminNavbar from "components/Navbars/AdminNavbar.js";
-import AdminFooter from "components/Footers/AdminFooter.js";
-import Sidebar from "components/Sidebar/Sidebar.js";
+import AdminNavbar from 'components/Navbars/AdminNavbar.js';
+import AdminFooter from 'components/Footers/AdminFooter.js';
+import Sidebar from 'components/Sidebar/Sidebar.js';
 
-import routes from "routes.js";
+import routes from 'routes.js';
 
 class Admin extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: this.props.user
+    };
+    this.componentDidMount = this.componentDidMount.bind(this);
+    this.fetchData = this.fetchData.bind(this);
+  }
+
+  componentDidMount(props) {
+    console.log('props', props);
+    this.fetchData();
+    this.setState({});
+  }
+
+  fetchData() {
+    const user = this.props.user;
+    console.log('Research', this.props.user);
+    console.log('user', user);
+  }
+
   componentDidUpdate(e) {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
@@ -34,14 +55,8 @@ class Admin extends React.Component {
   }
   getRoutes = routes => {
     return routes.map((prop, key) => {
-      if (prop.layout === "/admin") {
-        return (
-          <Route
-            path={prop.layout + prop.path}
-            component={prop.component}
-            key={key}
-          />
-        );
+      if (prop.layout === '/admin') {
+        return <Route path={prop.layout + prop.path} component={prop.component} key={key} />;
       } else {
         return null;
       }
@@ -49,26 +64,23 @@ class Admin extends React.Component {
   };
   getBrandText = path => {
     for (let i = 0; i < routes.length; i++) {
-      if (
-        this.props.location.pathname.indexOf(
-          routes[i].layout + routes[i].path
-        ) !== -1
-      ) {
+      if (this.props.location.pathname.indexOf(routes[i].layout + routes[i].path) !== -1) {
         return routes[i].name;
       }
     }
-    return "Brand";
+    return 'Brand';
   };
   render() {
     return (
       <>
+        {console.log('this state admin', this.state)}
         <Sidebar
           {...this.props}
           routes={routes}
           logo={{
-            innerLink: "/admin/index",
-            imgSrc: require("assets/img/brand/argon-react.png"),
-            imgAlt: "..."
+            innerLink: '/admin/index',
+            imgSrc: require('assets/img/brand/argon-react.png'),
+            imgAlt: '...'
           }}
         />
         <div className="main-content" ref="mainContent">
