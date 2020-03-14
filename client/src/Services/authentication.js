@@ -1,5 +1,5 @@
 import axios from 'axios';
-const cors = require('cors');
+//const cors = require('cors');
 
 const instance = axios.create({
   baseURL: '/api/authentication'

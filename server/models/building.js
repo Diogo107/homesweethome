@@ -14,7 +14,7 @@ const schema = new mongoose.Schema({
   },
   numberOfApartment: {
     type: Number,
-    required: true
+    required: false
   },
   admin: {
     type: String,
