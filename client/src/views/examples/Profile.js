@@ -15,7 +15,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+import React from 'react';
 
 // reactstrap components
 import {
@@ -29,12 +29,30 @@ import {
   Container,
   Row,
   Col
-} from "reactstrap";
+} from 'reactstrap';
 // core components
-import UserHeader from "components/Headers/UserHeader.js";
+import UserHeader from 'components/Headers/UserHeader.js';
 
 class Profile extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loaded: false,
+      user: this.props
+    };
+  }
+
+  componentDidMount(props) {
+    console.log(this.props);
+
+    //const user = React.useContext(globalStateContext);
+    //console.log('this is the user finally', user);
+  }
+
   render() {
+    {
+      console.log('Im in profile', this.props);
+    }
     return (
       <>
         <UserHeader />
@@ -50,7 +68,7 @@ class Profile extends React.Component {
                         <img
                           alt="..."
                           className="rounded-circle"
-                          src={require("assets/img/theme/team-4-800x800.jpg")}
+                          src={require('assets/img/theme/team-4-800x800.jpg')}
                         />
                       </a>
                     </div>
@@ -116,9 +134,8 @@ class Profile extends React.Component {
                     </div>
                     <hr className="my-4" />
                     <p>
-                      Ryan — the name taken by Melbourne-raised, Brooklyn-based
-                      Nick Murphy — writes, performs and records all of his own
-                      music.
+                      Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy —
+                      writes, performs and records all of his own music.
                     </p>
                     <a href="#pablo" onClick={e => e.preventDefault()}>
                       Show more
@@ -148,17 +165,12 @@ class Profile extends React.Component {
                 </CardHeader>
                 <CardBody>
                   <Form>
-                    <h6 className="heading-small text-muted mb-4">
-                      User information
-                    </h6>
+                    <h6 className="heading-small text-muted mb-4">User information</h6>
                     <div className="pl-lg-4">
                       <Row>
                         <Col lg="6">
                           <FormGroup>
-                            <label
-                              className="form-control-label"
-                              htmlFor="input-username"
-                            >
+                            <label className="form-control-label" htmlFor="input-username">
                               Username
                             </label>
                             <Input
@@ -172,10 +184,7 @@ class Profile extends React.Component {
                         </Col>
                         <Col lg="6">
                           <FormGroup>
-                            <label
-                              className="form-control-label"
-                              htmlFor="input-email"
-                            >
+                            <label className="form-control-label" htmlFor="input-email">
                               Email address
                             </label>
                             <Input
@@ -190,10 +199,7 @@ class Profile extends React.Component {
                       <Row>
                         <Col lg="6">
                           <FormGroup>
-                            <label
-                              className="form-control-label"
-                              htmlFor="input-first-name"
-                            >
+                            <label className="form-control-label" htmlFor="input-first-name">
                               First name
                             </label>
                             <Input
@@ -207,10 +213,7 @@ class Profile extends React.Component {
                         </Col>
                         <Col lg="6">
                           <FormGroup>
-                            <label
-                              className="form-control-label"
-                              htmlFor="input-last-name"
-                            >
+                            <label className="form-control-label" htmlFor="input-last-name">
                               Last name
                             </label>
                             <Input
@@ -226,17 +229,12 @@ class Profile extends React.Component {
                     </div>
                     <hr className="my-4" />
                     {/* Address */}
-                    <h6 className="heading-small text-muted mb-4">
-                      Contact information
-                    </h6>
+                    <h6 className="heading-small text-muted mb-4">Contact information</h6>
                     <div className="pl-lg-4">
                       <Row>
                         <Col md="12">
                           <FormGroup>
-                            <label
-                              className="form-control-label"
-                              htmlFor="input-address"
-                            >
+                            <label className="form-control-label" htmlFor="input-address">
                               Address
                             </label>
                             <Input
@@ -252,10 +250,7 @@ class Profile extends React.Component {
                       <Row>
                         <Col lg="4">
                           <FormGroup>
-                            <label
-                              className="form-control-label"
-                              htmlFor="input-city"
-                            >
+                            <label className="form-control-label" htmlFor="input-city">
                               City
                             </label>
                             <Input
@@ -269,10 +264,7 @@ class Profile extends React.Component {
                         </Col>
                         <Col lg="4">
                           <FormGroup>
-                            <label
-                              className="form-control-label"
-                              htmlFor="input-country"
-                            >
+                            <label className="form-control-label" htmlFor="input-country">
                               Country
                             </label>
                             <Input
@@ -286,10 +278,7 @@ class Profile extends React.Component {
                         </Col>
                         <Col lg="4">
                           <FormGroup>
-                            <label
-                              className="form-control-label"
-                              htmlFor="input-country"
-                            >
+                            <label className="form-control-label" htmlFor="input-country">
                               Postal code
                             </label>
                             <Input

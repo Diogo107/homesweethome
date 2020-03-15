@@ -60,7 +60,7 @@ class Index extends React.Component {
     }
   }
   async componentDidMount() {
-    console.log('this.props', this.props.match);
+    console.log('this.props in the index', this.props);
     await this.fetchData();
     this.setState({
       loaded: true

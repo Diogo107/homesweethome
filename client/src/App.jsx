@@ -8,6 +8,9 @@ import { loadUserInformation } from './Services/authentication';
 import AdminLayout from 'layouts/Admin.js';
 import AuthLayout from 'layouts/Auth.js';
 import LandingPage from 'views/LandingPage';
+//Test
+import Profile from './views/examples/Profile';
+//End test
 import './App.css';
 
 import { Route, Switch, Redirect } from 'react-router-dom';
@@ -32,6 +35,7 @@ class App extends Component {
     });
     console.log('APP this.state', this.state);
     this.fetchData();
+    const globalStateContext = React.createContext(this.state);
   }
 
   updateUserInformation(user) {
@@ -53,6 +57,11 @@ class App extends Component {
               render={props => <AdminLayout user={this.state.user} {...props} />}
             />
             <Route path="/auth" render={props => <AuthLayout {...props} />} />
+            {/* This under has create by Diogo to test */}
+            <Route
+              path="/admin/user-profile"
+              render={props => <Profile user={this.state.user} {...props} />}
+            />
           </Switch>
         )}
       </div>

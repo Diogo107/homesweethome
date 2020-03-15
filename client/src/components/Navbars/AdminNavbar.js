@@ -57,7 +57,6 @@ class AdminNavbar extends React.Component {
 
   fetchData() {
     const user = this.props.user;
-    console.log('FetchData - Nav', this.props.user);
   }
 
   handleSignOut() {

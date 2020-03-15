@@ -16,10 +16,10 @@
 
 */
 /*eslint-disable*/
-import React from "react";
-import { NavLink as NavLinkRRD, Link } from "react-router-dom";
+import React from 'react';
+import { NavLink as NavLinkRRD, Link } from 'react-router-dom';
 // nodejs library to set properties for components
-import { PropTypes } from "prop-types";
+import { PropTypes } from 'prop-types';
 
 // reactstrap components
 import {
@@ -50,7 +50,7 @@ import {
   Container,
   Row,
   Col
-} from "reactstrap";
+} from 'reactstrap';
 
 var ps;
 
@@ -64,7 +64,7 @@ class Sidebar extends React.Component {
   }
   // verifies if routeName is the one active (in browser input)
   activeRoute(routeName) {
-    return this.props.location.pathname.indexOf(routeName) > -1 ? "active" : "";
+    return this.props.location.pathname.indexOf(routeName) > -1 ? 'active' : '';
   }
   // toggles collapse between opened and closed (true/false)
   toggleCollapse = () => {
@@ -107,7 +107,7 @@ class Sidebar extends React.Component {
     } else if (logo && logo.outterLink) {
       navbarBrandProps = {
         href: logo.outterLink,
-        target: "_blank"
+        target: '_blank'
       };
     }
     return (
@@ -118,21 +118,13 @@ class Sidebar extends React.Component {
       >
         <Container fluid>
           {/* Toggler */}
-          <button
-            className="navbar-toggler"
-            type="button"
-            onClick={this.toggleCollapse}
-          >
+          <button className="navbar-toggler" type="button" onClick={this.toggleCollapse}>
             <span className="navbar-toggler-icon" />
           </button>
           {/* Brand */}
           {logo ? (
             <NavbarBrand className="pt-0" {...navbarBrandProps}>
-              <img
-                alt={logo.imgAlt}
-                className="navbar-brand-img"
-                src={logo.imgSrc}
-              />
+              <img alt={logo.imgAlt} className="navbar-brand-img" src={logo.imgSrc} />
             </NavbarBrand>
           ) : null}
           {/* User */}
@@ -156,10 +148,7 @@ class Sidebar extends React.Component {
               <DropdownToggle nav>
                 <Media className="align-items-center">
                   <span className="avatar avatar-sm rounded-circle">
-                    <img
-                      alt="..."
-                      src={require("assets/img/theme/team-1-800x800.jpg")}
-                    />
+                    <img alt="..." src={require('assets/img/theme/team-1-800x800.jpg')} />
                   </span>
                 </Media>
               </DropdownToggle>
@@ -210,11 +199,7 @@ class Sidebar extends React.Component {
                   </Col>
                 ) : null}
                 <Col className="collapse-close" xs="6">
-                  <button
-                    className="navbar-toggler"
-                    type="button"
-                    onClick={this.toggleCollapse}
-                  >
+                  <button className="navbar-toggler" type="button" onClick={this.toggleCollapse}>
                     <span />
                     <span />
                   </button>
