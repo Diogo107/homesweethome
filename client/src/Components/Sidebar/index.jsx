@@ -31,16 +31,23 @@ export default class index extends Component {
   render() {
     return (
       <div>
-        <Link to="/dashboard">Dashboard</Link>
-        <h6>Documents</h6>
+        <Link to="/">Dashboard</Link>
+        <br />
+        <Link to="/documents">Documents</Link>
+        <br />
         <Link to="/profile">Profile</Link>
-        <h6>Posts (Write)</h6>
-        <h6>Services</h6>
-        <h6>Insert Bill</h6>
-        <h6>Manage Building</h6>
-        <h6>Scedhule</h6>
-        <h6>Create Announcement</h6>
-        <Form onSubmit={this.handleSignOut}>
+        <br />
+        <Link to="/posts">New Post</Link>
+        <br />
+        <Link to="/services">Services</Link>
+        <br />
+        <Link to="/insert-bill">Insert Bill</Link>
+        <br />
+        <Link to="/manage-building">Manage Building</Link>
+        <br />
+        <Link to="/schedule">Schedule</Link>
+        <br />
+        <Link to="/create-announcement">Create Announcement</Link>
           <Button type="submit">Sign Out</Button>
         </Form>
       </div>
