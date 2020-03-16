@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { signIn } from './../../../Services/authentication';
 
+import './style.scss'
+import Apartment from '../../../asset/images/apartment.png'
+
 export default class index extends Component {
   constructor(props) {
     super(props);
@@ -42,7 +45,8 @@ export default class index extends Component {
 
   render() {
     return (
-      <div>
+      <div className="sign-in">
+        <img className="img__apartment" src={Apartment}/>
         <Form onSubmit={this.sendMessage}>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
@@ -65,8 +69,8 @@ export default class index extends Component {
             />
           </Form.Group>
 
-          <Button variant="primary" type="submit">
-            Submit
+          <Button variant="outline-success" type="submit">
+            Sign In!
           </Button>
         </Form>
       </div>
