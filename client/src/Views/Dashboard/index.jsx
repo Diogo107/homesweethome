@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import PostsView from './../posts/viewPosts'
 export default class index extends Component {
   constructor(props) {
     super(props);
@@ -28,6 +29,12 @@ export default class index extends Component {
           </>
         )) ||
           ''}
+
+          <div>
+            <h1>my path</h1>
+             <PostsView />}
+                     
+          </div>
       </div>
     );
   }

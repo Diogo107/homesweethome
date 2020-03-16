@@ -67,6 +67,10 @@ class App extends Component {
                       />
                       <Route path="/profile" render={props => <Profile user={this.state.user} />} />
                       <Route
+                        path="/post"
+                        render={props => <NewPosts user={this.state.user} {...props} />}
+                      />
+                      <Route
                         path="/posts"
                         render={props => <NewPosts user={this.state.user} {...props} />}
                       />

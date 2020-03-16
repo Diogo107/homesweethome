@@ -31,3 +31,14 @@ const post = async data => {
   return result;
 };
 export { post };
+
+const list = async () => {
+  try {
+    const result = await instance.get('/post');
+    const posts = result.data.posts;
+    return posts;
+  } catch (error) {
+    throw error;
+  }
+};
+export { list };
