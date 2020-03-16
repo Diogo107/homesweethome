@@ -8,31 +8,24 @@ const schema = new mongoose.Schema({
     trim: true
   },
   workField: {
-    type: Array,
+    type: String,
     required: true,
     lowercase: true,
     trim: true
   },
   price: {
-    type: Number,
+    type: String,
     required: true,
     trim: true
   },
   phoneNumber: {
-    type: Number,
-    trim: true
-  },
-  rating: {
-    type: Number,
-    trim: true
-  },
-  localization: {
-    type: Number,
+    type: String,
     trim: true
   }
+  
 });
 
-module.exports = mongoose.model('User', schema);
+module.exports = mongoose.model('Services', schema);
 
 // Sugested Array of buildings
 /* 

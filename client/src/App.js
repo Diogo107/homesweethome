@@ -14,12 +14,15 @@ import Profile from './Views/Profile';
 import Dashboard from './Views/Dashboard';
 import NewPosts from './Views/posts/newPosts';
 import ViewPosts from './Views/posts/viewPosts';
+import CreateServices from './Views/Services/AddServices'
+import ServicesView from './Views/Services/ViewServices'
 //
-import Services from './Views/Services';
+
 import InsertBill from './Views/InsertBill';
 import ManageBuilding from './Views/ManageBuilding';
 import Schedule from './Views/Schedule';
 import CreateAnnouncement from './Views/CreateAnnouncement';
+import CreateDocument from './Views/Documents/CreateDocument'
 
 class App extends Component {
   constructor(props) {
@@ -79,6 +82,9 @@ class App extends Component {
                         render={props => <CreateBuilding user={this.state.user} {...props} />}
                       />
                       <Route path="/create-announcement" component={CreateAnnouncement} />
+                      <Route path="/create-document" component={CreateDocument} />
+                      <Route path="/create-services" component={CreateServices} />
+                      <Route path='/services' component={ServicesView}/>
                     </Switch>
                   </Col>
                 </Row>

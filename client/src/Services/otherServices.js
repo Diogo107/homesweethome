@@ -65,7 +65,7 @@ const doc = async data => {
   const form = new FormData();
   form.append('title', data.title);
   form.append('description', data.description);
-  form.append('picture', data.picture);
+  form.append('doc', data.doc);
   const result = await instance.post('/doc', form);
   return result;
 };
@@ -81,3 +81,29 @@ const listOfdocs = async () => {
   }
 };
 export { listOfdocs };
+
+
+const services = data => {
+    new Promise((resolve, reject) => {
+    instance
+      .post('/services', data)
+      .then(result => {
+        
+        resolve(result);
+      })
+      .catch(reject);
+  });
+};
+export { services };
+
+
+const listOfservices = async () => {
+  try {
+    const result = await instance.get('/services');
+    const services = result.data.services;
+    return services;
+  } catch (error) {
+    throw error;
+  }
+};
+export { listOfservices };
