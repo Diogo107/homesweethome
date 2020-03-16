@@ -8,6 +8,7 @@ class LandingPage extends Component {
       <header>
         <nav>
           <div>
+            <h1>Hello</h1>
             <Link to="/auth/login">
               <Button color="primary" outline type="button">
                 Sign In
