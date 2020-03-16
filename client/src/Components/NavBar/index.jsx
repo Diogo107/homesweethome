@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link } from 'react-router-dom';
-import { Form, Button } from 'react-bootstrap';
+
 import { signOut } from '../../Services/authentication';
 
 export default class index extends Component {
@@ -31,20 +30,15 @@ export default class index extends Component {
     return (
       <div>
         {(!this.state.user && (
-          <Container>
-            <Row>
-              <Col>
-                <Link to="/">Brand</Link>
-              </Col>
-              <Col xs={5}>
-                <Link to="/sign-in">Sign In</Link>
-              </Col>
-              <Col>
-                <Link to="/sign-up">Sign Up</Link>
-              </Col>
-            </Row>
-          </Container>
-        )) ||
+        
+            <Navbar bg="transparent" expand="lg">
+            <Navbar.Brand href="/">HomeSweetHome</Navbar.Brand>
+            <Nav className="ml-auto">
+              <Nav.Link href="/sign-in">Sign In</Nav.Link>
+              <Nav.Link href="/sign-up">Sign Up</Nav.Link>
+            </Nav>
+          </Navbar>
+                )) ||
           ''}
       </div>
     );

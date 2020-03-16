@@ -1,22 +1,15 @@
-nav {
-  display: flex;
-  justify-content: space-between;
-  margin-left: 20px;
-  margin-right: 20px;
-  background-color: transparent;
+.bg{
+  position: relative;
+  width: 100%;
+  height: 100%
 }
 
-nav div {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  align-content: center;
+.features {
+  margin-top: 230px;
+  margin-bottom: 230px
 }
 
-header {
-  padding-top: 20px;
-  padding-bottom: 800px;
-  background-position: top;
-  background-repeat: no-repeat;
-  background-size: cover;
+.about {
+  margin-top: 300px;
+  margin-bottom: 300px
 }
