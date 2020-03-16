@@ -6,6 +6,7 @@ import { loadUserInformation } from './Services/authentication';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import SignInView from './Views/Auth/SignIn';
 import SignUpView from './Views/Auth/SignUp';
+import Post from './Views/posts/newPosts'
 
 class App extends Component {
   constructor(props) {
@@ -44,6 +45,7 @@ class App extends Component {
             <Switch>
               <Route path="/sign-in" component={SignInView} />
               <Route path="/sign-up" component={SignUpView} />
+              <Route path='/post' component={Post}/>
             </Switch>
           </BrowserRouter>
         )}

@@ -131,7 +131,7 @@ router.post('/post', uploader.single('picture'), (req, res, next) => {
     title,
     description,
     picture: url,
-    creator: req.user._id
+    
   })
     .then(post => {
       res.json({ post });
