@@ -18,3 +18,16 @@ const building = data => {
 
 
 export { building };
+
+
+
+const post = async data => {
+ 
+  const form = new FormData();
+  form.append('title', data.title);
+  form.append('description', data.description);
+  form.append('picture', data.picture);
+  const result = await instance.post('/post', form);
+  return result;
+};
+export { post };
