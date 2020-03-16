@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
+import Cal from "./../../Components/Calendar";
 
-export default class index extends Component {
+class Schedule extends React.Component {
   render() {
-    return <div></div>;
+    return (
+      <div>
+        <main>
+          <Cal />
+        </main>
+      </div>
+    );
   }
 }
+
+export default Schedule;

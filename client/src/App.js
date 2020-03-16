@@ -73,6 +73,7 @@ class App extends Component {
                         path="/post"
                         render={props => <NewPosts user={this.state.user} {...props} />}
                       />
+                      <Route path='/schedule' render={props => <Schedule user={this.state.user} {...props} />}/>
                       <Route
                         path="/insert-bill"
                         render={props => <InsertBill user={this.state.user} {...props} />}
