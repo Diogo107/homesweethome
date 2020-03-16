@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { signUp } from './../../../Services/authentication';
 import { Form, Button } from 'react-bootstrap';
+import './style.scss'
 
 export default class index extends Component {
   constructor(props) {
@@ -35,7 +36,7 @@ export default class index extends Component {
 
   render() {
     return (
-      <div>
+      <div className="sign-up">
         <Form onSubmit={this.sendMessage} method="POST">
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Name</Form.Label>
@@ -83,8 +84,8 @@ export default class index extends Component {
               onChange={this.handleInputChange}
             />
           </Form.Group>
-          <Button variant="primary" type="submit">
-            Submit
+          <Button variant="outline-success" type="submit">
+            Sign Up!
           </Button>
         </Form>
       </div>
