@@ -31,13 +31,14 @@ export default class index extends Component {
   render() {
     return (
       <div>
+        <Form>
         <Link to="/">Dashboard</Link>
         <br />
         <Link to="/documents">Documents</Link>
         <br />
         <Link to="/profile">Profile</Link>
         <br />
-        <Link to="/posts">New Post</Link>
+        <Link to="/post">New Post</Link>
         <br />
         <Link to="/services">Services</Link>
         <br />
