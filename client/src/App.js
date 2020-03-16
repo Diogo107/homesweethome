@@ -14,9 +14,9 @@ import Profile from './Views/Profile';
 import Dashboard from './Views/Dashboard';
 import NewPosts from './Views/posts/newPosts';
 import ViewPosts from './Views/posts/viewPosts';
+import InsertBill from './Views/InsertBill';
 //
 import Services from './Views/Services';
-import InsertBill from './Views/InsertBill';
 import ManageBuilding from './Views/ManageBuilding';
 import Schedule from './Views/Schedule';
 import CreateAnnouncement from './Views/CreateAnnouncement';
@@ -68,11 +68,18 @@ class App extends Component {
                       <Route path="/profile" render={props => <Profile user={this.state.user} />} />
                       <Route
                         path="/post"
+<<<<<<< HEAD
                         render={props => <NewPosts user={this.state.user} {...props} />}
                       />
                       <Route
                         path="/posts"
+=======
+>>>>>>> dacca338059622da72d8763dd8092030bab7a4f4
                         render={props => <NewPosts user={this.state.user} {...props} />}
+                      />
+                      <Route
+                        path="/insert-bill"
+                        render={props => <InsertBill user={this.state.user} {...props} />}
                       />
                       <Route path="/sign-up/create-building" component={CreateBuilding} />
                     </Switch>
