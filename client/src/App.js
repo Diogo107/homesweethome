@@ -29,6 +29,7 @@ class App extends Component {
   }
 
   updateUserInformation(user) {
+    console.log('this is the update information', user);
     this.setState({
       user
     });

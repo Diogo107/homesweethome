@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
+import { Form, Button } from 'react-bootstrap';
+import { signOut } from '../../Services/authentication';
 
 export default class index extends Component {
   constructor(props) {
@@ -11,6 +13,7 @@ export default class index extends Component {
       user: null
     };
     this.componentDidMount = this.componentDidMount.bind(this);
+    this.handleSignOut = this.handleSignOut.bind(this);
   }
 
   componentDidMount() {
@@ -19,6 +22,12 @@ export default class index extends Component {
       user: this.props.user
     });
     console.log('nav', this.props);
+  }
+
+  handleSignOut() {
+    console.log('This is sign out');
+    signOut();
+    this.props.updateUserInformation(null);
   }
 
   render() {
@@ -46,7 +55,9 @@ export default class index extends Component {
                 <Link to="/">Brand</Link>
               </Col>
               <Col>
-                <Link to="/sign-out">Sign Out</Link>
+                <Form onSubmit={this.handleSignOut}>
+                  <Button type="submit">Sign Out</Button>
+                </Form>
               </Col>
             </Row>
           </Container>
