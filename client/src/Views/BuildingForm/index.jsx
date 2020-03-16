@@ -24,7 +24,7 @@ class Building extends React.Component {
       name: '',
       address: '',
       numberOfApartment: '',
-      admin: '',
+      admin: this.props.user._id,
       residents: '',
       picture: ''
     };
@@ -43,12 +43,15 @@ class Building extends React.Component {
 
   sendMessage(event) {
     event.preventDefault();
-    const { name, address, numberOfApartment, admin, residents, picture } = this.state;
-    building({ name, address, numberOfApartment, admin, residents, picture });
+    const { name, address, numberOfFloors, admin, numberOfApartments, picture } = this.state;
+    building({ name, address, numberOfFloors, admin, numberOfApartments, picture });
     this.props.history.push('/');
   }
 
   render() {
+    {
+      console.log('this is the create building', this.props);
+    }
     return (
       <>
         <Col lg="6" md="8">
@@ -66,7 +69,7 @@ class Building extends React.Component {
                       </InputGroupText>
                     </InputGroupAddon>
                     <Input
-                      placeholder="Name"
+                      placeholder="Name of the building"
                       type="text"
                       name="name"
                       onChange={this.handleInputChange}
@@ -96,9 +99,9 @@ class Building extends React.Component {
                       </InputGroupText>
                     </InputGroupAddon>
                     <Input
-                      placeholder="Number of apartments"
+                      placeholder="Number of Floors"
                       type="number"
-                      name="numberOfApartment"
+                      name="numberOfFloors"
                       onChange={this.handleInputChange}
                     />
                   </InputGroup>
@@ -114,6 +117,8 @@ class Building extends React.Component {
                       placeholder="Admin"
                       type="text"
                       name="admin"
+                      readonly
+                      value={this.props.user._id}
                       onChange={this.handleInputChange}
                       required
                     />
@@ -127,9 +132,9 @@ class Building extends React.Component {
                       </InputGroupText>
                     </InputGroupAddon>
                     <Input
-                      placeholder="Residents"
+                      placeholder="Number of Apartments"
                       type="text"
-                      name="residents"
+                      name="numberOfApartments"
                       onChange={this.handleInputChange}
                     />
                   </InputGroup>

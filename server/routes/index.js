@@ -53,7 +53,7 @@ router.get('/annoucement', (req, res, next) => {
 });
 
 router.post('/building', uploader.single('picture'), (req, res, next) => {
-  const { name, address, admin, residents } = req.body;
+  const { name, address, numberOfFloors, admin, numberOfApartments, picture } = req.body;
   let url;
 
   if (req.file) {
@@ -63,11 +63,13 @@ router.post('/building', uploader.single('picture'), (req, res, next) => {
   Building.create({
     name,
     address,
+    numberOfFloors,
     admin,
-    residents,
+    numberOfApartments,
     picture: url
   })
     .then(building => {
+      console.log('this is the building', building);
       res.json({ building });
     })
     .catch(error => {
@@ -121,8 +123,8 @@ router.get('/doc', (req, res, next) => {
 
 router.post('/post', uploader.single('picture'), (req, res, next) => {
   const { title, description } = req.body;
-  console.log('body', req.body)
-  console.log('file' , req.file)
+  console.log('body', req.body);
+  console.log('file', req.file);
   let url;
 
   if (req.file) {
@@ -132,8 +134,7 @@ router.post('/post', uploader.single('picture'), (req, res, next) => {
   Post.create({
     title,
     description,
-    picture: url,
-    
+    picture: url
   })
     .then(post => {
       res.json({ post });

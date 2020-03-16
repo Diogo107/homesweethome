@@ -56,9 +56,6 @@ export default class index extends Component {
   }
 
   render() {
-    {
-      console.log('This is post props', this.props);
-    }
     return (
       <div>
         <Form onSubmit={this.handleFormSubmission}>

@@ -12,7 +12,7 @@ const schema = new mongoose.Schema({
     type: String,
     trim: true
   },
-  numberOfApartment: {
+  numberOfFloors: {
     type: Number,
     required: false
   },
@@ -20,7 +20,7 @@ const schema = new mongoose.Schema({
     type: String,
     required: true
   },
-  residents: {
+  numberOfApartments: {
     type: Array
   },
   picture: {

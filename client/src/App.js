@@ -67,10 +67,18 @@ class App extends Component {
                       />
                       <Route path="/profile" render={props => <Profile user={this.state.user} />} />
                       <Route
-                        path="/posts"
+                        path="/post"
                         render={props => <NewPosts user={this.state.user} {...props} />}
                       />
-                      <Route path="/sign-up/create-building" component={CreateBuilding} />
+                      <Route
+                        path="/insert-bill"
+                        render={props => <InsertBill user={this.state.user} {...props} />}
+                      />
+                      <Route
+                        path="/sign-up/create-building"
+                        render={props => <CreateBuilding user={this.state.user} {...props} />}
+                      />
+                      <Route path="/create-announcement" component={CreateAnnouncement} />
                     </Switch>
                   </Col>
                 </Row>

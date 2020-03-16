@@ -7,26 +7,28 @@ const schema = new mongoose.Schema({
     type: String,
     trim: true
   },
-  email: {
-    type: String,
+  workField: {
+    type: Array,
     required: true,
     lowercase: true,
     trim: true
   },
-  picture: {
-    type: String,
-    default: 'https://source.unsplash.com/random/400x400/?face'
+  price: {
+    type: Number,
+    required: true,
+    trim: true
   },
   phoneNumber: {
     type: Number,
     trim: true
   },
-  code: {
-    type: String,
+  rating: {
+    type: Number,
     trim: true
   },
-  passwordHash: {
-    type: String
+  localization: {
+    type: Number,
+    trim: true
   }
 });
 
