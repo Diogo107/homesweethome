@@ -66,7 +66,10 @@ class App extends Component {
                         render={props => <Dashboard user={this.state.user} />}
                       />
                       <Route path="/profile" render={props => <Profile user={this.state.user} />} />
-                      <Route path="/posts" render={props => <NewPosts user={this.state.user} />} />
+                      <Route
+                        path="/posts"
+                        render={props => <NewPosts user={this.state.user} {...props} />}
+                      />
                       <Route path="/sign-up/create-building" component={CreateBuilding} />
                     </Switch>
                   </Col>

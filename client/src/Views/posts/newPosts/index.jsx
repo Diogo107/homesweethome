@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import {post} from './../../../Services/otherServices'
+//const cors = require('cors');
+import { post } from './../../../Services/otherServices';
 
 export default class index extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      title : '',
-      description:'',
-    picture: null
+      title: '',
+      description: '',
+      picture: null
     };
     //this.componentDidMount = this.componentDidMount.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -17,11 +17,10 @@ export default class index extends Component {
     this.handleFileInputChange = this.handleFileInputChange.bind(this);
   }
 
-//   componentDidMount() {
-  
-//   }
+  //   componentDidMount() {
 
- 
+  //   }
+
   async handleFormSubmission(event) {
     event.preventDefault();
     const { title, description, picture } = this.state;
@@ -30,34 +29,36 @@ export default class index extends Component {
         title,
         description,
         picture
-      });      
+      });
       this.props.history.push('/');
     } catch (error) {
       console.log(error);
-    }}
-
+    }
+  }
 
   handleFileInputChange(event) {
     console.dir(event.target);
-   
+
     const { name, files } = event.target;
 
     this.setState({
       [name]: files[0]
     });
-  
   }
 
   handleInputChange(event) {
     const value = event.target.value;
     const inputName = event.target.name;
-    
+
     this.setState({
       [inputName]: value
     });
   }
 
   render() {
+    {
+      console.log('This is post props', this.props);
+    }
     return (
       <div>
         <Form onSubmit={this.handleFormSubmission}>
@@ -90,7 +91,7 @@ export default class index extends Component {
               type="file"
               placeholder="Insert the image"
               name="picture"
-            onChange={this.handleFileInputChange}
+              onChange={this.handleFileInputChange}
             />
             <Form.Text className="text-muted"></Form.Text>
           </Form.Group>
