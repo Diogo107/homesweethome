@@ -58,6 +58,7 @@ router.post('/sign-out', (req, res, next) => {
 });
 
 router.get('/user-information', (req, res, next) => {
+  console.log('Hello from the server');
   res.json({ user: req.user || null });
 });
 
