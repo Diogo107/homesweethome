@@ -28,7 +28,7 @@ export default class index extends Component {
     this.setState({
       loaded: true
     });
-    this.props.history.push('/admin');
+    this.props.history.push('/');
   }
 
   handleInputChange(event) {

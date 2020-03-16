@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 import logo from './logo.svg';
 import './App.css';
-import NavBar from './Views/NavBar';
+import NavBar from './Components/NavBar';
 import { loadUserInformation } from './Services/authentication';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import SignInView from './Views/Auth/SignIn';
 import SignUpView from './Views/Auth/SignUp';
 import Post from './Views/posts/newPosts'
+import SideBar from './Components/Sidebar';
+import LandingPage from './Views/LandingPage/index';
+import CreateBuilding from './Views/BuildingForm';
+import Profile from './Views/Profile';
+import Dashboard from './Views/Dashboard';
 
 class App extends Component {
   constructor(props) {
@@ -20,17 +26,14 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    console.log('Im on APP');
     const user = await loadUserInformation();
     await this.updateUserInformation(user);
     this.setState({
       loaded: true
     });
-    console.log('App', this.state);
   }
 
   updateUserInformation(user) {
-    console.log('this is the update information', user);
     this.setState({
       user
     });
@@ -42,10 +45,29 @@ class App extends Component {
         {this.state.loaded && (
           <BrowserRouter>
             <NavBar user={this.state.user} />
+            {this.state.user && (
+              <Container>
+                <Row>
+                  <Col xs lg="2">
+                    <SideBar />
+                  </Col>
+                  <Col></Col>
+                </Row>
+              </Container>
+            )}
             <Switch>
+              <Route path="/" component={LandingPage} exact />
+              <Route path="/" component={Dashboard} exact />
               <Route path="/sign-in" component={SignInView} />
+<<<<<<< HEAD
               <Route path="/sign-up" component={SignUpView} />
               <Route path='/post' component={Post}/>
+=======
+              <Route path="/sign-up" component={SignUpView} exact />
+              <Route path="/profile" render={props => <Profile user={this.state.user} />} />
+              <Route path="/dashboard" render={props => <Dashboard user={this.state.user} />} />
+              <Route path="/sign-up/create-building" component={CreateBuilding} />
+>>>>>>> b60a32256547422b60c0a5e48809f2780f3af724
             </Switch>
           </BrowserRouter>
         )}

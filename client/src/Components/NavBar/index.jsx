@@ -17,21 +17,17 @@ export default class index extends Component {
   }
 
   componentDidMount() {
-    console.log('componentMount', this.props);
     this.setState({
       user: this.props.user
     });
-    console.log('nav', this.props);
   }
 
   handleSignOut() {
-    console.log('This is sign out');
     signOut();
     this.props.updateUserInformation(null);
   }
 
   render() {
-    console.log('On the navBar still...', this.state);
     return (
       <div>
         {(!this.state.user && (
@@ -48,20 +44,8 @@ export default class index extends Component {
               </Col>
             </Row>
           </Container>
-        )) || (
-          <Container>
-            <Row>
-              <Col>
-                <Link to="/">Brand</Link>
-              </Col>
-              <Col>
-                <Form onSubmit={this.handleSignOut}>
-                  <Button type="submit">Sign Out</Button>
-                </Form>
-              </Col>
-            </Row>
-          </Container>
-        )}
+        )) ||
+          ''}
       </div>
     );
   }

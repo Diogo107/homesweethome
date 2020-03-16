@@ -34,7 +34,6 @@ const signOut = () =>
     instance
       .post('/sign-out')
       .then(result => {
-        console.log('Still in the client, sorry.....');
         resolve();
       })
       .catch(reject);
@@ -46,7 +45,6 @@ const loadUserInformation = () =>
       .get('/user-information')
       .then(result => {
         //this is to know if I got here.....
-        console.log('auth', result);
         const user = result.data.user;
         resolve(user);
       })

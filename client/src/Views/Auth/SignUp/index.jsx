@@ -30,7 +30,7 @@ export default class index extends Component {
     const { name, email, phoneNumber, code, passwordHash } = this.state;
     console.log({ name, email, phoneNumber, code, passwordHash });
     signUp({ name, email, phoneNumber, code, passwordHash });
-    this.props.history.push('/');
+    this.props.history.push('/sign-up/create-building');
   }
 
   render() {
