@@ -9,6 +9,9 @@ import SignInView from './Views/Auth/SignIn';
 import SignUpView from './Views/Auth/SignUp';
 import SideBar from './Components/Sidebar';
 import LandingPage from './Views/LandingPage/index';
+import CreateBuilding from './Views/BuildingForm';
+import Profile from './Views/Profile';
+import Dashboard from './Views/Dashboard';
 
 class App extends Component {
   constructor(props) {
@@ -22,17 +25,14 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    console.log('Im on APP');
     const user = await loadUserInformation();
     await this.updateUserInformation(user);
     this.setState({
       loaded: true
     });
-    console.log('App', this.state);
   }
 
   updateUserInformation(user) {
-    console.log('this is the update information', user);
     this.setState({
       user
     });
@@ -50,17 +50,18 @@ class App extends Component {
                   <Col xs lg="2">
                     <SideBar />
                   </Col>
-                  <Col>
-                    <h1>This is the part it will show all the things</h1>
-                  </Col>
+                  <Col></Col>
                 </Row>
               </Container>
             )}
             <Switch>
               <Route path="/" component={LandingPage} exact />
+              <Route path="/" component={Dashboard} exact />
               <Route path="/sign-in" component={SignInView} />
               <Route path="/sign-up" component={SignUpView} exact />
-              <Route path="/sign-up/create-building" component={SignUpView} />
+              <Route path="/profile" render={props => <Profile user={this.state.user} />} />
+              <Route path="/dashboard" render={props => <Dashboard user={this.state.user} />} />
+              <Route path="/sign-up/create-building" component={CreateBuilding} />
             </Switch>
           </BrowserRouter>
         )}

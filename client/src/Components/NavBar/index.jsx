@@ -17,21 +17,17 @@ export default class index extends Component {
   }
 
   componentDidMount() {
-    console.log('componentMount', this.props);
     this.setState({
       user: this.props.user
     });
-    console.log('nav', this.props);
   }
 
   handleSignOut() {
-    console.log('This is sign out');
     signOut();
     this.props.updateUserInformation(null);
   }
 
   render() {
-    console.log('On the navBar still...', this.state);
     return (
       <div>
         {(!this.state.user && (
