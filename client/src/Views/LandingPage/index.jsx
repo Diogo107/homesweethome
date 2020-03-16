@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './style.scss';
-import logo from '../../assets/img/landing-page/logo.png';
 import { Button } from 'reactstrap';
 class LandingPage extends Component {
   render() {
     return (
       <header>
         <nav>
-          <img src={logo} />
-
           <div>
             <Link to="/auth/login">
               <Button color="primary" outline type="button">

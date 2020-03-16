@@ -8,6 +8,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import SignInView from './Views/Auth/SignIn';
 import SignUpView from './Views/Auth/SignUp';
 import SideBar from './Components/Sidebar';
+import LandingPage from './Views/LandingPage/index';
 
 class App extends Component {
   constructor(props) {
@@ -43,20 +44,23 @@ class App extends Component {
         {this.state.loaded && (
           <BrowserRouter>
             <NavBar user={this.state.user} />
-            <Container>
-              <Row>
-                <Col xs lg="2">
-                  <SideBar />
-                </Col>
-                <Col>
-                  <h1>This is the part it will show all the things</h1>
-                </Col>
-              </Row>
-            </Container>
-
+            {this.state.user && (
+              <Container>
+                <Row>
+                  <Col xs lg="2">
+                    <SideBar />
+                  </Col>
+                  <Col>
+                    <h1>This is the part it will show all the things</h1>
+                  </Col>
+                </Row>
+              </Container>
+            )}
             <Switch>
+              <Route path="/" component={LandingPage} exact />
               <Route path="/sign-in" component={SignInView} />
-              <Route path="/sign-up" component={SignUpView} />
+              <Route path="/sign-up" component={SignUpView} exact />
+              <Route path="/sign-up/create-building" component={SignUpView} />
             </Switch>
           </BrowserRouter>
         )}
