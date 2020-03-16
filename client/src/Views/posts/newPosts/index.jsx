@@ -7,35 +7,34 @@ const instance = axios.create({
   baseURL: 'http://localhost:3020/api'
 });
 
-
 export default class index extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      title : '',
-      description:'',
-    //  picture: ''
+      title: '',
+      description: ''
+      //  picture: ''
     };
     //this.componentDidMount = this.componentDidMount.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
-    
+
     this.handleFormSubmission = this.handleFormSubmission.bind(this);
     //this.handleFileInputChange = this.handleFileInputChange.bind(this);
   }
 
-//   componentDidMount() {
-  
-//   }
+  //   componentDidMount() {
+
+  //   }
 
   async handleFormSubmission(event) {
-  console.log('haha', event)
+    console.log('haha', event);
     const { title, description, picture } = this.state;
-    instance.post( '/post' ,{title, description}
-        
+    instance.post(
+      '/post',
+      { title, description }
+
       //  picture
-    )
-   
+    );
   }
   handleFileInputChange(event) {
     const { name, files } = event.target;
@@ -47,7 +46,7 @@ export default class index extends Component {
   handleInputChange(event) {
     const value = event.target.value;
     const inputName = event.target.name;
-    
+
     this.setState({
       [inputName]: value
     });
@@ -80,16 +79,16 @@ export default class index extends Component {
             />
           </Form.Group>
 
-          {/* <Form.Group controlId="picture">
+          <Form.Group controlId="picture">
             <Form.Label>Picture</Form.Label>
             <Form.Control
               type="file"
               placeholder="Insert the image"
               name="picture"
-            //  onChange={this.handleFileInputChange}
+              //  onChange={this.handleFileInputChange}
             />
             <Form.Text className="text-muted"></Form.Text>
-          </Form.Group> */}
+          </Form.Group>
 
           <Button variant="primary" type="submit">
             Submit
