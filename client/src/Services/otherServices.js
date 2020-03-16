@@ -17,7 +17,6 @@ const building = data => {
       .catch(reject);
   });
 };
-
 export { building };
 
 const post = async data => {
@@ -29,3 +28,35 @@ const post = async data => {
   return result;
 };
 export { post };
+
+const list = async () => {
+  try {
+    const result = await instance.get('/post');
+    const posts = result.data.posts;
+    return posts;
+  } catch (error) {
+    throw error;
+  }
+};
+export { list };
+
+const announcement = async data => {
+  const form = new FormData();
+  form.append('title', data.title);
+  form.append('description', data.description);
+  form.append('picture', data.picture);
+  const result = await instance.post('/annoucement', form);
+  return result;
+};
+export { announcement };
+
+const listOfAnnoucements = async () => {
+  try {
+    const result = await instance.get('/annoucement');
+    const posts = result.data.annoucements;
+    return posts;
+  } catch (error) {
+    throw error;
+  }
+};
+export { listOfAnnoucements };

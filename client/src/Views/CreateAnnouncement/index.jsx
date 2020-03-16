@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
 //const cors = require('cors');
-import { post } from './../../Services/otherServices';
+import { announcement } from './../../Services/otherServices';
 
-export default class index extends Component {
+export default class CreateAnnouncement extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,7 +25,7 @@ export default class index extends Component {
     event.preventDefault();
     const { title, description, picture } = this.state;
     try {
-      const data = await post({
+      const data = await announcement({
         title,
         description,
         picture
@@ -56,9 +56,6 @@ export default class index extends Component {
   }
 
   render() {
-    {
-      console.log('This is post props', this.props);
-    }
     return (
       <div>
         <Form onSubmit={this.handleFormSubmission}>

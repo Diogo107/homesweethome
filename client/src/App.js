@@ -14,9 +14,9 @@ import Profile from './Views/Profile';
 import Dashboard from './Views/Dashboard';
 import NewPosts from './Views/posts/newPosts';
 import ViewPosts from './Views/posts/viewPosts';
-import InsertBill from './Views/InsertBill';
 //
 import Services from './Views/Services';
+import InsertBill from './Views/InsertBill';
 import ManageBuilding from './Views/ManageBuilding';
 import Schedule from './Views/Schedule';
 import CreateAnnouncement from './Views/CreateAnnouncement';
@@ -78,6 +78,7 @@ class App extends Component {
                         path="/sign-up/create-building"
                         render={props => <CreateBuilding user={this.state.user} {...props} />}
                       />
+                      <Route path="/create-announcement" component={CreateAnnouncement} />
                     </Switch>
                   </Col>
                 </Row>
