@@ -11,11 +11,12 @@ cloudinary.config({
 
 const storage = multerStorageCloudinary({
   cloudinary,
-  folder: 'jan20',
-  resource_type: 'raw',
+  folder: 'homesweethome',
+  //resource_type: 'raw',
   allowedFormats: ['jpg', 'png', 'mov', 'mp4']
 });
 
 const uploader = multer({ storage });
 
 module.exports = uploader;
+

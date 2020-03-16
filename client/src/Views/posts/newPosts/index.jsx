@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import axios from 'axios';
-//const cors = require('cors');
-
-const instance = axios.create({
-  baseURL: 'http://localhost:3020/api'
-});
-
+import {post} from './../../../Services/otherServices'
 
 export default class index extends Component {
 
@@ -15,33 +9,43 @@ export default class index extends Component {
     this.state = {
       title : '',
       description:'',
-    //  picture: ''
+    picture: null
     };
     //this.componentDidMount = this.componentDidMount.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
-    
     this.handleFormSubmission = this.handleFormSubmission.bind(this);
-    //this.handleFileInputChange = this.handleFileInputChange.bind(this);
+    this.handleFileInputChange = this.handleFileInputChange.bind(this);
   }
 
 //   componentDidMount() {
   
 //   }
 
+ 
   async handleFormSubmission(event) {
-  console.log('haha', event)
+    event.preventDefault();
     const { title, description, picture } = this.state;
-    instance.post( '/post' ,{title, description}
-        
-      //  picture
-    )
-   
-  }
+    try {
+      const data = await post({
+        title,
+        description,
+        picture
+      });      
+      this.props.history.push('/');
+    } catch (error) {
+      console.log(error);
+    }}
+
+
   handleFileInputChange(event) {
+    console.dir(event.target);
+   
     const { name, files } = event.target;
+
     this.setState({
       [name]: files[0]
     });
+  
   }
 
   handleInputChange(event) {
@@ -80,16 +84,16 @@ export default class index extends Component {
             />
           </Form.Group>
 
-          {/* <Form.Group controlId="picture">
+          <Form.Group controlId="picture">
             <Form.Label>Picture</Form.Label>
             <Form.Control
               type="file"
               placeholder="Insert the image"
               name="picture"
-            //  onChange={this.handleFileInputChange}
+            onChange={this.handleFileInputChange}
             />
             <Form.Text className="text-muted"></Form.Text>
-          </Form.Group> */}
+          </Form.Group>
 
           <Button variant="primary" type="submit">
             Submit

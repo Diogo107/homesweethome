@@ -121,6 +121,8 @@ router.get('/doc', (req, res, next) => {
 
 router.post('/post', uploader.single('picture'), (req, res, next) => {
   const { title, description } = req.body;
+  console.log('body', req.body)
+  console.log('file' , req.file)
   let url;
 
   if (req.file) {
