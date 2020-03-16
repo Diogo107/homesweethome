@@ -8,19 +8,24 @@ export default class index extends Component {
     super(props);
     this.state = {
       loaded: false,
-      user: this.props.user
+      user: null
     };
     this.componentDidMount = this.componentDidMount.bind(this);
   }
 
   componentDidMount() {
+    console.log('componentMount', this.props);
+    this.setState({
+      user: this.props.user
+    });
     console.log('nav', this.props);
   }
 
   render() {
-    if (this.state.user !== null) {
-      return (
-        <div>
+    console.log('On the navBar still...', this.state);
+    return (
+      <div>
+        {(!this.state.user && (
           <Container>
             <Row>
               <Col>
@@ -34,16 +39,19 @@ export default class index extends Component {
               </Col>
             </Row>
           </Container>
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <h1>Brand</h1>
-          <h4>Sign In</h4>
-          <h4>Sign Up</h4>
-        </div>
-      );
-    }
+        )) || (
+          <Container>
+            <Row>
+              <Col>
+                <Link to="/">Brand</Link>
+              </Col>
+              <Col>
+                <Link to="/sign-out">Sign Out</Link>
+              </Col>
+            </Row>
+          </Container>
+        )}
+      </div>
+    );
   }
 }

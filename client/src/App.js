@@ -12,7 +12,7 @@ class App extends Component {
     super(props);
     this.state = {
       loaded: false,
-      user: 'this is the user'
+      user: null
     };
     this.componentDidMount = this.componentDidMount.bind(this);
     this.updateUserInformation = this.updateUserInformation.bind(this);
@@ -25,7 +25,7 @@ class App extends Component {
     this.setState({
       loaded: true
     });
-    console.log(this.state);
+    console.log('App', this.state);
   }
 
   updateUserInformation(user) {
@@ -37,27 +37,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <BrowserRouter>
-          <NavBar user={this.state.user} />
-          <Switch>
-            <Route path="/sign-in" component={SignInView} />
-            <Route path="/sign-up" component={SignUpView} />
-          </Switch>
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>
-              Edit <code>src/App.js</code> and save to reload.
-            </p>
-            <a
-              className="App-link"
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn React
-            </a>
-          </header>
-        </BrowserRouter>
+        {this.state.loaded && (
+          <BrowserRouter>
+            <NavBar user={this.state.user} />
+            <Switch>
+              <Route path="/sign-in" component={SignInView} />
+              <Route path="/sign-up" component={SignUpView} />
+            </Switch>
+          </BrowserRouter>
+        )}
       </div>
     );
   }
