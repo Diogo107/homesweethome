@@ -48,20 +48,8 @@ export default class index extends Component {
               </Col>
             </Row>
           </Container>
-        )) || (
-          <Container>
-            <Row>
-              <Col>
-                <Link to="/">Brand</Link>
-              </Col>
-              <Col>
-                <Form onSubmit={this.handleSignOut}>
-                  <Button type="submit">Sign Out</Button>
-                </Form>
-              </Col>
-            </Row>
-          </Container>
-        )}
+        )) ||
+          ''}
       </div>
     );
   }
