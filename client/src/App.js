@@ -59,15 +59,12 @@ class App extends Component {
               <Route path="/" component={LandingPage} exact />
               <Route path="/" component={Dashboard} exact />
               <Route path="/sign-in" component={SignInView} />
-<<<<<<< HEAD
-              <Route path="/sign-up" component={SignUpView} />
-              <Route path='/post' component={Post}/>
-=======
               <Route path="/sign-up" component={SignUpView} exact />
+              <Route path='/post' component={Post}/>
+              
               <Route path="/profile" render={props => <Profile user={this.state.user} />} />
               <Route path="/dashboard" render={props => <Dashboard user={this.state.user} />} />
               <Route path="/sign-up/create-building" component={CreateBuilding} />
->>>>>>> b60a32256547422b60c0a5e48809f2780f3af724
             </Switch>
           </BrowserRouter>
         )}
