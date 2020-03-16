@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import './style.scss';
 import { Container, Row, Col, Image, Navbar, Nav } from 'react-bootstrap';
 
-import Background from '../../public/images/background.jpg'
-import Resident from '../../public/images/resident.png'
-import Payment from '../../public/images/payment.png'
-import Announce from '../../public/images/announce.png'
-import Posting from '../../public/images/posting.png'
+import Background from '../../asset/images/background.jpg'
+import Resident from '../../asset/images/resident.png'
+import Payment from '../../asset/images/payment.png'
+import Announce from '../../asset/images/announce.png'
+import Posting from '../../asset/images/posting.png'
 
 class LandingPage extends Component {
   render() {
