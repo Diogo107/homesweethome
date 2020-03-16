@@ -71,6 +71,7 @@ class App extends Component {
                         render={props => <NewPosts user={this.state.user} {...props} />}
                       />
                       <Route path="/sign-up/create-building" component={CreateBuilding} />
+                      <Route path='/create-announcement' component = {CreateAnnouncement}/>
                     </Switch>
                   </Col>
                 </Row>
