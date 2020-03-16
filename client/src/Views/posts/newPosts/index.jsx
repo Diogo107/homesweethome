@@ -1,36 +1,18 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
-<<<<<<< HEAD
-import axios from 'axios';
 //const cors = require('cors');
-
-const instance = axios.create({
-  baseURL: 'http://localhost:3020/api'
-});
-=======
-import {post} from './../../../Services/otherServices'
->>>>>>> 101269958b400334611092a6a8676b73c5b482ea
+import { post } from './../../../Services/otherServices';
 
 export default class index extends Component {
   constructor(props) {
     super(props);
     this.state = {
-<<<<<<< HEAD
       title: '',
-      description: ''
-      //  picture: ''
+      description: '',
+      picture: null
     };
     //this.componentDidMount = this.componentDidMount.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
-
-=======
-      title : '',
-      description:'',
-    picture: null
-    };
-    //this.componentDidMount = this.componentDidMount.bind(this);
-    this.handleInputChange = this.handleInputChange.bind(this);
->>>>>>> 101269958b400334611092a6a8676b73c5b482ea
     this.handleFormSubmission = this.handleFormSubmission.bind(this);
     this.handleFileInputChange = this.handleFileInputChange.bind(this);
   }
@@ -39,7 +21,6 @@ export default class index extends Component {
 
   //   }
 
- 
   async handleFormSubmission(event) {
     event.preventDefault();
     const { title, description, picture } = this.state;
@@ -48,22 +29,21 @@ export default class index extends Component {
         title,
         description,
         picture
-      });      
+      });
       this.props.history.push('/');
     } catch (error) {
       console.log(error);
-    }}
-
+    }
+  }
 
   handleFileInputChange(event) {
     console.dir(event.target);
-   
+
     const { name, files } = event.target;
 
     this.setState({
       [name]: files[0]
     });
-  
   }
 
   handleInputChange(event) {
@@ -76,6 +56,9 @@ export default class index extends Component {
   }
 
   render() {
+    {
+      console.log('This is post props', this.props);
+    }
     return (
       <div>
         <Form onSubmit={this.handleFormSubmission}>
@@ -108,11 +91,7 @@ export default class index extends Component {
               type="file"
               placeholder="Insert the image"
               name="picture"
-<<<<<<< HEAD
-              //  onChange={this.handleFileInputChange}
-=======
-            onChange={this.handleFileInputChange}
->>>>>>> 101269958b400334611092a6a8676b73c5b482ea
+              onChange={this.handleFileInputChange}
             />
             <Form.Text className="text-muted"></Form.Text>
           </Form.Group>

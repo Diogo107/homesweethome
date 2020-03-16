@@ -48,6 +48,7 @@ export default class index extends Component {
         <Link to="/schedule">Schedule</Link>
         <br />
         <Link to="/create-announcement">Create Announcement</Link>
+        <Form>
           <Button type="submit">Sign Out</Button>
         </Form>
       </div>
