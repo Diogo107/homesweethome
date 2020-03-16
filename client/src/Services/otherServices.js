@@ -60,3 +60,24 @@ const listOfAnnoucements = async () => {
   }
 };
 export { listOfAnnoucements };
+
+const doc = async data => {
+  const form = new FormData();
+  form.append('title', data.title);
+  form.append('description', data.description);
+  form.append('picture', data.picture);
+  const result = await instance.post('/doc', form);
+  return result;
+};
+export { doc };
+
+const listOfdocs = async () => {
+  try {
+    const result = await instance.get('/doc');
+    const posts = result.data.doc;
+    return posts;
+  } catch (error) {
+    throw error;
+  }
+};
+export { listOfdocs };
