@@ -15,7 +15,7 @@ const schema = new mongoose.Schema({
   },
   picture: {
     type: String,
-    default: 'https://source.unsplash.com/random/400x400/face'
+    default: 'https://source.unsplash.com/random/400x400/?face'
   },
   phoneNumber: {
     type: Number,

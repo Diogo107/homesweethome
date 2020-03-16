@@ -6,23 +6,21 @@ const instance = axios.create({
 });
 
 const building = data => {
+  console.log('data', data);
   new Promise((resolve, reject) => {
     instance
       .post('/building', data)
       .then(result => {
+        console.log('this is client building', result);
         resolve();
       })
       .catch(reject);
   });
 };
 
-
 export { building };
 
-
-
 const post = async data => {
- 
   const form = new FormData();
   form.append('title', data.title);
   form.append('description', data.description);

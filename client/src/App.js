@@ -74,7 +74,10 @@ class App extends Component {
                         path="/insert-bill"
                         render={props => <InsertBill user={this.state.user} {...props} />}
                       />
-                      <Route path="/sign-up/create-building" component={CreateBuilding} />
+                      <Route
+                        path="/sign-up/create-building"
+                        render={props => <CreateBuilding user={this.state.user} {...props} />}
+                      />
                     </Switch>
                   </Col>
                 </Row>

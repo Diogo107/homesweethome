@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { signOut } from '../../Services/authentication';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 export default class index extends Component {
   constructor(props) {
@@ -26,14 +26,13 @@ export default class index extends Component {
     console.log('This is sign out');
     signOut();
     this.props.updateUserInformation(null);
+    Redirect('/');
   }
 
   render() {
     return (
       <div>
         <Link to="/">Dashboard</Link>
-        <br />
-        <Link to="/documents">Documents</Link>
         <br />
         <Link to="/profile">Profile</Link>
         <br />
