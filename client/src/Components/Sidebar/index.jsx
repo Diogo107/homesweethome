@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { signOut } from '../../Services/authentication';
 import { Link, Redirect } from 'react-router-dom';
+import './style.scss'
 
 export default class index extends Component {
   constructor(props) {
@@ -31,22 +32,36 @@ export default class index extends Component {
 
   render() {
     return (
-      <div>
+      
+      <div className="sidebar">
+         <div>
+             <h4>Logo</h4>
+         </div>
+        <div className="sidebar__item">
         <Link to="/">Dashboard</Link>
-        <br />
+        </div>
+        <div className="sidebar__item">
         <Link to="/profile">Profile</Link>
-        <br />
+        </div>
+        <div className="sidebar__item">
         <Link to="/post">New Post</Link>
-        <br />
+        </div>
+        <div className="sidebar__item">
         <Link to="/services">Services</Link>
-        <br />
+        </div>
+        <div className="sidebar__item">
         <Link to="/insert-bill">Insert Bill</Link>
-        <br />
+        </div>
+        <div className="sidebar__item">
         <Link to="/manage-building">Manage Building</Link>
-        <br />
+        </div>
+        <div className="sidebar__item">
         <Link to="/schedule">Schedule</Link>
-        <br />
+        </div>
+        <div className="sidebar__item">
         <Link to="/create-announcement">Create Announcement</Link>
+        </div>
+        
         <Form>
           <Button type="submit">Sign Out</Button>
         </Form>
