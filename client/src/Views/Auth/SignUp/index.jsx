@@ -44,6 +44,7 @@ export default class index extends Component {
   }
 
   render() {
+    console.log('something')
     return (
       <div className="sign-up">
         <Form onSubmit={this.sendMessage} method="POST">

@@ -121,8 +121,7 @@ export { calendar };
 const calendarDates = async () => {
   try {
     const result = await instance.get('/calendar');
-    console.log(result.data)
-   
+     
     const calendarDates = result.data.calendar;
     return calendarDates;
        }
