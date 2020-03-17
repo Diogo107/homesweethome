@@ -202,7 +202,7 @@ router.post('/calendar', (req, res, next) => {
 
 
 router.get('/calendar', (req, res, next) => {
-  Services.find()
+  Calendar.find()
       .then(calendar => {
       res.json({ calendar });
       })

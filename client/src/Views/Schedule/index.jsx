@@ -8,6 +8,8 @@ import resourceTimelinePlugin from '@fullcalendar/resource-timeline'
 //import '~@fullcalendar/daygrid/main.css';
 import './main.scss'
 import { calendar } from './../../Services/otherServices';
+import { calendarDates } from './../../Services/otherServices';
+
 // 'GPL-My-Project-Is-Open-Source'
 //<FullCalendar schedulerLicenseKey="XXX" plugins={[ resourceTimelinePlugin ]} />
 
@@ -20,9 +22,7 @@ super(props)
   //calendarComponentRef = React.createRef()
   this.state = {
     calendarWeekends: true,
-    calendarEvents: [ // initial event data
-      { title: 'Today', start: Date.now() }
-    ]
+    calendarEvents: []
     
   }
   this.handleFormSubmission = this.handleFormSubmission.bind(this);
@@ -41,7 +41,6 @@ super(props)
   async handleFormSubmission(event) {
     
     const { title,start } = this.state.calendarEvents[this.state.calendarEvents.length-1];
-    console.log('this is the one', this.state.calendarEvents[this.state.calendarEvents.length-1])
     try {
       const data = await calendar({
         title,
@@ -67,8 +66,29 @@ super(props)
     }
   }
 
+
+  componentDidMount() {
+    console.log('the component was ,ounted')
+    this.fetchData();
+  }
+
+  fetchData() {
+    console.log('inside fetchData')
+    calendarDates()
+      .then(calendarEvents => {
+       this.setState({
+          calendarEvents
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
   render() {
+    console.log('this one' , calendarDates())
     return (
+      
       <div className='demo-app'>
         <div className='demo-app-top'>
           <button onClick={ this.toggleWeekends }>toggle weekends</button>&nbsp;
