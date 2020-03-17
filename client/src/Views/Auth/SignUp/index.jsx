@@ -29,28 +29,32 @@ export default class index extends Component {
   }
 
   async sendMessage(event) {
-    console.log('hsdjdasdhas', this.props)
+    console.log('hsdjdasdhas', this.props);
     event.preventDefault();
     const { name, email, phoneNumber, code, passwordHash } = this.state;
-    try{
+    try {
       const user = await signUp({ name, email, phoneNumber, code, passwordHash });
-      this.props.updateUserInformation(user)
+      this.props.updateUserInformation(user);
       this.props.history.push('/sign-up/create-building');
+    } catch (error) {
+      console.log(error);
     }
-   catch (error) {
-    console.log(error);
-  }
-    //Redirect('/sign-up/create-building');   
+    //Redirect('/sign-up/create-building');
   }
 
   render() {
-    console.log('something')
+    console.log('something');
     return (
       <div className="sign-up">
         <Form onSubmit={this.sendMessage} method="POST">
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Name</Form.Label>
-            <Form.Control type="text" placeholder="Enter name" onChange={this.handleInputChange} />
+            <Form.Control
+              type="text"
+              name="name"
+              placeholder="Enter name"
+              onChange={this.handleInputChange}
+            />
             <Form.Text className="text-muted"></Form.Text>
           </Form.Group>
           <Form.Group controlId="formBasicEmail">
@@ -68,6 +72,7 @@ export default class index extends Component {
             <Form.Label>Phone Number</Form.Label>
             <Form.Control
               type="number"
+              name="phoneNumber"
               placeholder="Enter phone number"
               onChange={this.handleInputChange}
             />

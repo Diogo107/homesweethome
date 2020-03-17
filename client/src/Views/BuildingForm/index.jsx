@@ -133,7 +133,7 @@ class Building extends React.Component {
                       />
                     </InputGroup>
                   </FormGroup>
-                  <FormGroup>
+                  {/* <FormGroup>
                     <InputGroup className="input-group-alternative">
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText>
@@ -147,7 +147,7 @@ class Building extends React.Component {
                         onChange={this.handleInputChange}
                       />
                     </InputGroup>
-                  </FormGroup>
+                  </FormGroup> */}
                   <FormGroup>
                     <InputGroup className="input-group-alternative">
                       <InputGroupAddon addonType="prepend">

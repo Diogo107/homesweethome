@@ -106,35 +106,33 @@ const listOfservices = async () => {
 export { listOfservices };
 
 const calendar = data => {
- return new Promise((resolve, reject) => {
-  instance
-    .post('/calendar', data)
-    .then(result => {
-      
-      resolve(result);
-    })
-    .catch(reject);
-});
+  return new Promise((resolve, reject) => {
+    instance
+      .post('/calendar', data)
+      .then(result => {
+        resolve(result);
+      })
+      .catch(reject);
+  });
 };
 export { calendar };
 
 const calendarDates = async () => {
   try {
     const result = await instance.get('/calendar');
-     
+
     const calendarDates = result.data.calendar;
     return calendarDates;
-       }
-  catch (error) {
+  } catch (error) {
     throw error;
-  }}
-  export { calendarDates };
+  }
+};
+export { calendarDates };
 
-  
 const getBuilding = async id => {
   try {
     console.log('on client', id);
-    const building = await instance.get('/building', id);
+    const building = await instance.post('/building', id);
     return building;
   } catch (error) {
     throw error;
@@ -142,4 +140,13 @@ const getBuilding = async id => {
 };
 export { getBuilding };
 
-
+const addSlot = async id => {
+  try {
+    console.log('on client', id);
+    const building = await instance.get('/building/addAppartment', id);
+    return building;
+  } catch (error) {
+    throw error;
+  }
+};
+export { addSlot };
