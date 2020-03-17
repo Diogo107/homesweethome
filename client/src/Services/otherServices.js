@@ -5,17 +5,17 @@ const instance = axios.create({
   baseURL: '/api'
 });
 
-const building = data => {
+const building = async data => {
   console.log('data', data);
-  new Promise((resolve, reject) => {
-    instance
-      .post('/building', data)
-      .then(result => {
-        console.log('this is client building', result);
-        resolve();
-      })
-      .catch(reject);
-  });
+  const form = new FormData();
+  form.append('name', data.name);
+  form.append('address', data.address);
+  form.append('numberOfFloors', data.numberOfFloors);
+  form.append('admin', data.admin);
+  form.append('numberOfApartments', data.numberOfApartments);
+  form.append('picture', data.picture);
+  const result = await instance.post('/building', form);
+  return result;
 };
 export { building };
 
@@ -133,20 +133,10 @@ const getBuilding = async id => {
   try {
     console.log('on client', id);
     const building = await instance.post('/building', id);
+
     return building;
   } catch (error) {
     throw error;
   }
 };
 export { getBuilding };
-
-const addSlot = async id => {
-  try {
-    console.log('on client', id);
-    const building = await instance.get('/building/addAppartment', id);
-    return building;
-  } catch (error) {
-    throw error;
-  }
-};
-export { addSlot };

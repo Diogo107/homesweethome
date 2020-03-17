@@ -57,6 +57,14 @@ router.get('/annoucement', (req, res, next) => {
 router.post('/building', uploader.single('picture'), (req, res, next) => {
   const { name, address, numberOfFloors, admin, numberOfApartments } = req.body;
   let url;
+  console.log('this is the building', {
+    name,
+    address,
+    numberOfFloors,
+    admin,
+    numberOfApartments,
+    picture
+  });
 
   if (req.file) {
     url = req.file.url;
@@ -82,17 +90,7 @@ router.get('/building', (req, res, next) => {
   Building.findOne()
     // this id is the buiding to find it
     .then(building => {
-      res.json({ building });
-    })
-    .catch(error => {
-      next(error);
-    });
-});
-
-router.post('/building/addAppartment', (req, res, next) => {
-  Building.findOne()
-    // this id is the buiding to find it
-    .then(building => {
+      console.log('Searching for:', building);
       res.json({ building });
     })
     .catch(error => {
