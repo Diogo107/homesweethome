@@ -22,10 +22,7 @@ super(props)
   //calendarComponentRef = React.createRef()
   this.state = {
     calendarWeekends: true,
-    calendarEvents: [ // initial event data
-      { title: 'Today', start: Date.now() },
-      
-    ]
+    calendarEvents: []
     
   }
   this.handleFormSubmission = this.handleFormSubmission.bind(this);
@@ -44,7 +41,6 @@ super(props)
   async handleFormSubmission(event) {
     
     const { title,start } = this.state.calendarEvents[this.state.calendarEvents.length-1];
-    console.log('this is the one', this.state.calendarEvents[this.state.calendarEvents.length-1])
     try {
       const data = await calendar({
         title,
@@ -72,13 +68,15 @@ super(props)
 
 
   componentDidMount() {
+    console.log('the component was ,ounted')
     this.fetchData();
   }
 
   fetchData() {
+    console.log('inside fetchData')
     calendarDates()
       .then(calendarEvents => {
-        this.setState({
+       this.setState({
           calendarEvents
         });
       })
@@ -88,7 +86,7 @@ super(props)
   }
 
   render() {
-    console.log(calendarDates)
+    console.log('this one' , calendarDates())
     return (
       
       <div className='demo-app'>
