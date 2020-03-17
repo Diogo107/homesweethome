@@ -23,9 +23,8 @@ export default class index extends Component {
   }
 
   handleSignOut() {
-    console.log('This is sign out');
+    console.log('This is sign out', this.props);
     signOut();
-    this.props.updateUserInformation(null);
     Redirect('/');
   }
 
@@ -51,7 +50,7 @@ export default class index extends Component {
         <Link to="/create-document">Create Document</Link>
         <br />
         <Link to="/create-services">Create Service</Link>
-        <Form>
+        <Form onSubmit={this.handleSignOut()}>
           <Button type="submit">Sign Out</Button>
         </Form>
       </div>

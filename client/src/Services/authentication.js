@@ -6,7 +6,7 @@ const instance = axios.create({
 });
 
 const signUp = data => {
-  new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     instance
       .post('/sign-up', data)
       .then(result => {
@@ -18,7 +18,7 @@ const signUp = data => {
 };
 
 const signIn = data => {
-  new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     instance
       .post('/sign-in', data)
       .then(result => {
@@ -29,8 +29,8 @@ const signIn = data => {
   });
 };
 
-const signOut = () =>
-  new Promise((resolve, reject) => {
+const signOut = () => {
+  return new Promise((resolve, reject) => {
     instance
       .post('/sign-out')
       .then(result => {
@@ -38,6 +38,7 @@ const signOut = () =>
       })
       .catch(reject);
   });
+};
 
 const loadUserInformation = () =>
   new Promise((resolve, reject) => {

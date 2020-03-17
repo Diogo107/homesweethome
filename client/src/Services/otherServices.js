@@ -82,20 +82,17 @@ const listOfdocs = async () => {
 };
 export { listOfdocs };
 
-
 const services = data => {
-    new Promise((resolve, reject) => {
+  new Promise((resolve, reject) => {
     instance
       .post('/services', data)
       .then(result => {
-        
         resolve(result);
       })
       .catch(reject);
   });
 };
 export { services };
-
 
 const listOfservices = async () => {
   try {
@@ -107,3 +104,14 @@ const listOfservices = async () => {
   }
 };
 export { listOfservices };
+
+const getBuilding = async id => {
+  try {
+    console.log('on client', id);
+    const building = await instance.get('/building', id);
+    return building;
+  } catch (error) {
+    throw error;
+  }
+};
+export { getBuilding };

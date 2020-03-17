@@ -16,10 +16,10 @@ import NewPosts from './Views/posts/newPosts';
 import ViewPosts from './Views/posts/viewPosts';
 import CreateServices from './Views/Services/AddServices';
 import ServicesView from './Views/Services/ViewServices';
+import ManageBuilding from './Views/ManageBuilding';
 //
 
 import InsertBill from './Views/InsertBill';
-import ManageBuilding from './Views/ManageBuilding';
 import Schedule from './Views/Schedule';
 import CreateAnnouncement from './Views/CreateAnnouncement';
 import NavUser from './Components/NavUser';
@@ -64,7 +64,11 @@ class App extends Component {
               <Container>
                 <Row>
                   <Col xs lg="2">
-                    <SideBar />
+                    {/* <SideBar  /> */}
+                    <Route
+                      path="*"
+                      render={props => <SideBar user={this.state.user} {...props} />}
+                    />
                   </Col>
                   <Col>
                     <Route
@@ -73,11 +77,6 @@ class App extends Component {
                       render={props => <NavUser user={this.state.user} {...props} />}
                     />
                     <Switch>
-                      <Route
-                        path="/"
-                        exact
-                        render={props => <Dashboard user={this.state.user} />}
-                      />
                       <Route path="/profile" render={props => <Profile user={this.state.user} />} />
                       <Route
                         path="/post"
@@ -95,24 +94,35 @@ class App extends Component {
                         path="/sign-up/create-building"
                         render={props => <CreateBuilding user={this.state.user} {...props} />}
                       />
+                      <Route
+                        path="/manage-building"
+                        render={props => <ManageBuilding user={this.state.user} {...props} />}
+                      />
                       <Route path="/create-announcement" component={CreateAnnouncement} />
                       <Route path="/create-document" component={CreateDocument} />
                       <Route path="/create-services" component={CreateServices} />
                       <Route path="/services" component={ServicesView} />
+                      <Route
+                        path="*"
+                        exact
+                        render={props => <Dashboard user={this.state.user} />}
+                      />
                     </Switch>
                   </Col>
                 </Row>
               </Container>
             )) || (
               <>
-                <Route path="/" component={LandingPage} exact />
-                <Route
-                  path="/sign-in"
-                  render={props => (
-                    <SignInView updateUserInformation={this.updateUserInformation} />
-                  )}
-                />
-                <Route path="/sign-up" render={props => <SignUpView {...props} exact />} />
+                <Switch>
+                  <Route
+                    path="/sign-in"
+                    render={props => (
+                      <SignInView updateUserInformation={this.updateUserInformation} />
+                    )}
+                  />
+                  <Route path="/sign-up" render={props => <SignUpView {...props} exact />} />
+                  <Route path="*" component={LandingPage} />
+                </Switch>
               </>
             )}
           </BrowserRouter>

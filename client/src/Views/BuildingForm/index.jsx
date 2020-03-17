@@ -14,7 +14,8 @@ import {
   InputGroupText,
   InputGroup,
   Row,
-  Col
+  Col,
+  Label
 } from 'reactstrap';
 
 class Building extends React.Component {
@@ -23,14 +24,16 @@ class Building extends React.Component {
     this.state = {
       name: '',
       address: '',
-      numberOfApartment: '',
+      numberOfFloors: '',
       admin: this.props.user._id,
-      residents: '',
+      numberOfApartments: [],
       picture: ''
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.sendMessage = this.sendMessage.bind(this);
   }
+
+  componentDidUpdate() {}
 
   handleInputChange(event) {
     const value = event.target.value;
@@ -137,6 +140,7 @@ class Building extends React.Component {
                       name="numberOfApartments"
                       onChange={this.handleInputChange}
                     />
+                    <Label>{this.state.numberOfApartments}</Label>
                   </InputGroup>
                 </FormGroup>
                 <FormGroup>
