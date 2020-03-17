@@ -9,6 +9,7 @@ const Building = require('./../models/building');
 const Post = require('./../models/post');
 const Doc = require('./../models/doc');
 const Services = require ('./../models/services');
+const Calendar = require ('../models/calendar.js');
 
 router.get('/', (req, res, next) => {
   res.json({ type: 'success', data: { title: 'Hello World' } });
@@ -182,6 +183,32 @@ router.get('/services', (req, res, next) => {
       res.json({ services });
       
     })
+    .catch(error => {
+      next(error);
+    });
+});
+
+router.post('/calendar', (req, res, next) => {
+  const { title, start} = req.body;
+  
+  Calendar.create({
+    title,
+    start,
+    })
+    .then(calendar => {
+      res.json({ calendar });
+    })
+    .catch(error => {
+      next(error);
+    });
+});
+
+
+router.get('/calendar', (req, res, next) => {
+  Services.find()
+      .then(calendar => {
+      res.json({ calendar });
+      })
     .catch(error => {
       next(error);
     });

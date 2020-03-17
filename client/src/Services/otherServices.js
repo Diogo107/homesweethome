@@ -107,3 +107,27 @@ const listOfservices = async () => {
   }
 };
 export { listOfservices };
+
+const calendar = data => {
+ return new Promise((resolve, reject) => {
+  instance
+    .post('/calendar', data)
+    .then(result => {
+      
+      resolve(result);
+    })
+    .catch(reject);
+});
+};
+export { calendar };
+
+const calendarDates = async () => {
+  try {
+    const result = await instance.get('/calendar');
+    const calendarDates = result.data.calendar;
+    return calendarDates;
+  } catch (error) {
+    throw error;
+  }
+};
+export { calendarDates };
