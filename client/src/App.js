@@ -57,7 +57,12 @@ class App extends Component {
       <div className="App">
         {this.state.loaded && (
           <BrowserRouter>
-            <NavBar user={this.state.user} />
+         {(!this.state.user && (<NavBar user={this.state.user} /> ))
+
+         }
+            
+          
+          
             {(this.state.user && (
               <div>
                 
