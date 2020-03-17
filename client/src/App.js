@@ -14,12 +14,16 @@ import Profile from './Views/Profile';
 import Dashboard from './Views/Dashboard';
 import NewPosts from './Views/posts/newPosts';
 import ViewPosts from './Views/posts/viewPosts';
+import CreateServices from './Views/Services/AddServices';
+import ServicesView from './Views/Services/ViewServices';
 //
-import Services from './Views/Services';
+
 import InsertBill from './Views/InsertBill';
 import ManageBuilding from './Views/ManageBuilding';
 import Schedule from './Views/Schedule';
 import CreateAnnouncement from './Views/CreateAnnouncement';
+import NavUser from './Components/NavUser';
+import CreateDocument from './Views/Documents/CreateDocument';
 
 class App extends Component {
   constructor(props) {
@@ -30,19 +34,23 @@ class App extends Component {
     };
     this.componentDidMount = this.componentDidMount.bind(this);
     this.updateUserInformation = this.updateUserInformation.bind(this);
+    this.componentDidUpdate = this.componentDidUpdate.bind(this);
   }
 
   async componentDidMount() {
     const user = await loadUserInformation();
     await this.updateUserInformation(user);
-    this.setState({
-      loaded: true
-    });
+  }
+
+  async componentDidUpdate() {
+    const user = await loadUserInformation();
+    //    this.updateUserInformation(user);
   }
 
   updateUserInformation(user) {
     this.setState({
-      user
+      user,
+      loaded: true
     });
   }
 
@@ -58,7 +66,12 @@ class App extends Component {
                   <Col xs={6} md={4}>
                     <SideBar />
                   </Col>
-                  <Col xs={12} md={8}>
+                  <Col>
+                    <Route
+                      path="*"
+                      exact
+                      render={props => <NavUser user={this.state.user} {...props} />}
+                    />
                     <Switch>
                       <Route
                         path="/"
@@ -71,6 +84,10 @@ class App extends Component {
                         render={props => <NewPosts user={this.state.user} {...props} />}
                       />
                       <Route
+                        path="/schedule"
+                        render={props => <Schedule user={this.state.user} {...props} />}
+                      />
+                      <Route
                         path="/insert-bill"
                         render={props => <InsertBill user={this.state.user} {...props} />}
                       />
@@ -79,6 +96,9 @@ class App extends Component {
                         render={props => <CreateBuilding user={this.state.user} {...props} />}
                       />
                       <Route path="/create-announcement" component={CreateAnnouncement} />
+                      <Route path="/create-document" component={CreateDocument} />
+                      <Route path="/create-services" component={CreateServices} />
+                      <Route path="/services" component={ServicesView} />
                     </Switch>
                   </Col>
                 </Row>
@@ -86,8 +106,13 @@ class App extends Component {
             )) || (
               <>
                 <Route path="/" component={LandingPage} exact />
-                <Route path="/sign-in" component={SignInView} />
-                <Route path="/sign-up" component={SignUpView} exact />
+                <Route
+                  path="/sign-in"
+                  render={props => (
+                    <SignInView updateUserInformation={this.updateUserInformation} />
+                  )}
+                />
+                <Route path="/sign-up" render={props => <SignUpView {...props} exact />} />
               </>
             )}
           </BrowserRouter>
