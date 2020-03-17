@@ -66,7 +66,7 @@ class App extends Component {
                   <Col sm={3}>
                     <SideBar />
                   </Col>
-                  <Col sm={9}>
+                  <Col fluid={true}>
                     <Route
                       path="*"
                       exact
