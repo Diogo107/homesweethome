@@ -28,7 +28,6 @@ export default class index extends Component {
     event.preventDefault();
     const { email, passwordHash } = this.state;
     const user = await signIn({ email, passwordHash });
-    console.log('user', user);
     this.props.updateUserInformation(user);
     Redirect('/');
   }

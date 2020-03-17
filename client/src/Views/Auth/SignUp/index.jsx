@@ -18,7 +18,6 @@ export default class index extends Component {
   }
 
   handleInputChange(event) {
-    console.log('this is the signUp', this.props);
     const value = event.target.value;
     const inputName = event.target.name;
     console.log(value);
@@ -27,14 +26,18 @@ export default class index extends Component {
     });
   }
 
-  sendMessage(event) {
+  async sendMessage(event) {
     event.preventDefault();
     const { name, email, phoneNumber, code, passwordHash } = this.state;
-    signUp({ name, email, phoneNumber, code, passwordHash });
+    const user = await signUp({ name, email, phoneNumber, code, passwordHash });
+    this.props.updateUserInformation(user);
     this.props.history.push('/sign-up/create-building');
   }
 
   render() {
+    {
+      console.log('sign up', this.props);
+    }
     return (
       <div className="sign-up">
         <Form onSubmit={this.sendMessage} method="POST">
