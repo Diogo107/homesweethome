@@ -4,8 +4,8 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction' // needed for dayClick
 import resourceTimelinePlugin from '@fullcalendar/resource-timeline'
-//import '~@fullcalendar/core/main.css';
-//import '~@fullcalendar/daygrid/main.css';
+import '@fullcalendar/core/main.css';
+import '@fullcalendar/daygrid/main.css';
 import './main.scss'
 import { calendar } from './../../Services/otherServices';
 import { calendarDates } from './../../Services/otherServices';
@@ -90,11 +90,7 @@ super(props)
     return (
       
       <div className='demo-app'>
-        <div className='demo-app-top'>
-          <button onClick={ this.toggleWeekends }>toggle weekends</button>&nbsp;
-          <button onClick={ this.gotoPast }>go to a date in the past</button>&nbsp;
-          (also, click a date/time to add an event)
-        </div>
+        
         <div className='demo-app-calendar'>
           <FullCalendar 
             defaultView="dayGridMonth"

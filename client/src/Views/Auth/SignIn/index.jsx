@@ -43,6 +43,9 @@ export default class index extends Component {
   }
 
   render() {
+console.log('something')
+  
+
     return (
       <div className="sign-in">
         <img className="img__apartment" src={Apartment} />
