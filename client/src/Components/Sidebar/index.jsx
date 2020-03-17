@@ -68,7 +68,7 @@ export default class index extends Component {
           <Link to="/create-services">Create Service</Link>
         </div>
         <div className="sidebar__item">
-          <Form onSubmit={this.handleSignOut()}>
+          <Form onSubmit={this.handleSignOut}>
             <Button variant="outline-dark" type="submit">
               Sign Out
             </Button>
