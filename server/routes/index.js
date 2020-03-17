@@ -8,8 +8,8 @@ const Annoucement = require('./../models/announcement');
 const Building = require('./../models/building');
 const Post = require('./../models/post');
 const Doc = require('./../models/doc');
-const Services = require ('./../models/services');
 const Calendar = require ('../models/calendar.js');
+const Services = require('./../models/services');
 
 router.get('/', (req, res, next) => {
   res.json({ type: 'success', data: { title: 'Hello World' } });
@@ -157,10 +157,9 @@ router.get('/post', (req, res, next) => {
     });
 });
 
-
 router.post('/services', (req, res, next) => {
-  const { name, workField, price, phoneNumber} = req.body;
-  
+  const { name, workField, price, phoneNumber } = req.body;
+
   Services.create({
     name,
     workField,
@@ -175,13 +174,11 @@ router.post('/services', (req, res, next) => {
     });
 });
 
-
 router.get('/services', (req, res, next) => {
   Services.find()
     .sort({ timestamp: 'descending' })
     .then(services => {
       res.json({ services });
-      
     })
     .catch(error => {
       next(error);

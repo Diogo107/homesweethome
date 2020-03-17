@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { signIn } from './../../../Services/authentication';
 
-import './style.scss'
-import Apartment from '../../../asset/images/apartment.png'
+import './style.scss';
+import Apartment from '../../../asset/images/apartment.png';
+import { Redirect } from 'react-router-dom';
 
 export default class index extends Component {
   constructor(props) {
@@ -19,19 +20,17 @@ export default class index extends Component {
   }
 
   async componentDidMount() {
-    console.log('Im on Sign In');
+    console.log('this is the sign in', this.props);
   }
 
-  sendMessage(event) {
+  async sendMessage(event) {
     // ...
     event.preventDefault();
     const { email, passwordHash } = this.state;
-    console.log('Got here!!!!!!!!!!!!!!!');
-    signIn({ email, passwordHash });
-    this.setState({
-      loaded: true
-    });
-    this.props.history.push('/');
+    const user = await signIn({ email, passwordHash });
+    console.log('user', user);
+    this.props.updateUserInformation(user);
+    Redirect('/');
   }
 
   handleInputChange(event) {
@@ -46,7 +45,7 @@ export default class index extends Component {
   render() {
     return (
       <div className="sign-in">
-        <img className="img__apartment" src={Apartment}/>
+        <img className="img__apartment" src={Apartment} />
         <Form onSubmit={this.sendMessage}>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>

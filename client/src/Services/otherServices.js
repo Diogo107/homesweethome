@@ -82,20 +82,17 @@ const listOfdocs = async () => {
 };
 export { listOfdocs };
 
-
 const services = data => {
-    new Promise((resolve, reject) => {
+  new Promise((resolve, reject) => {
     instance
       .post('/services', data)
       .then(result => {
-        
         resolve(result);
       })
       .catch(reject);
   });
 };
 export { services };
-
 
 const listOfservices = async () => {
   try {
@@ -126,8 +123,22 @@ const calendarDates = async () => {
     const result = await instance.get('/calendar');
     const calendarDates = result.data.calendar;
     return calendarDates;
+       }
+  catch (error) {
+    throw error;
+  }}
+  export { calendarDates };
+
+  
+const getBuilding = async id => {
+  try {
+    console.log('on client', id);
+    const building = await instance.get('/building', id);
+    return building;
   } catch (error) {
     throw error;
   }
 };
-export { calendarDates };
+export { getBuilding };
+
+
