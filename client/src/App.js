@@ -57,18 +57,23 @@ class App extends Component {
       <div className="App">
         {this.state.loaded && (
           <BrowserRouter>
-            <NavBar user={this.state.user} />
+         {(!this.state.user && (<NavBar user={this.state.user} /> ))
+
+         }
+            
+          
+          
             {(this.state.user && (
               <div>
-                <Row>
-                  <Col xs lg="2">
+                
+                  <div className="main__sidebar">
                     {/* <SideBar  /> */}
                     <Route
                       path="*"
                       render={props => <SideBar user={this.state.user} {...props} />}
                     />
-                  </Col>
-                  <Col sm={9}>
+                  </div>
+                  <div className="main__dashboard">
                     <Route
                       path="*"
                       exact
@@ -106,8 +111,7 @@ class App extends Component {
                         render={props => <Dashboard user={this.state.user} />}
                       />
                     </Switch>
-                  </Col>
-                </Row>
+                  </div>
               </div>
             )) || (
               <>

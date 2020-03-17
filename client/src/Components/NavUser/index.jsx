@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import './style.scss'
 import { signOut } from '../../Services/authentication';
 
 export default class index extends Component {
@@ -67,7 +67,7 @@ export default class index extends Component {
     return (
       <div>
         {(this.state.user && (
-          <Navbar bg="transparent" expand="lg">
+          <Navbar className="nav__user" bg="transparent" expand="lg">
             <Navbar.Brand href="/">
               {this.changeInput(this.props.history.location.pathname)}
             </Navbar.Brand>
