@@ -8,6 +8,8 @@ import resourceTimelinePlugin from '@fullcalendar/resource-timeline'
 //import '~@fullcalendar/daygrid/main.css';
 import './main.scss'
 import { calendar } from './../../Services/otherServices';
+import { calendarDates } from './../../Services/otherServices';
+
 // 'GPL-My-Project-Is-Open-Source'
 //<FullCalendar schedulerLicenseKey="XXX" plugins={[ resourceTimelinePlugin ]} />
 
@@ -21,7 +23,8 @@ super(props)
   this.state = {
     calendarWeekends: true,
     calendarEvents: [ // initial event data
-      { title: 'Today', start: Date.now() }
+      { title: 'Today', start: Date.now() },
+      
     ]
     
   }
@@ -67,8 +70,27 @@ super(props)
     }
   }
 
+
+  componentDidMount() {
+    this.fetchData();
+  }
+
+  fetchData() {
+    calendarDates()
+      .then(calendarEvents => {
+        this.setState({
+          calendarEvents
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
   render() {
+    console.log(calendarDates)
     return (
+      
       <div className='demo-app'>
         <div className='demo-app-top'>
           <button onClick={ this.toggleWeekends }>toggle weekends</button>&nbsp;
