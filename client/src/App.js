@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import logo from './logo.svg';
-import './App.css';
+
+import './App.scss';
 import NavBar from './Components/NavBar';
 import { loadUserInformation } from './Services/authentication';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
@@ -61,7 +61,7 @@ class App extends Component {
           <BrowserRouter>
             <NavBar user={this.state.user} />
             {(this.state.user && (
-              <Container>
+              <div>
                 <Row>
                   <Col xs lg="2">
                     {/* <SideBar  /> */}
@@ -70,7 +70,7 @@ class App extends Component {
                       render={props => <SideBar user={this.state.user} {...props} />}
                     />
                   </Col>
-                  <Col>
+                  <Col sm={9}>
                     <Route
                       path="*"
                       exact
@@ -110,7 +110,7 @@ class App extends Component {
                     </Switch>
                   </Col>
                 </Row>
-              </Container>
+              </div>
             )) || (
               <>
                 <Switch>
