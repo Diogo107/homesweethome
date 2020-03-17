@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import './style.scss'
+import './style.scss';
 
 import { Form, Button } from 'react-bootstrap';
 import { signOut } from '../../Services/authentication';
 import { Link, Redirect } from 'react-router-dom';
-import logo from '../../asset/images/logo.png'
+import logo from '../../asset/images/logo.png';
 
 export default class index extends Component {
   constructor(props) {
@@ -26,53 +26,53 @@ export default class index extends Component {
   }
 
   handleSignOut() {
-    console.log('This is sign out');
+    console.log('This is sign out', this.props);
     signOut();
-    this.props.updateUserInformation(null);
     Redirect('/');
   }
 
   render() {
     return (
-      
       <div className="sidebar">
-         <div>
-             <img className="sidebar__logo" src={logo} alt="logo"/>
-         </div>
-        <div className="sidebar__item">
-        <Link to="/">Dashboard</Link>
+        <div>
+          <img className="sidebar__logo" src={logo} alt="logo" />
         </div>
         <div className="sidebar__item">
-        <Link to="/profile">Profile</Link>
+          <Link to="/">Dashboard</Link>
         </div>
         <div className="sidebar__item">
-        <Link to="/post">New Post</Link>
+          <Link to="/profile">Profile</Link>
         </div>
         <div className="sidebar__item">
-        <Link to="/services">Services</Link>
+          <Link to="/post">New Post</Link>
         </div>
         <div className="sidebar__item">
-        <Link to="/insert-bill">Insert Bill</Link>
+          <Link to="/services">Services</Link>
         </div>
         <div className="sidebar__item">
-        <Link to="/manage-building">Manage Building</Link>
+          <Link to="/insert-bill">Insert Bill</Link>
         </div>
         <div className="sidebar__item">
-        <Link to="/schedule">Schedule</Link>
+          <Link to="/manage-building">Manage Building</Link>
         </div>
         <div className="sidebar__item">
-        <Link to="/create-announcement">Create Announcement</Link>
+          <Link to="/schedule">Schedule</Link>
         </div>
         <div className="sidebar__item">
-        <Link to="/create-document">Create Document</Link>
+          <Link to="/create-announcement">Create Announcement</Link>
         </div>
         <div className="sidebar__item">
-        <Link to="/create-services">Create Service</Link>
+          <Link to="/create-document">Create Document</Link>
         </div>
         <div className="sidebar__item">
-        <Form>
-          <Button variant="outline-dark" type="submit">Sign Out</Button>
-        </Form>
+          <Link to="/create-services">Create Service</Link>
+        </div>
+        <div className="sidebar__item">
+          <Form onSubmit={this.handleSignOut}>
+            <Button variant="outline-dark" type="submit">
+              Sign Out
+            </Button>
+          </Form>
         </div>
       </div>
     );

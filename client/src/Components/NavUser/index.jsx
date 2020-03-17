@@ -29,7 +29,6 @@ export default class index extends Component {
   }
 
   changeInput(path) {
-    console.log('userBar', this.props.history.location.pathname);
     switch (path) {
       case '/':
         return 'Dashboard';

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { signUp } from './../../../Services/authentication';
 import { Form, Button } from 'react-bootstrap';
-import './style.scss'
+import './style.scss';
+import { Redirect } from 'react-router-dom';
 
 export default class index extends Component {
   constructor(props) {
@@ -18,6 +19,7 @@ export default class index extends Component {
   }
 
   handleInputChange(event) {
+    console.log('this is the signUp', this.props);
     const value = event.target.value;
     const inputName = event.target.name;
     console.log(value);
@@ -26,12 +28,19 @@ export default class index extends Component {
     });
   }
 
-  sendMessage(event) {
+  async sendMessage(event) {
+    console.log('hsdjdasdhas', this.props)
     event.preventDefault();
     const { name, email, phoneNumber, code, passwordHash } = this.state;
-    console.log({ name, email, phoneNumber, code, passwordHash });
-    signUp({ name, email, phoneNumber, code, passwordHash });
-    this.props.history.push('/sign-up/create-building');
+    try{
+      const user = await signUp({ name, email, phoneNumber, code, passwordHash });
+      this.props.updateUserInformation(user)
+      this.props.history.push('/sign-up/create-building');
+    }
+   catch (error) {
+    console.log(error);
+  }
+    //Redirect('/sign-up/create-building');   
   }
 
   render() {

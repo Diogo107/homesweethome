@@ -21,7 +21,7 @@ const schema = new mongoose.Schema({
     required: true
   },
   numberOfApartments: {
-    type: Array
+    type: Number
   },
   picture: {
     type: String,
