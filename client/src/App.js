@@ -32,29 +32,27 @@ class App extends Component {
       loaded: false,
       user: null
     };
-    this.componentDidMount = this.componentDidMount.bind(this);
     this.updateUserInformation = this.updateUserInformation.bind(this);
-    this.componentDidUpdate = this.componentDidUpdate.bind(this);
   }
 
   async componentDidMount() {
     const user = await loadUserInformation();
     await this.updateUserInformation(user);
-  }
-
-  async componentDidUpdate() {
-    const user = await loadUserInformation();
-    //    this.updateUserInformation(user);
-  }
-
-  updateUserInformation(user) {
     this.setState({
-      user,
       loaded: true
     });
   }
 
+  updateUserInformation(user) {
+    this.setState({
+      user
+    });
+  }
+
   render() {
+    {
+      console.log(this.state);
+    }
     return (
       <div className="App">
         {this.state.loaded && (
@@ -117,7 +115,7 @@ class App extends Component {
                   <Route
                     path="/sign-in"
                     render={props => (
-                      <SignInView updateUserInformation={this.updateUserInformation} />
+                      <SignInView updateUserInformation={this.updateUserInformation} {...props} />
                     )}
                   />
                   <Route path="/sign-up" render={props => <SignUpView {...props} exact />} />
