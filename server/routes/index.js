@@ -55,7 +55,7 @@ router.get('/annoucement', (req, res, next) => {
 });
 
 router.post('/building', uploader.single('picture'), (req, res, next) => {
-  const { name, address, numberOfFloors, admin, numberOfApartments, picture } = req.body;
+  const { name, address, numberOfFloors, admin, numberOfApartments } = req.body;
   let url;
 
   if (req.file) {
@@ -71,7 +71,6 @@ router.post('/building', uploader.single('picture'), (req, res, next) => {
     picture: url
   })
     .then(building => {
-      console.log('this is the building', building);
       res.json({ building });
     })
     .catch(error => {

@@ -17,6 +17,8 @@ import ViewPosts from './Views/posts/viewPosts';
 import CreateServices from './Views/Services/AddServices';
 import ServicesView from './Views/Services/ViewServices';
 import ManageBuilding from './Views/ManageBuilding';
+import PaymentMethodListView from './Views/PaymentMethodList';
+import PaymentMethodCreateView from './Views/PaymentMethodCreate';
 //
 
 import InsertBill from './Views/InsertBill';
@@ -105,7 +107,20 @@ class App extends Component {
                       <Route path="/create-document" component={CreateDocument} />
                       <Route path="/create-services" component={CreateServices} />
                       <Route path="/services" component={ServicesView} />
+                      
                       <Route
+                authorized={this.state.user}
+                redirect="/sign-in"
+                path="/payment-method/list"
+                render={props => <PaymentMethodListView user={this.state.user} {...props} />}
+              />
+              <Route
+                authorized={this.state.user}
+                path="/payment-method/create"
+                exact
+                render={props => <PaymentMethodCreateView user={this.state.user} {...props} />}
+              />
+              <Route
                         path="*"
                         exact
                         render={props => <Dashboard user={this.state.user} />}
@@ -133,6 +148,7 @@ class App extends Component {
                     )}
                   />
                   <Route path="*" component={LandingPage} />
+                  
                 </Switch>
               </>
             )}
