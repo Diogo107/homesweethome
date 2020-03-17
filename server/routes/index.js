@@ -8,7 +8,7 @@ const Annoucement = require('./../models/announcement');
 const Building = require('./../models/building');
 const Post = require('./../models/post');
 const Doc = require('./../models/doc');
-const Calendar = require ('../models/calendar.js');
+const Calendar = require('../models/calendar.js');
 const Services = require('./../models/services');
 
 router.get('/', (req, res, next) => {
@@ -80,6 +80,17 @@ router.post('/building', uploader.single('picture'), (req, res, next) => {
 });
 
 router.get('/building', (req, res, next) => {
+  Building.findOne()
+    // this id is the buiding to find it
+    .then(building => {
+      res.json({ building });
+    })
+    .catch(error => {
+      next(error);
+    });
+});
+
+router.post('/building/addAppartment', (req, res, next) => {
   Building.findOne()
     // this id is the buiding to find it
     .then(building => {
@@ -186,12 +197,12 @@ router.get('/services', (req, res, next) => {
 });
 
 router.post('/calendar', (req, res, next) => {
-  const { title, start} = req.body;
-  
+  const { title, start } = req.body;
+
   Calendar.create({
     title,
-    start,
-    })
+    start
+  })
     .then(calendar => {
       res.json({ calendar });
     })
@@ -200,12 +211,11 @@ router.post('/calendar', (req, res, next) => {
     });
 });
 
-
 router.get('/calendar', (req, res, next) => {
   Calendar.find()
-      .then(calendar => {
+    .then(calendar => {
       res.json({ calendar });
-      })
+    })
     .catch(error => {
       next(error);
     });
