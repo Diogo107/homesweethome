@@ -33,7 +33,6 @@ class App extends Component {
       user: null
     };
     this.updateUserInformation = this.updateUserInformation.bind(this);
-    this.reload = this.reload.bind(this);
   }
 
   async componentDidMount() {
@@ -44,14 +43,9 @@ class App extends Component {
     });
   }
 
-  reload() {
-    window.location.reload(true);
-  }
-
   componentDidUpdate() {}
 
   updateUserInformation(user) {
-    console.log('did it???????');
     this.setState({
       user,
       loaded: !this.state.loaded
@@ -99,9 +93,7 @@ class App extends Component {
                       />
                       <Route
                         path="/sign-up/create-building"
-                        render={props => (
-                          <CreateBuilding user={this.state.user} reload={this.reload} {...props} />
-                        )}
+                        render={props => <CreateBuilding user={this.state.user} {...props} />}
                       />
                       <Route
                         path="/manage-building"
