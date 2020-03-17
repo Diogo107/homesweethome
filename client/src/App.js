@@ -20,6 +20,7 @@ import InsertBill from './Views/InsertBill';
 import ManageBuilding from './Views/ManageBuilding';
 import Schedule from './Views/Schedule';
 import CreateAnnouncement from './Views/CreateAnnouncement';
+import NavUser from './Components/NavUser';
 
 class App extends Component {
   constructor(props) {
@@ -30,19 +31,23 @@ class App extends Component {
     };
     this.componentDidMount = this.componentDidMount.bind(this);
     this.updateUserInformation = this.updateUserInformation.bind(this);
+    this.componentDidUpdate = this.componentDidUpdate.bind(this);
   }
 
   async componentDidMount() {
     const user = await loadUserInformation();
     await this.updateUserInformation(user);
-    this.setState({
-      loaded: true
-    });
+  }
+
+  async componentDidUpdate() {
+    const user = await loadUserInformation();
+    this.updateUserInformation(user);
   }
 
   updateUserInformation(user) {
     this.setState({
-      user
+      user,
+      loaded: true
     });
   }
 
@@ -59,6 +64,11 @@ class App extends Component {
                     <SideBar />
                   </Col>
                   <Col>
+                    <Route
+                      path="*"
+                      exact
+                      render={props => <NavUser user={this.state.user} {...props} />}
+                    />
                     <Switch>
                       <Route
                         path="/"
@@ -86,8 +96,8 @@ class App extends Component {
             )) || (
               <>
                 <Route path="/" component={LandingPage} exact />
-                <Route path="/sign-in" component={SignInView} />
-                <Route path="/sign-up" component={SignUpView} exact />
+                <Route path="/sign-in" render={props => <SignInView />} />
+                <Route path="/sign-up" render={props => <SignUpView {...props} exact />} />
               </>
             )}
           </BrowserRouter>
