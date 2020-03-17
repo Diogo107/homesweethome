@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import './style.scss'
+
 import { Form, Button } from 'react-bootstrap';
 import { signOut } from '../../Services/authentication';
 import { Link, Redirect } from 'react-router-dom';
-import './style.scss'
+import logo from '../../asset/images/logo.png'
 
 export default class index extends Component {
   constructor(props) {
@@ -35,7 +37,7 @@ export default class index extends Component {
       
       <div className="sidebar">
          <div>
-             <h4>Logo</h4>
+             <img className="sidebar__logo" src={logo} alt="logo"/>
          </div>
         <div className="sidebar__item">
         <Link to="/">Dashboard</Link>
@@ -67,9 +69,11 @@ export default class index extends Component {
         <div className="sidebar__item">
         <Link to="/create-services">Create Service</Link>
         </div>
+        <div className="sidebar__item">
         <Form>
-          <Button type="submit">Sign Out</Button>
+          <Button variant="outline-dark" type="submit">Sign Out</Button>
         </Form>
+        </div>
       </div>
     );
   }

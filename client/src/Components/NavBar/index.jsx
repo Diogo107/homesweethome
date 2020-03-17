@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import logo from '../../asset/images/logo.png'
 import { signOut } from '../../Services/authentication';
+import './style.scss'
 
 export default class index extends Component {
   constructor(props) {
@@ -32,7 +33,7 @@ export default class index extends Component {
         {(!this.state.user && (
         
             <Navbar bg="transparent" expand="lg">
-            <Navbar.Brand href="/">HomeSweetHome</Navbar.Brand>
+            <Navbar.Brand href="/"><img className="logo" src={logo}/></Navbar.Brand>
             <Nav className="ml-auto">
               <Nav.Link href="/sign-in">Sign In</Nav.Link>
               <Nav.Link href="/sign-up">Sign Up</Nav.Link>

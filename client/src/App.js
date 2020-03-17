@@ -63,10 +63,10 @@ class App extends Component {
             {(this.state.user && (
               <div>
                 <Row>
-                  <Col xs={6} md={4}>
+                  <Col sm={3}>
                     <SideBar />
                   </Col>
-                  <Col>
+                  <Col sm={9}>
                     <Route
                       path="*"
                       exact
