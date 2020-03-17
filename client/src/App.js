@@ -43,12 +43,9 @@ class App extends Component {
     });
   }
 
-  componentDidUpdate() {}
-
   updateUserInformation(user) {
     this.setState({
-      user,
-      loaded: !this.state.loaded
+      user
     });
   }
 
@@ -141,5 +138,5 @@ class App extends Component {
     );
   }
 }
-
+console.log('hahahhahhaha');
 export default App;

@@ -28,6 +28,7 @@ export default class index extends Component {
     event.preventDefault();
     const { email, passwordHash } = this.state;
     const user = await signIn({ email, passwordHash });
+    console.log('user', user);
     this.props.updateUserInformation(user);
     Redirect('/');
   }
@@ -42,6 +43,9 @@ export default class index extends Component {
   }
 
   render() {
+console.log('something')
+  
+
     return (
       <div className="sign-in">
         <img className="img__apartment" src={Apartment} />
