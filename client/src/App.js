@@ -117,7 +117,16 @@ class App extends Component {
                       <SignInView updateUserInformation={this.updateUserInformation} {...props} />
                     )}
                   />
-                  <Route path="/sign-up" render={props => <SignUpView updateUserInformation={this.updateUserInformation} {...props} exact />} />
+                  <Route
+                    path="/sign-up"
+                    render={props => (
+                      <SignUpView
+                        updateUserInformation={this.updateUserInformation}
+                        {...props}
+                        exact
+                      />
+                    )}
+                  />
                   <Route path="*" component={LandingPage} />
                 </Switch>
               </>
@@ -128,5 +137,5 @@ class App extends Component {
     );
   }
 }
-console.log('hahahhahhaha')
+console.log('hahahhahhaha');
 export default App;
