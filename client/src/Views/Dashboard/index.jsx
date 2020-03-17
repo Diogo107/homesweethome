@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+<<<<<<< HEAD
 import PostsView from './../posts/viewPosts';
 import AnnoucementsView from './../ViewAnnoucements';
+=======
+import PostsView from './../posts/viewPosts'
+import AnnoucementsView from './../ViewAnnoucements'
+import DocsView from './../Documents/ViewDocuments'
+>>>>>>> 4fa3b24f9adb2595310259efaa8874f842a9ff7a
 export default class index extends Component {
   constructor(props) {
     super(props);
@@ -31,11 +37,21 @@ export default class index extends Component {
         )) ||
           ''}
 
+<<<<<<< HEAD
         <div>
           <h1>my path</h1>
           <PostsView />
           <AnnoucementsView />
         </div>
+=======
+          <div>
+            <h1>my path</h1>
+             <PostsView />}
+             <AnnoucementsView/>
+             <DocsView/>
+                     
+          </div>
+>>>>>>> 4fa3b24f9adb2595310259efaa8874f842a9ff7a
       </div>
     );
   }
