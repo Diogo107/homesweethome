@@ -44,7 +44,7 @@ class App extends Component {
 
   async componentDidUpdate() {
     const user = await loadUserInformation();
-    this.updateUserInformation(user);
+    //    this.updateUserInformation(user);
   }
 
   updateUserInformation(user) {
@@ -106,7 +106,12 @@ class App extends Component {
             )) || (
               <>
                 <Route path="/" component={LandingPage} exact />
-                <Route path="/sign-in" render={props => <SignInView />} />
+                <Route
+                  path="/sign-in"
+                  render={props => (
+                    <SignInView updateUserInformation={this.updateUserInformation} />
+                  )}
+                />
                 <Route path="/sign-up" render={props => <SignUpView {...props} exact />} />
               </>
             )}

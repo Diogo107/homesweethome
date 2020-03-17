@@ -13,10 +13,11 @@ export default class index extends Component {
     };
     this.componentDidMount = this.componentDidMount.bind(this);
     this.handleSignOut = this.handleSignOut.bind(this);
+    this.changeInput = this.changeInput.bind(this);
   }
 
   componentDidMount() {
-    //console.log('NavUser', this.props);
+    console.log('NavUser', this.props);
     this.setState({
       user: this.props.user
     });
@@ -27,12 +28,50 @@ export default class index extends Component {
     this.props.updateUserInformation(null);
   }
 
+  changeInput(path) {
+    console.log('userBar', this.props.history.location.pathname);
+    switch (path) {
+      case '/':
+        return 'Dashboard';
+        break;
+      case '/post':
+        return 'New Post';
+        break;
+      case '/profile':
+        return 'Profile';
+        break;
+      case '/services':
+        return 'Services';
+        break;
+      case '/insert-bill':
+        return 'Insert Bill';
+        break;
+      case '/manage-building':
+        return 'Manage Building';
+        break;
+      case '/schedule':
+        return 'Schedule';
+        break;
+      case '/create-announcement':
+        return 'Create Announcement';
+        break;
+      case '/create-document':
+        return 'Create Document';
+        break;
+      case '/create-services':
+        return 'Create Services';
+        break;
+    }
+  }
+
   render() {
     return (
       <div>
         {(this.state.user && (
           <Navbar bg="transparent" expand="lg">
-            <Navbar.Brand href="/">{this.props.history.location.pathname}</Navbar.Brand>
+            <Navbar.Brand href="/">
+              {this.changeInput(this.props.history.location.pathname)}
+            </Navbar.Brand>
             <Nav className="ml-auto">
               <img src={this.state.user.picture} style={{ width: '40px' }} alt="..." />
               <Nav.Link href="/profile">{this.state.user.name}</Nav.Link>
