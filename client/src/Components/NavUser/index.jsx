@@ -17,6 +17,7 @@ export default class index extends Component {
   }
 
   componentDidMount() {
+    console.log(this.state.user)
     console.log('NavUser', this.props);
     this.setState({
       user: this.props.user
@@ -72,7 +73,7 @@ export default class index extends Component {
               {this.changeInput(this.props.history.location.pathname)}
             </Navbar.Brand>
             <Nav className="ml-auto">
-              <img src={this.state.user.picture} style={{ width: '40px' }} alt="..." />
+              <img className="small__profile__picture" src={this.state.user.picture} style={{ width: '40px' }} alt="small-profile-picture" />
               <Nav.Link href="/profile">{this.state.user.name}</Nav.Link>
             </Nav>
           </Navbar>
