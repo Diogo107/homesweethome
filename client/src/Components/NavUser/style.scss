@@ -2,7 +2,9 @@
   padding-top: 21px;
   display: flex;
   justify-content: flex-end;
-  margin-left: 20px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  background-image: linear-gradient(to bottom right, #fffffb, #dcedc8) 
 }
 
 .mobile__menu__logo {
@@ -21,42 +23,54 @@
   display: none;
 }
 
+
 @media screen and (max-width: 640px) {
-.burger__menu{
-  display: flex;
+  .burger__menu{
+    display: flex;
+  }
+
+  .nav__user{
+    background-image: linear-gradient(to bottom right, #fff, #fff)  
+  }
+
+
+html{
+  background-image: linear-gradient(to bottom right, #fffffb, #dcedc8);
+  background-repeat: repeat;
 }
 
-.mobile__menu__logo {
-  display: flex;
-  height: 40px;
-  width: 200px;
-  margin-left: 55%;
-  margin-top: 15%
-}
+  .mobile__menu__logo {
+    display: flex;
+    height: 40px;
+    width: 200px;
+    margin-left: 55%;
+    margin-top: 15%
+  }
 
-.navuser__path {
-  display: none
-}
-
-.mobilename {
-  display: none
-}
-
-.mobileuser {
-  padding-top: 27px;
-  padding-right: 15px
-}
-
-.nav__user{
+  .navuser__path {
+    display: none
+  }
+  
+  .mobilename {
+    display: none
+  }
+  
+  .mobileuser {
+    padding-top: 27px;
+    padding-right: 15px
+  }
+  
+  .nav__user{
+    
   margin-top: -21px;
-  margin-left: 0; 
+  margin-left: -20px; 
   padding-right: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
 }
 
 #page-wrap {
   text-align: center;
-
+  
   /* Prevent sidebar from showing a scrollbar on page */
   overflow: auto;
 }
@@ -130,3 +144,8 @@
 
   }
   
+  @media screen and (max-width: 370px) {
+    .mobile__menu__logo {
+      display: none
+    }
+  }

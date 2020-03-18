@@ -57,7 +57,8 @@ export default class index extends Component {
 
   render() {
     return (
-      <div>
+      <div className="form__dashboard">
+        <h2>Create a New Post!</h2><br />
         <Form onSubmit={this.handleFormSubmission}>
           <Form.Group controlId="title">
             <Form.Label>Title</Form.Label>

@@ -50,7 +50,8 @@ export default class CreateServices extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="form__dashboard">
+        <h2>Add a Services!</h2><br />
         <Form onSubmit={this.handleFormSubmission}>
           <Form.Group controlId="name">
             <Form.Label>Name</Form.Label>
