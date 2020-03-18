@@ -54,6 +54,7 @@ router.get('/annoucement', (req, res, next) => {
     });
 });
 
+
 router.post('/building', uploader.single('picture'), (req, res, next) => {
   const numberOfApartments = JSON.parse(req.body.numberOfApartments);
   const { name, address, numberOfFloors, admin, picture } = req.body;

@@ -236,5 +236,4 @@ class Building extends React.Component {
     );
   }
 }
-
 export default Building;

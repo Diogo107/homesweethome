@@ -27,6 +27,9 @@ const schema = new mongoose.Schema({
   },
   passwordHash: {
     type: String
+  },
+  stripeCustomerId: {
+    type: String
   }
 });
 

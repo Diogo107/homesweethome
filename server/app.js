@@ -15,6 +15,8 @@ const indexRouter = require('./routes/index');
 const authenticationRouter = require('./routes/authentication');
 const cors = require('cors');
 const app = express();
+const paymentMethodRouter = require('./routes/payment-method');
+const purchaseRouter = require('./routes/purchase');
 
 app.use(serveFavicon(join(__dirname, 'public/images', 'favicon.ico')));
 app.use(logger('dev'));
@@ -43,6 +45,9 @@ app.use(bindUserToViewLocals);
 app.use(cors());
 app.use('/api', indexRouter);
 app.use('/api/authentication', authenticationRouter);
+app.use('/api/payment-method', paymentMethodRouter);
+app.use('/api/purchase', purchaseRouter);
+
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {
