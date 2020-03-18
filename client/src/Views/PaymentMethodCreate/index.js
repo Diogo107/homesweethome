@@ -10,10 +10,13 @@ const STRIPE_PUBLIC_KEY = process.env.REACT_APP_STRIPE_PUBLIC_KEY;
 class PaymentMethodView extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      opened: true
+    };
     this.handleFormSubmission = this.handleFormSubmission.bind(this);
 
     this.stripePromise = loadStripe(STRIPE_PUBLIC_KEY);
+    this.toggleBox = this.toggleBox.bind(this)
   }
 
   componentDidMount() {
@@ -32,9 +35,18 @@ class PaymentMethodView extends Component {
     } else {
       // console.log(paymentMethod);
       await paymentMethodCreate(paymentMethod.id);
-      this.props.history.push('/payment-method/list');
+      this.toggleBox()
+      
     }
+    
   }
+
+  toggleBox() {
+		const { opened } = this.state;
+		this.setState({
+			opened: !opened,
+		});
+	}
 
   render() {
     const STRIPE_ELEMENT_OPTIONS = {
@@ -58,7 +70,7 @@ class PaymentMethodView extends Component {
               <form onSubmit={event => this.handleFormSubmission(event, stripe, elements)}>
                 {/* <label htmlFor="name">Name</label> */}
                 <CardElement options={STRIPE_ELEMENT_OPTIONS} />
-                <button>Add Payment Method</button>
+                {this.state.opened &&(<button>Add Payment Method</button>)}
               </form>
             )}
           </ElementsConsumer>

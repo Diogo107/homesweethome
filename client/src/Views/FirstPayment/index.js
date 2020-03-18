@@ -2,47 +2,79 @@ import React, { Component } from 'react';
 //import ProductItem from './../../components/ProductItem';
 import { create as createPurchase } from './../../Services/purchase';
 import PaymentMethodCreateView from './../../Views/PaymentMethodCreate';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import SingleProduct from './../../Components/SubscriptionPlans'
+import { listOfPlans } from './../../Services/otherServices';
+import CheckoutView from './../../Views/Checkout'
 import './style.scss';
 
 class FirstPayment extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+        plans:[],
+      cart:[]
+    };
     this.handlePurchase = this.handlePurchase.bind(this);
+    this.updateCart = this.updateCart.bind(this);
   }
 
+  updateCart(item) {
+    this.setState(previousState => ({
+      cart: [...previousState.cart, item]
+    }));
+  }
+  componentDidMount() {
+    this.fetchData();
+  }
+
+  fetchData() {
+      
+    listOfPlans()
+      .then(plans => {
+          console.log('do we have', plans)
+        this.setState({
+        plans
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
+
   async handlePurchase() {
-    const ids = this.props.cart.map(product => product._id);
+    const id = this.props.cart.map(plan => plan._id);
     try {
-      await createPurchase(ids);
+      await createPurchase(id);
     } catch (error) {
       console.log(error);
     }
   }
+  handleCartAddition() {
+    this.props.updateCart(this.state.product);
+  }
 
   render() {
+      console.log('herererere',this.state)
+      console.log('now', this.props.updateCart)
     return (
       <div>
        <div>
-        <h1>Six Months Plan</h1>
-        <button onClick={this.handlePurchase}>Purchase</button>
+       {this.state.plans.map(plan => (
+           
+             <SingleProduct updateCart={this.updateCart} key={plan._id} {...plan} />))} 
+       
         </div>
-        <div>
-        <h1>One Year Plan</h1>
-        <button onClick={this.handlePurchase}>Purchase</button>
-        </div>
-        <div>
-        <h1>Two Years Plan</h1>
-        <button onClick={this.handlePurchase}>Purchase</button>
-        </div>
-        
+ 
+
+
         <div className="sidebar__item">
         
-        <PaymentMethodCreateView />}
+        <PaymentMethodCreateView />
              
         </div>
 
-
+        <CheckoutView cart={this.state.cart} updateCart={this.props.updateCart} />
         
       </div>
     );

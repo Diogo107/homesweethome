@@ -142,3 +142,23 @@ const getBuilding = async id => {
   }
 };
 export { getBuilding };
+
+const listOfPlans = async () => {
+  try {
+    const result = await instance.get('/product/list');
+    console.log('data', result.data)
+    const product = result.data.products;
+    console.log('list', product)
+    return product;
+  } catch (error) {
+    throw error;
+  }
+};
+export { listOfPlans };
+
+const uniquePlan = async id => {
+  const result = await instance.get(`/product/${id}`);
+  const product = result.data.product;
+  return product;
+};
+export { uniquePlan}

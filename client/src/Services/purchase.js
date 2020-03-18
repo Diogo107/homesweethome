@@ -10,8 +10,8 @@ const list = async () => {
   return purchases;
 };
 
-const create = async ids => {
-  await instance.post('/create', { products: ids });
+const create = async id => {
+  await instance.post('/create', { products: id });
 };
 
 export { list, create };
