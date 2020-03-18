@@ -34,6 +34,7 @@ class Building extends React.Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.sendMessage = this.sendMessage.bind(this);
     this.addSlot = this.addSlot.bind(this);
+    this.eraseSlot = this.eraseSlot.bind(this);
   }
 
   async componentDidMount() {
@@ -81,6 +82,20 @@ class Building extends React.Component {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  eraseSlot(slot) {
+    //slot.preventDefault();
+    console.log(slot);
+    let number = this.state.numberOfApartments;
+    for (let i of this.state.numberOfApartments) {
+      if (i == slot) {
+        number.slice(i, 1);
+      }
+    }
+    this.setState({
+      numberOfApartments: number
+    });
   }
 
   render() {
@@ -181,7 +196,12 @@ class Building extends React.Component {
                 </Form>
                 <ul>
                   {this.state.numberOfApartments.map(slot => (
-                    <li key={slot.id}>{slot.slot}</li>
+                    <li key={slot.slot}>
+                      {slot.slot}{' '}
+                      <button id={slot.slot} onClick={() => this.eraseSlot(slot.slot)}>
+                        x
+                      </button>
+                    </li>
                   ))}
                 </ul>
                 <FormGroup>
