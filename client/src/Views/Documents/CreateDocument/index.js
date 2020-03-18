@@ -3,6 +3,7 @@ import { Form, Button } from 'react-bootstrap';
 //const cors = require('cors');
 import { doc as document } from './../../../Services/otherServices';
 
+
 export default class CreateDocument extends Component {
   constructor(props) {
     super(props);
@@ -58,7 +59,8 @@ export default class CreateDocument extends Component {
 
   render() {
     return (
-      <div>
+      <div className="form__dashboard">
+        <h2>Create a New Document!</h2><br />
         <Form onSubmit={this.handleFormSubmission}>
           <Form.Group controlId="title">
             <Form.Label>Title</Form.Label>

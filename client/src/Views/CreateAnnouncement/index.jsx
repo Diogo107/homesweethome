@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
 //const cors = require('cors');
 import { announcement } from './../../Services/otherServices';
+import '../../App.scss'
 
 export default class CreateAnnouncement extends Component {
   constructor(props) {
@@ -57,7 +58,8 @@ export default class CreateAnnouncement extends Component {
 
   render() {
     return (
-      <div>
+      <div className="form__dashboard">
+        <h2>Create a New Announcement!</h2>
         <Form onSubmit={this.handleFormSubmission}>
           <Form.Group controlId="title">
             <Form.Label>Title</Form.Label>

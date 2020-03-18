@@ -60,7 +60,8 @@ export default class index extends Component {
       console.log('This is post props', this.props);
     }
     return (
-      <div>
+      <div className="form__dashboard">
+        <h2>Insert a New Bill!</h2><br />
         <Form onSubmit={this.handleFormSubmission}>
           <Form.Group controlId="title">
             <Form.Label>Post Bill</Form.Label>

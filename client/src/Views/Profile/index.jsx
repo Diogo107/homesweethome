@@ -20,7 +20,7 @@ export default class index extends Component {
 
   render() {
     return (
-      <div>
+      <div className="profile__div">
         {(this.state.loaded && (
           <div> 
             <img className="profile__picture" src={this.state.user.picture} alt="profile picture" />
