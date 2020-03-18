@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 //import ProductItem from './../../components/ProductItem';
 import { create as createPurchase } from './../../Services/purchase';
-
+import PaymentMethodCreateView from './../../Views/PaymentMethodCreate';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import './style.scss';
 
 class FirstPayment extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.handlePurchase = this.handlePurchase.bind(this);
   }
 
@@ -35,10 +36,14 @@ class FirstPayment extends Component {
         <button onClick={this.handlePurchase}>Purchase</button>
         </div>
         
+        <div className="sidebar__item">
+        
+        <PaymentMethodCreateView />}
+             
+        </div>
 
 
-
-        <button onClick={this.handlePurchase}>Purchase</button>
+        
       </div>
     );
   }
