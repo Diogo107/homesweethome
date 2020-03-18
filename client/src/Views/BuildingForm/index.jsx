@@ -86,15 +86,18 @@ class Building extends React.Component {
 
   eraseSlot(slot) {
     //slot.preventDefault();
-    console.log(slot);
-    let number = this.state.numberOfApartments;
-    for (let i of this.state.numberOfApartments) {
-      if (i == slot) {
-        number.slice(i, 1);
+    //console.log('Button entry', slot);
+    let arr = this.state.numberOfApartments;
+    //console.log('Searching for.....', arr);
+    for (let i = 0; i < arr.length; i++) {
+      //console.log('i', arr[i]);
+      if (arr[i].slot == slot) {
+        arr.splice(i, 1);
       }
     }
+    //console.log('Final Array', arr);
     this.setState({
-      numberOfApartments: number
+      numberOfApartments: arr
     });
   }
 
