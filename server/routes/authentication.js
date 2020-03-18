@@ -3,29 +3,34 @@
 const { Router } = require('express');
 const bcryptjs = require('bcryptjs');
 const User = require('./../models/user');
+const stripe = require('./../stripe-configure');
 const router = new Router();
 
-router.post('/sign-up', (req, res, next) => {
+router.post('/sign-up', async (req, res, next) => {
   const { name, email, phoneNumber, code, passwordHash } = req.body;
-  bcryptjs
-    .hash(passwordHash, 10)
-    .then(hash => {
-      return User.create({
-        name,
-        email,
-        phoneNumber,
-        code,
-        passwordHash: hash
-      });
+  try {
+    const customer = await stripe.customers.create();
+    const hash = await bcryptjs.hash(passwordHash, 10);
+    const user = await User.create({
+      name,
+      email,
+      phoneNumber,
+      code,
+      passwordHash: hash,
+      stripeCustomerId: customer.id
     })
-    .then(user => {
-      req.session.user = user._id;
-      res.json({ user });
-    })
-    .catch(error => {
-      next(error);
-    });
-});
+    req.session.user = user._id;
+    res.json({ user });
+  }
+   catch (error) {
+    next(error);
+  }}    
+);
+
+
+
+
+
 
 router.post('/sign-in', (req, res, next) => {
   let user;

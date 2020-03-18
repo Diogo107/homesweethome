@@ -34,6 +34,7 @@ class Building extends React.Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.sendMessage = this.sendMessage.bind(this);
     this.addSlot = this.addSlot.bind(this);
+    this.eraseSlot = this.eraseSlot.bind(this);
   }
 
   async componentDidMount() {
@@ -55,7 +56,7 @@ class Building extends React.Component {
     event.preventDefault();
     console.log(event.target[0].value);
     const slot = {
-      id: Math.floor(Math.random() * 10000000),
+      id: Math.floor(Math.random() * 10000000).toString(),
       slot: event.target[0].value,
       email: ''
     };
@@ -65,11 +66,39 @@ class Building extends React.Component {
     }));
   }
 
-  sendMessage(event) {
+  async sendMessage(event) {
     event.preventDefault();
-    const { name, address, numberOfFloors, admin, numberOfApartments, picture } = this.state;
-    building({ name, address, numberOfFloors, admin, numberOfApartments, picture });
-    this.props.history.push('/');
+    try {
+      const { name, address, numberOfFloors, admin, numberOfApartments, picture } = this.state;
+      const newBuilding = await building({
+        name,
+        address,
+        numberOfFloors,
+        admin,
+        numberOfApartments,
+        picture
+      });
+      this.props.history.push('/');
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  eraseSlot(slot) {
+    //slot.preventDefault();
+    //console.log('Button entry', slot);
+    let arr = this.state.numberOfApartments;
+    //console.log('Searching for.....', arr);
+    for (let i = 0; i < arr.length; i++) {
+      //console.log('i', arr[i]);
+      if (arr[i].slot == slot) {
+        arr.splice(i, 1);
+      }
+    }
+    //console.log('Final Array', arr);
+    this.setState({
+      numberOfApartments: arr
+    });
   }
 
   render() {
@@ -170,7 +199,12 @@ class Building extends React.Component {
                 </Form>
                 <ul>
                   {this.state.numberOfApartments.map(slot => (
-                    <li key={slot.id}>{slot.slot}</li>
+                    <li key={slot.slot}>
+                      {slot.slot}{' '}
+                      <button id={slot.slot} onClick={() => this.eraseSlot(slot.slot)}>
+                        x
+                      </button>
+                    </li>
                   ))}
                 </ul>
                 <FormGroup>
@@ -205,5 +239,4 @@ class Building extends React.Component {
     );
   }
 }
-
 export default Building;
