@@ -66,12 +66,12 @@ class App extends Component {
             {(this.state.user && (
               <div>
                 
-                  <div className="main__sidebar">
-                    {/* <SideBar  /> */}
                     <Route
                       path="*"
-                      render={props => <SideBar user={this.state.user} {...props} />}
+                      render={props => <SideBar  user={this.state.user} {...props} />}
                     />
+                  <div className="main__sidebar">
+                    {/* <SideBar  /> */}
                   </div>
                   <div className="main__dashboard">
                     <Route

@@ -58,3 +58,13 @@ height: 45px
   }
 } 
 
+@media screen and (max-width: 640px) {
+  .sidebar{
+  display:none;
+}
+
+.sidebar__item{
+  width: 99vw;
+  height: 100vh;
+}
+}   
