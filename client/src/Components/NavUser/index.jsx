@@ -69,6 +69,7 @@ export default class index extends Component {
       <div>
         {(this.state.user && (
           <Navbar className="nav__user" bg="transparent" expand="lg">
+            <button>Show/Hide</button>
             <Navbar.Brand href="/">
               {this.changeInput(this.props.history.location.pathname)}
             </Navbar.Brand>
