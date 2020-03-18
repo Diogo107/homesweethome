@@ -55,14 +55,14 @@ export default class index extends Component {
       <div>
         {(this.state.loaded && (
           <div>
-            {/* {this.state.appartments.map(slot => (
+            {this.state.appartments.map(slot => (
               <div>
-                {console.log(slot)}
+                {console.log('This is the slot', slot)}
                 <label>{this.slot.id}</label>
                 <input name={this.slot.id} placeholder="Enter neighbor email..." type="email" />
                 <button name={this.slot.id}>X</button>
               </div>
-            ))} */}
+            ))}
             <Appartments />
           </div>
         )) ||

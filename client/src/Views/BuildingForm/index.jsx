@@ -34,6 +34,7 @@ class Building extends React.Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.sendMessage = this.sendMessage.bind(this);
     this.addSlot = this.addSlot.bind(this);
+    this.eraseSlot = this.eraseSlot.bind(this);
   }
 
   async componentDidMount() {
@@ -81,6 +82,23 @@ class Building extends React.Component {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  eraseSlot(slot) {
+    //slot.preventDefault();
+    //console.log('Button entry', slot);
+    let arr = this.state.numberOfApartments;
+    //console.log('Searching for.....', arr);
+    for (let i = 0; i < arr.length; i++) {
+      //console.log('i', arr[i]);
+      if (arr[i].slot == slot) {
+        arr.splice(i, 1);
+      }
+    }
+    //console.log('Final Array', arr);
+    this.setState({
+      numberOfApartments: arr
+    });
   }
 
   render() {
@@ -181,7 +199,12 @@ class Building extends React.Component {
                 </Form>
                 <ul>
                   {this.state.numberOfApartments.map(slot => (
-                    <li key={slot.id}>{slot.slot}</li>
+                    <li key={slot.slot}>
+                      {slot.slot}{' '}
+                      <button id={slot.slot} onClick={() => this.eraseSlot(slot.slot)}>
+                        x
+                      </button>
+                    </li>
                   ))}
                 </ul>
                 <FormGroup>
