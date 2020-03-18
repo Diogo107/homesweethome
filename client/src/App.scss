@@ -5,3 +5,12 @@
 .main__dashboard{
   margin-left: 39vh
 }
+
+@media screen and (max-width: 640px) {
+  .main__dashboard{
+  margin-left: auto;
+}
+
+
+}   
+

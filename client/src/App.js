@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-
+import Collapse from 'react-bootstrap/Collapse'
 import './App.scss';
 import NavBar from './Components/NavBar';
 import { loadUserInformation } from './Services/authentication';
