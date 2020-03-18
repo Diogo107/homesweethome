@@ -53,34 +53,33 @@ class App extends Component {
   }
 
   render() {
-    {
-      console.log(this.state);
-    }
+   
     return (
       <div className="App">
         {this.state.loaded && (
           <BrowserRouter>
-         {(!this.state.user && (<NavBar user={this.state.user} /> ))
-
-         }
-            
-          
-          
+            {!this.state.user && <NavBar user={this.state.user} />}
             {(this.state.user && (
               <div>
-                
-                  <div className="main__sidebar">
-                    {/* <SideBar  /> */}
+                <div className="main__sidebar">
+                  {/* <SideBar  /> */}
+                  <Route path="*" render={props => <SideBar user={this.state.user} {...props} />} />
+                </div>
+                <div className="main__dashboard">
+                  <Route
+                    path="*"
+                    exact
+                    render={props => <NavUser user={this.state.user} {...props} />}
+                  />
+                  <Switch>
+                    <Route path="/profile" render={props => <Profile user={this.state.user} />} />
                     <Route
-                      path="*"
-                      render={props => <SideBar user={this.state.user} {...props} />}
+                      path="/post"
+                      render={props => <NewPosts user={this.state.user} {...props} />}
                     />
-                  </div>
-                  <div className="main__dashboard">
                     <Route
-                      path="*"
-                      exact
-                      render={props => <NavUser user={this.state.user} {...props} />}
+                      path="/schedule"
+                      render={props => <Schedule user={this.state.user} {...props} />}
                     />
                     <Switch>
                       <Route path="/profile" render={props => <Profile user={this.state.user} />} />
@@ -135,6 +134,7 @@ class App extends Component {
                         render={props => <Dashboard user={this.state.user} />}
                       />
                     </Switch>
+                    </Switch>
                   </div>
               </div>
             )) || (
@@ -167,5 +167,5 @@ class App extends Component {
     );
   }
 }
-console.log('hahahhahhaha');
+
 export default App;
