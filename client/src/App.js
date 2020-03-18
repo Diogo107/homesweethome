@@ -121,13 +121,13 @@ class App extends Component {
                 exact
                 render={props => <PaymentMethodCreateView user={this.state.user} {...props} />}
               />
-              {/* <Route
+              <Route
                 authorized={this.state.user}
                 redirect="/sign-in"
                 path="/first-payment"
                 exact
                 render={props => <FirstPayment user={this.state.user} {...props} />}
-              /> */}
+              />
               <Route
                         path="*"
                         exact
