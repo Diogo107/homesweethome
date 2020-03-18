@@ -5,6 +5,7 @@ const instance = axios.create({
   baseURL: '/api'
 });
 
+
 const building = async data => {
   console.log('data', data);
   const form = new FormData();

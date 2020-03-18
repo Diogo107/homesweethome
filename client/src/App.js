@@ -19,6 +19,7 @@ import ServicesView from './Views/Services/ViewServices';
 import ManageBuilding from './Views/ManageBuilding';
 import PaymentMethodListView from './Views/PaymentMethodList';
 import PaymentMethodCreateView from './Views/PaymentMethodCreate';
+import FirstPayment from './Views/FirstPayment';
 //
 
 import InsertBill from './Views/InsertBill';
@@ -116,10 +117,18 @@ class App extends Component {
               />
               <Route
                 authorized={this.state.user}
+                redirect="/sign-in"
                 path="/payment-method/create"
                 exact
                 render={props => <PaymentMethodCreateView user={this.state.user} {...props} />}
               />
+              {/* <Route
+                authorized={this.state.user}
+                redirect="/sign-in"
+                path="/first-payment"
+                exact
+                render={props => <FirstPayment user={this.state.user} {...props} />}
+              /> */}
               <Route
                         path="*"
                         exact
