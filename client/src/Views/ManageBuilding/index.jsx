@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getBuilding } from '../../Services/otherServices';
+import Appartments from './../../Components/AppartmentInputs';
 import {
   Button,
   Card,
@@ -25,13 +26,14 @@ export default class index extends Component {
       appartments: []
     };
     this.searchBuilding = this.searchBuilding.bind(this);
+    this.sendInvite = this.sendInvite.bind(this);
   }
 
   async componentDidMount() {
     const list = await this.searchBuilding(this.state.user._id);
-    console.log('This is the slots', list.numberOfApartments);
+    //console.log('This is the slots', list.numberOfApartments);
     this.setState({
-      appartments: list.numberOfApartments,
+      //appartments: list.numberOfApartments,
       loaded: true
     });
   }
@@ -43,6 +45,8 @@ export default class index extends Component {
     return building.data.building;
   }
 
+  sendInvite(email) {}
+
   render() {
     {
       console.log('Where is the content?', this.state);
@@ -51,14 +55,15 @@ export default class index extends Component {
       <div>
         {(this.state.loaded && (
           <div>
-            {this.state.appartments.map(slot => (
+            {/* {this.state.appartments.map(slot => (
               <div>
                 {console.log(slot)}
                 <label>{this.slot.id}</label>
                 <input name={this.slot.id} placeholder="Enter neighbor email..." type="email" />
                 <button name={this.slot.id}>X</button>
               </div>
-            ))}
+            ))} */}
+            <Appartments />
           </div>
         )) ||
           ''}

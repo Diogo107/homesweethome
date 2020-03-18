@@ -22,7 +22,6 @@ const schema = new mongoose.Schema({
   },
   numberOfApartments: [
     {
-      id: String,
       slot: String,
       email: String
     }

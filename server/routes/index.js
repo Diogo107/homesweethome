@@ -55,31 +55,18 @@ router.get('/annoucement', (req, res, next) => {
 });
 
 router.post('/building', uploader.single('picture'), (req, res, next) => {
-  const { name, address, numberOfFloors, admin, numberOfApartments, picture } = req.body;
-  // console.log('req.body', req.body);
-  // console.log('try to see', numberOfApartments[0]);
-  // console.log(typeof numberOfApartments);
-  const numberOfApartmentsRight = numberOfApartments.split('');
+  const numberOfApartments = JSON.parse(req.body.numberOfApartments);
+  const { name, address, numberOfFloors, admin, picture } = req.body;
   let url;
-  console.log('this is the building', {
-    name,
-    address,
-    numberOfFloors,
-    admin,
-    numberOfApartmentsRight,
-    picture
-  });
-
   if (req.file) {
     url = req.file.url;
   }
-
   Building.create({
     name,
     address,
     numberOfFloors,
     admin,
-    numberOfApartments: numberOfApartmentsRight,
+    numberOfApartments,
     picture: url
   })
     .then(building => {

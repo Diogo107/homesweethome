@@ -6,15 +6,15 @@ const instance = axios.create({
 });
 
 const building = async data => {
-  console.log('data', data);
+  //console.log("data", data);
+  const numberOfApartments = JSON.stringify(data.numberOfApartments);
   const form = new FormData();
   form.append('name', data.name);
   form.append('address', data.address);
   form.append('numberOfFloors', data.numberOfFloors);
   form.append('admin', data.admin);
-  form.append('numberOfApartments', data.numberOfApartments);
+  form.append('numberOfApartments', numberOfApartments);
   form.append('picture', data.picture);
-  console.log(form);
   const result = await instance.post('/building', form);
   return result;
 };
