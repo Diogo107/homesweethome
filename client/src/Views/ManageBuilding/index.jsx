@@ -47,6 +47,22 @@ export default class index extends Component {
     {
       console.log('Where is the content?', this.state);
     }
-    return <div>{(this.state.loaded && <h1>This is manage building</h1>) || ''}</div>;
+    return (
+      <div>
+        {(this.state.loaded && (
+          <div>
+            {this.state.appartments.map(slot => (
+              <div>
+                {console.log(slot)}
+                <label>{this.slot.id}</label>
+                <input name={this.slot.id} placeholder="Enter neighbor email..." type="email" />
+                <button name={this.slot.id}>X</button>
+              </div>
+            ))}
+          </div>
+        )) ||
+          ''}
+      </div>
+    );
   }
 }

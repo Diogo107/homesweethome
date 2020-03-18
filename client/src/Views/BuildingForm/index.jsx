@@ -55,7 +55,7 @@ class Building extends React.Component {
     event.preventDefault();
     console.log(event.target[0].value);
     const slot = {
-      id: Math.floor(Math.random() * 10000000),
+      id: Math.floor(Math.random() * 10000000).toString(),
       slot: event.target[0].value,
       email: ''
     };
@@ -65,11 +65,22 @@ class Building extends React.Component {
     }));
   }
 
-  sendMessage(event) {
+  async sendMessage(event) {
     event.preventDefault();
-    const { name, address, numberOfFloors, admin, numberOfApartments, picture } = this.state;
-    building({ name, address, numberOfFloors, admin, numberOfApartments, picture });
-    this.props.history.push('/');
+    try {
+      const { name, address, numberOfFloors, admin, numberOfApartments, picture } = this.state;
+      const newBuilding = await building({
+        name,
+        address,
+        numberOfFloors,
+        admin,
+        numberOfApartments,
+        picture
+      });
+      this.props.history.push('/');
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   render() {

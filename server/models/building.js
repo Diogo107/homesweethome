@@ -20,9 +20,13 @@ const schema = new mongoose.Schema({
     type: String,
     required: true
   },
-  numberOfApartments: {
-    type: Array
-  },
+  numberOfApartments: [
+    {
+      id: String,
+      slot: String,
+      email: String
+    }
+  ],
   picture: {
     type: String,
     default: 'https://pt.seaicons.com/wp-content/uploads/2015/07/home-icon2.png'

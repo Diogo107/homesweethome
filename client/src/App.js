@@ -57,61 +57,48 @@ class App extends Component {
       <div className="App">
         {this.state.loaded && (
           <BrowserRouter>
-         {(!this.state.user && (<NavBar user={this.state.user} /> ))
-
-         }
-            
-          
-          
+            {!this.state.user && <NavBar user={this.state.user} />}
             {(this.state.user && (
               <div>
-                
-                  <div className="main__sidebar">
-                    {/* <SideBar  /> */}
+                <div className="main__sidebar">
+                  {/* <SideBar  /> */}
+                  <Route path="*" render={props => <SideBar user={this.state.user} {...props} />} />
+                </div>
+                <div className="main__dashboard">
+                  <Route
+                    path="*"
+                    exact
+                    render={props => <NavUser user={this.state.user} {...props} />}
+                  />
+                  <Switch>
+                    <Route path="/profile" render={props => <Profile user={this.state.user} />} />
                     <Route
-                      path="*"
-                      render={props => <SideBar user={this.state.user} {...props} />}
+                      path="/post"
+                      render={props => <NewPosts user={this.state.user} {...props} />}
                     />
-                  </div>
-                  <div className="main__dashboard">
                     <Route
-                      path="*"
-                      exact
-                      render={props => <NavUser user={this.state.user} {...props} />}
+                      path="/schedule"
+                      render={props => <Schedule user={this.state.user} {...props} />}
                     />
-                    <Switch>
-                      <Route path="/profile" render={props => <Profile user={this.state.user} />} />
-                      <Route
-                        path="/post"
-                        render={props => <NewPosts user={this.state.user} {...props} />}
-                      />
-                      <Route
-                        path="/schedule"
-                        render={props => <Schedule user={this.state.user} {...props} />}
-                      />
-                      <Route
-                        path="/insert-bill"
-                        render={props => <InsertBill user={this.state.user} {...props} />}
-                      />
-                      <Route
-                        path="/sign-up/create-building"
-                        render={props => <CreateBuilding user={this.state.user} {...props} />}
-                      />
-                      <Route
-                        path="/manage-building"
-                        render={props => <ManageBuilding user={this.state.user} {...props} />}
-                      />
-                      <Route path="/create-announcement" component={CreateAnnouncement} />
-                      <Route path="/create-document" component={CreateDocument} />
-                      <Route path="/create-services" component={CreateServices} />
-                      <Route path="/services" component={ServicesView} />
-                      <Route
-                        path="*"
-                        exact
-                        render={props => <Dashboard user={this.state.user} />}
-                      />
-                    </Switch>
-                  </div>
+                    <Route
+                      path="/insert-bill"
+                      render={props => <InsertBill user={this.state.user} {...props} />}
+                    />
+                    <Route
+                      path="/sign-up/create-building"
+                      render={props => <CreateBuilding user={this.state.user} {...props} />}
+                    />
+                    <Route
+                      path="/manage-building"
+                      render={props => <ManageBuilding user={this.state.user} {...props} />}
+                    />
+                    <Route path="/create-announcement" component={CreateAnnouncement} />
+                    <Route path="/create-document" component={CreateDocument} />
+                    <Route path="/create-services" component={CreateServices} />
+                    <Route path="/services" component={ServicesView} />
+                    <Route path="*" exact render={props => <Dashboard user={this.state.user} />} />
+                  </Switch>
+                </div>
               </div>
             )) || (
               <>

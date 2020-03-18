@@ -56,13 +56,17 @@ router.get('/annoucement', (req, res, next) => {
 
 router.post('/building', uploader.single('picture'), (req, res, next) => {
   const { name, address, numberOfFloors, admin, numberOfApartments, picture } = req.body;
+  // console.log('req.body', req.body);
+  // console.log('try to see', numberOfApartments[0]);
+  // console.log(typeof numberOfApartments);
+  const numberOfApartmentsRight = numberOfApartments.split('');
   let url;
   console.log('this is the building', {
     name,
     address,
     numberOfFloors,
     admin,
-    numberOfApartments,
+    numberOfApartmentsRight,
     picture
   });
 
@@ -75,7 +79,7 @@ router.post('/building', uploader.single('picture'), (req, res, next) => {
     address,
     numberOfFloors,
     admin,
-    numberOfApartments,
+    numberOfApartments: numberOfApartmentsRight,
     picture: url
   })
     .then(building => {
@@ -87,15 +91,17 @@ router.post('/building', uploader.single('picture'), (req, res, next) => {
 });
 
 router.get('/building', (req, res, next) => {
-  Building.findOne()
-    // this id is the buiding to find it
-    .then(building => {
-      console.log('Searching for:', building);
-      res.json({ building });
-    })
-    .catch(error => {
-      next(error);
-    });
+  return (
+    Building.findOne()
+      // this id is the buiding to find it
+      .then(building => {
+        console.log('Searching for:', building);
+        res.json({ building });
+      })
+      .catch(error => {
+        next(error);
+      })
+  );
 });
 
 router.post('/doc', uploader.single('doc'), (req, res, next) => {

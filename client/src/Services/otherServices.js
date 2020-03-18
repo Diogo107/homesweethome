@@ -14,6 +14,7 @@ const building = async data => {
   form.append('admin', data.admin);
   form.append('numberOfApartments', data.numberOfApartments);
   form.append('picture', data.picture);
+  console.log(form);
   const result = await instance.post('/building', form);
   return result;
 };
@@ -131,8 +132,8 @@ export { calendarDates };
 
 const getBuilding = async id => {
   try {
-    console.log('on client', id);
-    const building = await instance.post('/building', id);
+    const building = await instance.get('/building', id);
+    console.log('on client', building);
 
     return building;
   } catch (error) {
