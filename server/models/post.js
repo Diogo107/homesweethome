@@ -20,7 +20,10 @@ const schema = new mongoose.Schema(
     creator: {
       type: String,
       trim: true
-    }
+    },
+    buildingId: {
+      type: String
+    },
   },
   {
     timestamp: { type: Date, default: Date.now }

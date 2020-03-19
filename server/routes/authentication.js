@@ -4,10 +4,14 @@ const { Router } = require('express');
 const bcryptjs = require('bcryptjs');
 const User = require('./../models/user');
 const stripe = require('./../stripe-configure');
+const uploader = require('./../multer-configure.js');
+
 const router = new Router();
 
 router.post('/sign-up', async (req, res, next) => {
   const { name, email, phoneNumber, code, passwordHash } = req.body;
+  let BuildingId;
+  if (req.body.buildingId) BuildingId = req.body.buildingId;
   try {
     const customer = await stripe.customers.create();
     const hash = await bcryptjs.hash(passwordHash, 10);
@@ -17,7 +21,8 @@ router.post('/sign-up', async (req, res, next) => {
       phoneNumber,
       code,
       passwordHash: hash,
-      stripeCustomerId: customer.id
+      stripeCustomerId: customer.id,
+      ...(BuildingId ? { BuildingId } : {})
     })
     req.session.user = user._id;
     res.json({ user });
@@ -68,4 +73,25 @@ router.get('/user-information', (req, res, next) => {
   res.json({ user: req.user || null });
 });
 
+router.patch('/user-information', uploader.single('picture'), async (req, res, next) => {
+  const { buildingID } = req.body;
+  
+  if (req.file) picture = req.file.url;
+  try {
+    const user = await User.findByIdAndUpdate(
+      req.user._id,
+      {
+        
+        buildingID,
+        
+      },
+      
+    );
+    res.json({ user });
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;
+

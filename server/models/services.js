@@ -21,7 +21,10 @@ const schema = new mongoose.Schema({
   phoneNumber: {
     type: String,
     trim: true
-  }
+  },
+  buildingId: {
+    type: String
+  },
   
 });
 
