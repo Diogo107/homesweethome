@@ -49,6 +49,9 @@ app.use('/api/authentication', authenticationRouter);
 app.use('/api/payment-method', paymentMethodRouter);
 app.use('/api/purchase', purchaseRouter);
 app.use('/api/product', productRouter);
+app.get('*', (req, res, next) => {
+  res.sendFile(join(__dirname, './../client/build/index.html'));
+});
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {
