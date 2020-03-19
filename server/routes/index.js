@@ -80,9 +80,11 @@ router.post('/building', uploader.single('picture'), (req, res, next) => {
 });
 
 router.get('/building', (req, res, next) => {
+  let building = req.user.buildingId
+   
   return (
     
-    Building.findOne()
+    Building.findById(building)
       // this id is the buiding to find it
       .then(building => {
         console.log('Searching for:', building);

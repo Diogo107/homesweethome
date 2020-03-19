@@ -29,7 +29,7 @@ export default class index extends Component {
 
   async searchBuilding(id) {
     const building = await getBuilding(id);
-    return building.data.building;
+    return building
   }
 
   sendInvite(email) {

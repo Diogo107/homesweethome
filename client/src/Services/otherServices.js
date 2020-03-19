@@ -132,8 +132,8 @@ export { calendarDates };
 
 const getBuilding = async id => {
   try {
-    const building = await instance.get('/building', id);
-
+    const result = await instance.get('/building', id);
+    const building = result.data.building;
     return building;
   } catch (error) {
     throw error;
