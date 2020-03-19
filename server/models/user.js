@@ -21,10 +21,6 @@ const schema = new mongoose.Schema({
     type: Number,
     trim: true
   },
-  code: {
-    type: String,
-    trim: true
-  },
   passwordHash: {
     type: String
   },
@@ -32,8 +28,8 @@ const schema = new mongoose.Schema({
   buildingId: {
     type: String
   },
-  
-  admin: Boolean, 
+
+  admin: Boolean,
 
   stripeCustomerId: {
     type: String

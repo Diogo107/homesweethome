@@ -55,7 +55,9 @@ export default class index extends Component {
     const firstSlotId = this.state.appartments.filter(user => user.email == name);
     const slotId = firstSlotId[0]._id;
     updateBuilding(numberOfApartments, this.state.buildingId);
-    sendEmail({ name, buildingId, slotId });
+    if (name !== this.props.user.email) {
+      sendEmail({ name, buildingId, slotId });
+    }
   }
 
   updateEmail(id) {

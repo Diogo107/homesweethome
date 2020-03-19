@@ -11,7 +11,6 @@ export default class index extends Component {
       name: '',
       email: '',
       phoneNumber: '',
-      code: '',
       passwordHash: ''
     };
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -31,10 +30,10 @@ export default class index extends Component {
   async sendMessage(event) {
     console.log('hsdjdasdhas', this.props);
     event.preventDefault();
-    const { name, email, phoneNumber, code, passwordHash } = this.state;
-    let admin = true
+    const { name, email, phoneNumber, passwordHash } = this.state;
+    let admin = true;
     try {
-      const user = await signUp({ name, email, phoneNumber, code, passwordHash,admin });
+      const user = await signUp({ name, email, phoneNumber, passwordHash, admin });
       this.props.updateUserInformation(user);
       this.props.history.push('/sign-up/create-building');
     } catch (error) {
@@ -79,7 +78,7 @@ export default class index extends Component {
             />
             <Form.Text className="text-muted"></Form.Text>
           </Form.Group>
-          <Form.Group controlId="formBasicEmail">
+          {/* <Form.Group controlId="formBasicEmail">
             <Form.Label>Code</Form.Label>
             <Form.Control
               type="text"
@@ -89,7 +88,7 @@ export default class index extends Component {
               onChange={this.handleInputChange}
             />
             <Form.Text className="text-muted"></Form.Text>
-          </Form.Group>
+          </Form.Group> */}
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control

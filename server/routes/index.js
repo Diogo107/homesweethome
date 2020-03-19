@@ -243,8 +243,8 @@ router.post('/sendEmail', (req, res, next) => {
   console.log('This is my friend', mail, buildingId, slotId);
 
   const nodemailer = require('nodemailer');
-  const EMAIL = 'pick.me.today.adoption@gmail.com';
-  const PASSWORD = 'adoption123';
+  const EMAIL = process.env.BRAND_EMAIL;
+  const PASSWORD = process.env.BRAND_EMAIL_PASSWORD;
 
   const transporter = nodemailer.createTransport({
     service: 'Gmail',
@@ -258,6 +258,6 @@ router.post('/sendEmail', (req, res, next) => {
     from: `Welcome to Home Sweet Home <${EMAIL}>`,
     to: mail,
     subject: 'Hello from the Home Sweet Home',
-    html: `<br /><br /><br />You were invited to your new home! Follow the link to know your new home: http://localhost:3000/sign-up/user/${slotId}/${buildingId}`
+    html: `<br /><br /><br />You were invited to your new home! Follow the link to know your new home: ${process.env.WORKING_URL2}/sign-up/user/${slotId}/${buildingId}`
   });
 });

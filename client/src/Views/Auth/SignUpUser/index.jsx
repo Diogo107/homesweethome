@@ -55,7 +55,7 @@ export default class index extends Component {
         passwordHash
       });
       this.props.updateUserInformation(user);
-      this.props.history.push('/sign-up/create-building');
+      this.props.history.push('/');
     } catch (error) {
       console.log(error);
     }
