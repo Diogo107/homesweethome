@@ -56,7 +56,7 @@ class Building extends React.Component {
     event.preventDefault();
     console.log(event.target[0].value);
     const slot = {
-      id: Math.floor(Math.random() * 10000000).toString(),
+      _id: Math.floor(Math.random() * 10000000).toString(),
       slot: event.target[0].value,
       email: ''
     };
@@ -64,6 +64,7 @@ class Building extends React.Component {
       numberOfApartments: [...previousState.numberOfApartments, slot],
       temp: ''
     }));
+    console.log('this.state', this.state);
   }
 
   async sendMessage(event) {
@@ -160,7 +161,7 @@ class Building extends React.Component {
                     />
                   </InputGroup>
                 </FormGroup>
-                <FormGroup>
+                {/*  <FormGroup>
                   <InputGroup className="input-group-alternative mb-3">
                     <InputGroupAddon addonType="prepend">
                       <InputGroupText>
@@ -177,7 +178,7 @@ class Building extends React.Component {
                       required
                     />
                   </InputGroup>
-                </FormGroup>
+                </FormGroup> */}
                 <Form onSubmit={this.addSlot}>
                   <FormGroup>
                     <InputGroup className="input-group-alternative">

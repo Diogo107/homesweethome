@@ -91,19 +91,20 @@ router.get('/building', (req, res, next) => {
   );
 });
 
-router.post('/udateBuilding', (req, res, next) => {
+router.post('/updateBuilding', (req, res, next) => {
   console.log('in the server right now', req.body);
   const id = req.body.id;
   const numberOfApartments = req.body.list;
   console.log('this is id', numberOfApartments);
   return (
-    Building.findByIdandUpdate(id, { numberOfApartments })
+    Building.findByIdAndUpdate(id, { numberOfApartments })
       // this id is the buiding to find it
       .then(building => {
         console.log('Searching for:', building);
         res.json({ building });
       })
       .catch(error => {
+        console.log(error);
         next(error);
       })
   );

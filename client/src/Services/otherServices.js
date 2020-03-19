@@ -133,7 +133,6 @@ export { calendarDates };
 const getBuilding = async id => {
   try {
     const building = await instance.get('/building', id);
-    console.log('on client', building);
 
     return building;
   } catch (error) {
@@ -145,7 +144,7 @@ export { getBuilding };
 const updateBuilding = async (list, id) => {
   console.log('Prepared to send', list, 'this is id', id);
   try {
-    const building = await instance.post('/udateBuilding', { id, list });
+    const building = await instance.post('/updateBuilding', { id, list });
     console.log('on client', building);
 
     return building;
