@@ -7,6 +7,7 @@ import { loadUserInformation } from './Services/authentication';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import SignInView from './Views/Auth/SignIn';
 import SignUpView from './Views/Auth/SignUp';
+import SignUpUserView from './Views/Auth/SignUpUser';
 import SideBar from './Components/Sidebar';
 import LandingPage from './Views/LandingPage/index';
 import CreateBuilding from './Views/BuildingForm';
@@ -187,6 +188,16 @@ class App extends Component {
                     path="/sign-in"
                     render={props => (
                       <SignInView updateUserInformation={this.updateUserInformation} {...props} />
+                    )}
+                  />
+                  <Route
+                    path="/sign-up/user/:slotId/:buildingId"
+                    render={props => (
+                      <SignUpUserView
+                        updateUserInformation={this.updateUserInformation}
+                        {...props}
+                        exact
+                      />
                     )}
                   />
                   <Route

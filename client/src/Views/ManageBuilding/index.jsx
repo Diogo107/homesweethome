@@ -51,8 +51,11 @@ export default class index extends Component {
     email.preventDefault();
     const name = email.target[0].value;
     const numberOfApartments = this.state.appartments;
+    const buildingId = this.state.buildingId;
+    const firstSlotId = this.state.appartments.filter(user => user.email == name);
+    const slotId = firstSlotId[0]._id;
     updateBuilding(numberOfApartments, this.state.buildingId);
-    sendEmail({ name }, this.state.buildingId);
+    sendEmail({ name, buildingId, slotId });
   }
 
   updateEmail(id) {

@@ -232,7 +232,9 @@ router.get('/calendar', (req, res, next) => {
 
 router.post('/sendEmail', (req, res, next) => {
   const mail = req.body.name;
-  console.log('This is my friend', req.body.name);
+  const buildingId = req.body.buildingId;
+  const slotId = req.body.slotId;
+  console.log('This is my friend', mail, buildingId, slotId);
 
   const nodemailer = require('nodemailer');
   const EMAIL = 'pick.me.today.adoption@gmail.com';
@@ -250,6 +252,6 @@ router.post('/sendEmail', (req, res, next) => {
     from: `Welcome to Home Sweet Home <${EMAIL}>`,
     to: mail,
     subject: 'Hello from the Home Sweet Home',
-    text: 'You were invited to your new home!'
+    html: `<br /><br /><br />You were invited to your new home! Follow the link to know your new home: http://localhost:3000/sign-up/user/${slotId}/${buildingId}`
   });
 });
