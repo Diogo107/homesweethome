@@ -12,6 +12,7 @@ export default class index extends Component {
       email: '',
       phoneNumber: '',
       passwordHash: ''
+      
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.sendMessage = this.sendMessage.bind(this);
@@ -32,8 +33,10 @@ export default class index extends Component {
     event.preventDefault();
     const { name, email, phoneNumber, passwordHash } = this.state;
     let admin = true;
+    let payment = false;
+    let createdAt = Date.now()
     try {
-      const user = await signUp({ name, email, phoneNumber, passwordHash, admin });
+      const user = await signUp({ name, email, phoneNumber, passwordHash, admin, payment, createdAt });
       this.props.updateUserInformation(user);
       this.props.history.push('/sign-up/create-building');
     } catch (error) {

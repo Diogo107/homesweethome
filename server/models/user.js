@@ -33,7 +33,9 @@ const schema = new mongoose.Schema({
 
   stripeCustomerId: {
     type: String
-  }
+  },
+  payment : Boolean,
+  createdAt: Date
 });
 
 module.exports = mongoose.model('User', schema);
