@@ -28,6 +28,11 @@ const schema = new mongoose.Schema({
   passwordHash: {
     type: String
   },
+
+  buildingId: {
+    type: String
+  },
+
   stripeCustomerId: {
     type: String
   }

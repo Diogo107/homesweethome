@@ -11,7 +11,11 @@ const schema = new mongoose.Schema(
     start: {
       type: Date,
     
+    },
+    buildingId: {
+      type: String
     }
+
 }
 );
 

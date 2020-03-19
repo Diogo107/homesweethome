@@ -1,5 +1,6 @@
 import React from 'react';
 import { building } from '../../Services/otherServices';
+import { editUserInformation } from '../../Services/authentication';
 
 // reactstrap components
 import {
@@ -78,6 +79,9 @@ class Building extends React.Component {
         numberOfApartments,
         picture
       });
+      console.log(newBuilding.data.building._id)
+     let buildingID = newBuilding.data.building._id
+     const updateUser = await editUserInformation({buildingID})
       this.props.history.push('/');
     } catch (error) {
       console.log(error);
