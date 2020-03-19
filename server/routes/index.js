@@ -54,7 +54,6 @@ router.get('/annoucement', (req, res, next) => {
     });
 });
 
-
 router.post('/building', uploader.single('picture'), (req, res, next) => {
   const numberOfApartments = JSON.parse(req.body.numberOfApartments);
   const { name, address, numberOfFloors, admin, picture } = req.body;
@@ -81,6 +80,24 @@ router.post('/building', uploader.single('picture'), (req, res, next) => {
 router.get('/building', (req, res, next) => {
   return (
     Building.findOne()
+      // this id is the buiding to find it
+      .then(building => {
+        console.log('Searching for:', building);
+        res.json({ building });
+      })
+      .catch(error => {
+        next(error);
+      })
+  );
+});
+
+router.post('/udateBuilding', (req, res, next) => {
+  console.log('in the server right now', req.body);
+  const id = req.body.id;
+  const numberOfApartments = req.body.list;
+  console.log('this is id', numberOfApartments);
+  return (
+    Building.findByIdandUpdate(id, { numberOfApartments })
       // this id is the buiding to find it
       .then(building => {
         console.log('Searching for:', building);
@@ -210,4 +227,28 @@ router.get('/calendar', (req, res, next) => {
     .catch(error => {
       next(error);
     });
+});
+
+router.post('/sendEmail', (req, res, next) => {
+  const mail = req.body.name;
+  console.log('This is my friend', req.body.name);
+
+  const nodemailer = require('nodemailer');
+  const EMAIL = 'pick.me.today.adoption@gmail.com';
+  const PASSWORD = 'adoption123';
+
+  const transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+      user: EMAIL,
+      pass: PASSWORD
+    }
+  });
+
+  return transporter.sendMail({
+    from: `Welcome to Home Sweet Home <${EMAIL}>`,
+    to: mail,
+    subject: 'Hello from the Home Sweet Home',
+    text: 'You were invited to your new home!'
+  });
 });

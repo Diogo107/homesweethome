@@ -53,7 +53,6 @@ class App extends Component {
   }
 
   render() {
-   
     return (
       <div className="App">
         {this.state.loaded && (
@@ -62,7 +61,6 @@ class App extends Component {
             {(this.state.user && (
               <div>
                 <div className="main__sidebar">
-                  {/* <SideBar  /> */}
                   <Route path="*" render={props => <SideBar user={this.state.user} {...props} />} />
                 </div>
                 <div className="main__dashboard">
@@ -107,35 +105,39 @@ class App extends Component {
                       <Route path="/create-document" component={CreateDocument} />
                       <Route path="/create-services" component={CreateServices} />
                       <Route path="/services" component={ServicesView} />
-                      
+
                       <Route
-                authorized={this.state.user}
-                redirect="/sign-in"
-                path="/payment-method/list"
-                render={props => <PaymentMethodListView user={this.state.user} {...props} />}
-              />
-              <Route
-                authorized={this.state.user}
-                redirect="/sign-in"
-                path="/payment-method/create"
-                exact
-                render={props => <PaymentMethodCreateView user={this.state.user} {...props} />}
-              />
-              {/* <Route
-                authorized={this.state.user}
-                redirect="/sign-in"
-                path="/first-payment"
-                exact
-                render={props => <FirstPayment user={this.state.user} {...props} />}
-              /> */}
-              <Route
+                        authorized={this.state.user}
+                        redirect="/sign-in"
+                        path="/payment-method/list"
+                        render={props => (
+                          <PaymentMethodListView user={this.state.user} {...props} />
+                        )}
+                      />
+                      <Route
+                        authorized={this.state.user}
+                        redirect="/sign-in"
+                        path="/payment-method/create"
+                        exact
+                        render={props => (
+                          <PaymentMethodCreateView user={this.state.user} {...props} />
+                        )}
+                      />
+                      {/* <Route
+                        authorized={this.state.user}
+                        redirect="/sign-in"
+                        path="/first-payment"
+                        exact
+                        render={props => <FirstPayment user={this.state.user} {...props} />}
+                      /> */}
+                      <Route
                         path="*"
                         exact
                         render={props => <Dashboard user={this.state.user} />}
                       />
                     </Switch>
-                    </Switch>
-                  </div>
+                  </Switch>
+                </div>
               </div>
             )) || (
               <>
@@ -157,7 +159,6 @@ class App extends Component {
                     )}
                   />
                   <Route path="*" component={LandingPage} />
-                  
                 </Switch>
               </>
             )}

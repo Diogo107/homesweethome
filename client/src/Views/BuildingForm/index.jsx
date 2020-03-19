@@ -187,7 +187,7 @@ class Building extends React.Component {
                         </InputGroupText>
                       </InputGroupAddon>
                       <Input
-                        placeholder="Number of Apartments"
+                        placeholder="Apartment Reference"
                         type="text"
                         name="temp"
                         value={this.state.temp}

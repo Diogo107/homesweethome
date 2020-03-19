@@ -22,6 +22,7 @@ const schema = new mongoose.Schema({
   },
   numberOfApartments: [
     {
+      _id: String,
       slot: String,
       email: String
     }

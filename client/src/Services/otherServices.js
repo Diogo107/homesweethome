@@ -5,7 +5,6 @@ const instance = axios.create({
   baseURL: '/api'
 });
 
-
 const building = async data => {
   //console.log("data", data);
   const numberOfApartments = JSON.stringify(data.numberOfApartments);
@@ -142,3 +141,29 @@ const getBuilding = async id => {
   }
 };
 export { getBuilding };
+
+const updateBuilding = async (list, id) => {
+  console.log('Prepared to send', list, 'this is id', id);
+  try {
+    const building = await instance.post('/udateBuilding', { id, list });
+    console.log('on client', building);
+
+    return building;
+  } catch (error) {
+    throw error;
+  }
+};
+export { updateBuilding };
+
+const sendEmail = data => {
+  console.log('This is data', data);
+  return new Promise((resolve, reject) => {
+    instance
+      .post('/sendEmail', data)
+      .then(result => {
+        resolve(result);
+      })
+      .catch(reject);
+  });
+};
+export { sendEmail };
