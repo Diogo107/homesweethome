@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './style.scss'
 
 export default class index extends Component {
   constructor(props) {
@@ -19,14 +20,13 @@ export default class index extends Component {
 
   render() {
     return (
-      <div>
+      <div className="profile__div">
         {(this.state.loaded && (
-          <>
+          <div> 
+            <img className="profile__picture" src={this.state.user.picture} alt="profile picture" />
             <h1>Hello</h1>
-            <h5>{this.state.user.name}</h5>
             <h5>{this.state.user.email}</h5>
-            <img src={this.state.user.picture} alt="..." />
-          </>
+          </div>
         )) ||
           ''}
       </div>

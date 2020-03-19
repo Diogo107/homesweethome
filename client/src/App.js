@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-
+import Collapse from 'react-bootstrap/Collapse';
 import './App.scss';
 import NavBar from './Components/NavBar';
 import { loadUserInformation } from './Services/authentication';
@@ -33,9 +33,11 @@ class App extends Component {
     super(props);
     this.state = {
       loaded: false,
-      user: null
+      user: null,
+      cart: []
     };
     this.updateUserInformation = this.updateUserInformation.bind(this);
+    this.updateCart = this.updateCart.bind(this);
   }
 
   async componentDidMount() {
@@ -52,7 +54,15 @@ class App extends Component {
     });
   }
 
+  updateCart(item) {
+    this.setState(previousState => ({
+      cart: [...previousState.cart, item]
+    }));
+  }
+
   render() {
+    console.log('this is the actual cart', this.state.cart);
+
     return (
       <div className="App">
         {this.state.loaded && (
@@ -130,6 +140,37 @@ class App extends Component {
                         exact
                         render={props => <FirstPayment user={this.state.user} {...props} />}
                       /> */}
+                      <Route
+                        authorized={this.state.user}
+                        redirect="/sign-in"
+                        path="/payment-method/list"
+                        render={props => (
+                          <PaymentMethodListView user={this.state.user} {...props} />
+                        )}
+                      />
+                      <Route
+                        authorized={this.state.user}
+                        redirect="/sign-in"
+                        path="/payment-method/create"
+                        exact
+                        render={props => (
+                          <PaymentMethodCreateView user={this.state.user} {...props} />
+                        )}
+                      />
+                      <Route
+                        authorized={this.state.user}
+                        redirect="/sign-in"
+                        path="/first-payment"
+                        exact
+                        render={props => (
+                          <FirstPayment
+                            cart={this.state.cart}
+                            updateCart={this.updateCart}
+                            user={this.state.user}
+                            {...props}
+                          />
+                        )}
+                      />
                       <Route
                         path="*"
                         exact

@@ -7,7 +7,7 @@ const router = new Router();
 const stripe = require('./../stripe-configure');
 
 const Purchase = require('./../models/purchase');
-//const Product = require('./../models/');
+const Product = require('./../models/product');
 const PaymentMethod = require('./../models/payment-method');
 
 router.get('/list', async (req, res, next) => {
@@ -21,10 +21,12 @@ router.get('/list', async (req, res, next) => {
 
 router.post('/create', async (req, res, next) => {
   const { products: productIds } = req.body;
+  
   try {
     const products = await Product.find({ _id: productIds });
-
-    const amount = products.reduce((total, product) => total + product.price.amount, 0);
+    console.log('inside server', products )
+    const amount = products.reduce((total, product) => total + product.price, 0);
+    console.log('inside server', amount )
     const currency = 'EUR';
 
     const paymentMethod = await PaymentMethod.findOne({ owner: req.user._id });

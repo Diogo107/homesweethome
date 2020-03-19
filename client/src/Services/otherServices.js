@@ -150,10 +150,30 @@ const updateBuilding = async (list, id) => {
 
     return building;
   } catch (error) {
-    throw error;
+    console.log(error);
   }
 };
 export { updateBuilding };
+
+const listOfPlans = async () => {
+  try {
+    const result = await instance.get('/product/list');
+    console.log('data', result.data);
+    const product = result.data.products;
+    console.log('list', product);
+    return product;
+  } catch (error) {
+    throw error;
+  }
+};
+export { listOfPlans };
+
+const uniquePlan = async id => {
+  const result = await instance.get(`/product/${id}`);
+  const product = result.data.product;
+  return product;
+};
+export { uniquePlan };
 
 const sendEmail = data => {
   console.log('This is data', data);
