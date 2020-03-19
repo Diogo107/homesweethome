@@ -3,21 +3,6 @@ import { getBuilding } from '../../Services/otherServices';
 import { sendEmail } from '../../Services/otherServices';
 import { updateBuilding } from '../../Services/otherServices';
 import Appartments from './../../Components/AppartmentInputs';
-import {
-  Button,
-  Card,
-  CardHeader,
-  CardBody,
-  FormGroup,
-  Form,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
-  Row,
-  Col,
-  Label
-} from 'reactstrap';
 
 export default class index extends Component {
   constructor(props) {
@@ -51,8 +36,13 @@ export default class index extends Component {
     email.preventDefault();
     const name = email.target[0].value;
     const numberOfApartments = this.state.appartments;
+    const buildingId = this.state.buildingId;
+    const firstSlotId = this.state.appartments.filter(user => user.email == name);
+    const slotId = firstSlotId[0]._id;
     updateBuilding(numberOfApartments, this.state.buildingId);
-    sendEmail({ name }, this.state.buildingId);
+    if (name !== this.props.user.email) {
+      sendEmail({ name, buildingId, slotId });
+    }
   }
 
   updateEmail(id) {
@@ -61,14 +51,12 @@ export default class index extends Component {
     const arr = this.state.appartments;
     for (let i = 0; i < arr.length; i++) {
       if (arr[i]._id == userId) {
-        console.log(arr[i]._id);
         arr[i].email = userEmail;
       }
     }
     this.setState({
       appartments: arr
     });
-    console.log('arr', arr);
   }
 
   render() {

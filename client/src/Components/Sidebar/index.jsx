@@ -5,7 +5,7 @@ import { Form, Button } from 'react-bootstrap';
 import { signOut } from '../../Services/authentication';
 import { Link, Redirect } from 'react-router-dom';
 import logo from '../../asset/images/logo.png';
-import icoDashboard from '../../asset/images/dashboard.png'
+import { slide as Menu } from 'react-burger-menu';
 
 export default class index extends Component {
   constructor(props) {
@@ -35,52 +35,52 @@ export default class index extends Component {
   render() {
     return (
       <div className="sidebar">
-       <div>
+        <div>
           <img className="sidebar__logo" src={logo} alt="logo" />
         </div>
         <div className="user__dashboard">
-        <div className="sidebar__item">
-          <Link to="/">Dashboard</Link>
+          <div className="sidebar__item">
+            <Link to="/">Dashboard</Link>
+          </div>
+          <div className="sidebar__item">
+            <Link to="/profile">Profile</Link>
+          </div>
+          <div className="sidebar__item">
+            <Link to="/post">New Post</Link>
+          </div>
+          <div className="sidebar__item">
+            <Link to="/schedule">Schedule</Link>
+          </div>
+          <div className="sidebar__item">
+            <Link to="/services">Services</Link>
+          </div>
         </div>
-        <div className="sidebar__item">
-          <Link to="/profile">Profile</Link>
-        </div>
-        <div className="sidebar__item">
-          <Link to="/post">New Post</Link>
-        </div>
-        <div className="sidebar__item">
-          <Link to="/schedule">Schedule</Link>
-        </div>
-        <div className="sidebar__item">
-          <Link to="/services">Services</Link>
-        </div>
-        </div>
-        <div className="admin__dashboard">
-        <div className="sidebar__item">
-          <Link to="/insert-bill">Insert Bill</Link>
-        </div>
-        <div className="sidebar__item">
-          <Link to="/manage-building">Manage Building</Link>
-        </div>
-        <div className="sidebar__item">
-          <Link to="/create-announcement">Create Announcement</Link>
-        </div>
-        <div className="sidebar__item">
-          <Link to="/create-document">Create Document</Link>
-        </div>
-        <div className="sidebar__item">
-          <Link to="/create-services">Create Service</Link>
-        </div>
-        </div>
-        
-          <Form className="signout__button" onSubmit={this.handleSignOut}>
-            <Button className="button__test" type="submit">
-              Sign Out
-            </Button>
-          </Form>
-        
+        {this.props.user.admin && (
+          <div className="admin__dashboard">
+            <div className="sidebar__item">
+              <Link to="/insert-bill">Insert Bill</Link>
+            </div>
+            <div className="sidebar__item">
+              <Link to="/manage-building">Manage Building</Link>
+            </div>
+            <div className="sidebar__item">
+              <Link to="/create-announcement">Create Announcement</Link>
+            </div>
+            <div className="sidebar__item">
+              <Link to="/create-document">Create Document</Link>
+            </div>
+            <div className="sidebar__item">
+              <Link to="/create-services">Create Service</Link>
+            </div>
+          </div>
+        )}
+
+        <Form className="signout__button" onSubmit={this.handleSignOut}>
+          <Button className="button__test" type="submit">
+            Sign Out
+          </Button>
+        </Form>
       </div>
-      
     );
   }
 }

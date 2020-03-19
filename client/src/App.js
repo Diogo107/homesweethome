@@ -1,32 +1,29 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import Collapse from 'react-bootstrap/Collapse';
 import './App.scss';
 import NavBar from './Components/NavBar';
 import { loadUserInformation } from './Services/authentication';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import SignInView from './Views/Auth/SignIn';
 import SignUpView from './Views/Auth/SignUp';
+import SignUpUserView from './Views/Auth/SignUpUser';
 import SideBar from './Components/Sidebar';
 import LandingPage from './Views/LandingPage/index';
 import CreateBuilding from './Views/BuildingForm';
 import Profile from './Views/Profile';
 import Dashboard from './Views/Dashboard';
 import NewPosts from './Views/posts/newPosts';
-import ViewPosts from './Views/posts/viewPosts';
 import CreateServices from './Views/Services/AddServices';
 import ServicesView from './Views/Services/ViewServices';
 import ManageBuilding from './Views/ManageBuilding';
 import PaymentMethodListView from './Views/PaymentMethodList';
 import PaymentMethodCreateView from './Views/PaymentMethodCreate';
 import FirstPayment from './Views/FirstPayment';
-//
-
 import InsertBill from './Views/InsertBill';
 import Schedule from './Views/Schedule';
 import CreateAnnouncement from './Views/CreateAnnouncement';
 import NavUser from './Components/NavUser';
 import CreateDocument from './Views/Documents/CreateDocument';
+import ViewPosts from './Views/posts/viewPosts';
 
 class App extends Component {
   constructor(props) {
@@ -61,8 +58,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('this is the actual cart', this.state.cart);
-
     return (
       <div className="App">
         {this.state.loaded && (
@@ -99,78 +94,58 @@ class App extends Component {
                         path="/schedule"
                         render={props => <Schedule user={this.state.user} {...props} />}
                       />
-                      <Route
-                        path="/insert-bill"
-                        render={props => <InsertBill user={this.state.user} {...props} />}
-                      />
-                      <Route
-                        path="/sign-up/create-building"
-                        render={props => <CreateBuilding user={this.state.user} {...props} />}
-                      />
-                      <Route
-                        path="/manage-building"
-                        render={props => <ManageBuilding user={this.state.user} {...props} />}
-                      />
-                      <Route path="/create-announcement" component={CreateAnnouncement} />
-                      <Route path="/create-document" component={CreateDocument} />
-                      <Route path="/create-services" component={CreateServices} />
                       <Route path="/services" component={ServicesView} />
-
-                      <Route
-                        authorized={this.state.user}
-                        redirect="/sign-in"
-                        path="/payment-method/list"
-                        render={props => (
-                          <PaymentMethodListView user={this.state.user} {...props} />
-                        )}
-                      />
-                      <Route
-                        authorized={this.state.user}
-                        redirect="/sign-in"
-                        path="/payment-method/create"
-                        exact
-                        render={props => (
-                          <PaymentMethodCreateView user={this.state.user} {...props} />
-                        )}
-                      />
-                      {/* <Route
-                        authorized={this.state.user}
-                        redirect="/sign-in"
-                        path="/first-payment"
-                        exact
-                        render={props => <FirstPayment user={this.state.user} {...props} />}
-                      /> */}
-                      <Route
-                        authorized={this.state.user}
-                        redirect="/sign-in"
-                        path="/payment-method/list"
-                        render={props => (
-                          <PaymentMethodListView user={this.state.user} {...props} />
-                        )}
-                      />
-                      <Route
-                        authorized={this.state.user}
-                        redirect="/sign-in"
-                        path="/payment-method/create"
-                        exact
-                        render={props => (
-                          <PaymentMethodCreateView user={this.state.user} {...props} />
-                        )}
-                      />
-                      <Route
-                        authorized={this.state.user}
-                        redirect="/sign-in"
-                        path="/first-payment"
-                        exact
-                        render={props => (
-                          <FirstPayment
-                            cart={this.state.cart}
-                            updateCart={this.updateCart}
-                            user={this.state.user}
-                            {...props}
+                      {this.state.user.admin && (
+                        <React.Fragment>
+                          <Route
+                            path="/insert-bill"
+                            render={props => <InsertBill user={this.state.user} {...props} />}
                           />
-                        )}
-                      />
+                          <Route
+                            path="/sign-up/create-building"
+                            render={props => <CreateBuilding user={this.state.user} {...props} />}
+                          />
+                          <Route
+                            path="/manage-building"
+                            render={props => <ManageBuilding user={this.state.user} {...props} />}
+                          />
+                          <Route path="/create-announcement" component={CreateAnnouncement} />
+                          <Route path="/create-document" component={CreateDocument} />
+                          <Route path="/create-services" component={CreateServices} />
+
+                          <Route
+                            authorized={this.state.user}
+                            redirect="/sign-in"
+                            path="/payment-method/list"
+                            render={props => (
+                              <PaymentMethodListView user={this.state.user} {...props} />
+                            )}
+                          />
+                        <Route
+                            authorized={this.state.user}
+                            redirect="/sign-in"
+                            path="/payment-method/create"
+                            exact
+                            render={props => (
+                              <PaymentMethodCreateView user={this.state.user} {...props} />
+                            )}
+                          />
+                          <Route
+                            authorized={this.state.user}
+                            redirect="/sign-in"
+                            path="/first-payment"
+                            exact
+                            render={props => (
+                              <FirstPayment
+                                cart={this.state.cart}
+                                updateCart={this.updateCart}
+                                user={this.state.user}
+                                {...props}
+                              />
+                            )}
+                          />
+                        </React.Fragment>
+                      )}
                       <Route
                         path="*"
                         exact
@@ -187,6 +162,16 @@ class App extends Component {
                     path="/sign-in"
                     render={props => (
                       <SignInView updateUserInformation={this.updateUserInformation} {...props} />
+                    )}
+                  />
+                  <Route
+                    path="/sign-up/user/:slotId/:buildingId"
+                    render={props => (
+                      <SignUpUserView
+                        updateUserInformation={this.updateUserInformation}
+                        {...props}
+                        exact
+                      />
                     )}
                   />
                   <Route

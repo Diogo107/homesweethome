@@ -14,7 +14,7 @@ import { calendarDates } from './../../Services/otherServices';
 //<FullCalendar schedulerLicenseKey="XXX" plugins={[ resourceTimelinePlugin ]} />
 
 
-export default class DemoApp extends React.Component {
+export default class Calendar extends React.Component {
   constructor(props){
 super(props)
   
@@ -57,7 +57,7 @@ super(props)
     if (window.confirm('Would you like to add an event to ' + arg.dateStr + ' ?')) {
       this.setState({  // add new event data
         calendarEvents: this.state.calendarEvents.concat({ // creates a new array
-          title: prompt("Please enter your name"),
+          title: prompt("Please enter the Event name"),
           start: arg.date,
           allDay: arg.allDay
         })

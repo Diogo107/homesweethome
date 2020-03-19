@@ -21,10 +21,6 @@ const schema = new mongoose.Schema({
     type: Number,
     trim: true
   },
-  code: {
-    type: String,
-    trim: true
-  },
   passwordHash: {
     type: String
   },
@@ -33,9 +29,13 @@ const schema = new mongoose.Schema({
     type: String
   },
 
+  admin: Boolean,
+
   stripeCustomerId: {
     type: String
-  }
+  },
+  payment : Boolean,
+  createdAt: Date
 });
 
 module.exports = mongoose.model('User', schema);

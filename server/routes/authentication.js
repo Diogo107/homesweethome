@@ -9,7 +9,7 @@ const uploader = require('./../multer-configure.js');
 const router = new Router();
 
 router.post('/sign-up', async (req, res, next) => {
-  const { name, email, phoneNumber, code, passwordHash } = req.body;
+  const { name, email, phoneNumber, code, passwordHash,admin, payment,createdAt } = req.body;
   let BuildingId;
   if (req.body.buildingId) BuildingId = req.body.buildingId;
   try {
@@ -21,8 +21,11 @@ router.post('/sign-up', async (req, res, next) => {
       phoneNumber,
       code,
       passwordHash: hash,
+      admin,
       stripeCustomerId: customer.id,
-      ...(BuildingId ? { BuildingId } : {})
+      ...(BuildingId ? { BuildingId } : {}),
+      payment,
+      createdAt
     })
     req.session.user = user._id;
     res.json({ user });
@@ -74,7 +77,7 @@ router.get('/user-information', (req, res, next) => {
 });
 
 router.patch('/user-information', uploader.single('picture'), async (req, res, next) => {
-  const { buildingID } = req.body;
+  const { buildingId } = req.body;
   
   if (req.file) picture = req.file.url;
   try {
@@ -82,7 +85,7 @@ router.patch('/user-information', uploader.single('picture'), async (req, res, n
       req.user._id,
       {
         
-        buildingID,
+        buildingId,
         
       },
       

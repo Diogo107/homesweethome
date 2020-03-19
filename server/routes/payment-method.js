@@ -11,6 +11,7 @@ const PaymentMethod = require('./../models/payment-method');
 
 router.get('/list', async (req, res, next) => {
   try {
+    
     const paymentMethods = await PaymentMethod.find({ owner: req.user._id });
     res.json({ paymentMethods });
   } catch (error) {
