@@ -35,7 +35,6 @@ export default class index extends Component {
 
   async componentDidMount() {
     const list = await this.searchBuilding(this.state.user._id);
-    console.log('Manage Building', list.numberOfApartments);
     this.setState({
       appartments: list.numberOfApartments,
       buildingId: list._id,
@@ -50,17 +49,13 @@ export default class index extends Component {
 
   sendInvite(email) {
     email.preventDefault();
-    console.log('this is the final attempt', this.state);
-    console.log('This is a friend of mine', this.state.appartments);
-    console.log('Hello from the send Email function', email.target[0].value);
     const name = email.target[0].value;
     const numberOfApartments = this.state.appartments;
     updateBuilding(numberOfApartments, this.state.buildingId);
-    //sendEmail({ name });
+    sendEmail({ name }, this.state.buildingId);
   }
 
   updateEmail(id) {
-    console.log('This is a friend of mine', id.target.name);
     const userId = id.target.name;
     const userEmail = id.target.value;
     const arr = this.state.appartments;
@@ -70,10 +65,10 @@ export default class index extends Component {
         arr[i].email = userEmail;
       }
     }
-    console.log('this is arr', arr);
     this.setState({
       appartments: arr
     });
+    console.log('arr', arr);
   }
 
   render() {
@@ -86,13 +81,6 @@ export default class index extends Component {
               sendInvite={this.sendInvite}
               updateEmail={this.updateEmail}
             />
-            {this.state.appartments.map(slot => (
-              <Form onSubmit={this.sendInvite}>
-                <Label>{slot.slot}</Label>
-                <Input name={slot._id} placeholder={slot.slot} type="text" />
-                <Button type="submit">Send Invite</Button>
-              </Form>
-            ))}
           </div>
         )) ||
           ''}
