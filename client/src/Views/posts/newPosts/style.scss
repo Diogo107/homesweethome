@@ -1,1 +1,11 @@
-@import '../../../App.scss/form__dashboard'
+@import '../../../App.scss/form__dashboard';
+
+
+
+.form__test{
+  margin-left: 2000px
+}
+
+Form.Control {
+  border: 5px solid blue !important
+}

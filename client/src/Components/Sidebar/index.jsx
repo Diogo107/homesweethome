@@ -5,7 +5,7 @@ import { Form, Button } from 'react-bootstrap';
 import { signOut } from '../../Services/authentication';
 import { Link, Redirect } from 'react-router-dom';
 import logo from '../../asset/images/logo.png';
-import { slide as Menu } from 'react-burger-menu'
+import icoDashboard from '../../asset/images/dashboard.png'
 
 export default class index extends Component {
   constructor(props) {
