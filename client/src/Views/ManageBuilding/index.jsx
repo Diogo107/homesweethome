@@ -35,7 +35,6 @@ export default class index extends Component {
 
   async componentDidMount() {
     const list = await this.searchBuilding(this.state.user._id);
-    console.log('Manage Building', list.numberOfApartments);
     this.setState({
       appartments: list.numberOfApartments,
       buildingId: list._id,
