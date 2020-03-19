@@ -55,7 +55,7 @@ const loadUserInformation = () =>
 const editUserInformation = async data => {
   // console.log(data);
   const form = new FormData();
-  form.append('buildingID', data.buildingID )
+  form.append('buildingId', data.buildingId )
   const result = await instance.patch('/user-information', form);
   const user = result.data.user;
   return user;

@@ -81,8 +81,8 @@ class Building extends React.Component {
         picture
       });
       console.log(newBuilding.data.building._id)
-     let buildingID = newBuilding.data.building._id
-     const updateUser = await editUserInformation({buildingID})
+     let buildingId = newBuilding.data.building._id
+     const updateUser = await editUserInformation({buildingId})
       this.props.history.push('/');
     } catch (error) {
       console.log(error);

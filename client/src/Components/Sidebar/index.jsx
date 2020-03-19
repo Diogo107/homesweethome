@@ -38,6 +38,7 @@ export default class index extends Component {
        <div>
           <img className="sidebar__logo" src={logo} alt="logo" />
         </div>
+        <div className="user__dashboard">
         <div className="sidebar__item">
           <Link to="/">Dashboard</Link>
         </div>
@@ -48,16 +49,18 @@ export default class index extends Component {
           <Link to="/post">New Post</Link>
         </div>
         <div className="sidebar__item">
+          <Link to="/schedule">Schedule</Link>
+        </div>
+        <div className="sidebar__item">
           <Link to="/services">Services</Link>
         </div>
+        </div>
+        <div className="admin__dashboard">
         <div className="sidebar__item">
           <Link to="/insert-bill">Insert Bill</Link>
         </div>
         <div className="sidebar__item">
           <Link to="/manage-building">Manage Building</Link>
-        </div>
-        <div className="sidebar__item">
-          <Link to="/schedule">Schedule</Link>
         </div>
         <div className="sidebar__item">
           <Link to="/create-announcement">Create Announcement</Link>
@@ -68,13 +71,14 @@ export default class index extends Component {
         <div className="sidebar__item">
           <Link to="/create-services">Create Service</Link>
         </div>
-        <div className="sidebar__item">
-          <Form onSubmit={this.handleSignOut}>
-            <Button variant="outline-dark" type="submit">
+        </div>
+        
+          <Form className="signout__button" onSubmit={this.handleSignOut}>
+            <Button className="button__test" type="submit">
               Sign Out
             </Button>
           </Form>
-        </div>
+        
       </div>
       
     );

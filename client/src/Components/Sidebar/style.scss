@@ -19,8 +19,27 @@
 
 .link__item {
 text-decoration: none;
-color: green
+color: #119fef
 }
+
+.button__test{
+    color: #fff !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #3494E6;
+    padding: 10px;
+    display: inline-block;
+    border: none;
+    transition: all 0.4s ease 0s;
+}
+
+.button__test:hover {
+  background: #EC6EAD;
+  text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.5);
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.30);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.30);
+  transition: all 0.4s ease 0s;
+  }
 
 .sidebar__logo{
 margin-top: 20px;
@@ -30,6 +49,9 @@ width: 220px;
 height: 45px
 }
 
+.signout__button :first-child{
+  margin: 10px 20px
+}
 
 .sidebar__item {
   display: block;
@@ -52,11 +74,37 @@ height: 45px
     opacity: .5;
     &:hover, &:focus {
       text-decoration: none;
-      color: #999;
+      color: #EC6EAD;
       opacity: 1;
+      border-left: 5px solid #3494E6;
     }
   }
 } 
+
+.user__dashboard{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  border-bottom: 1px solid #999;
+  border-width: 100%;
+  width: 100%;
+  padding-bottom: 20px;
+
+}
+
+.admin__dashboard{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  width: 100%;
+  padding-top: 20px;
+}
 
 @media screen and (max-width: 640px) {
   .sidebar{

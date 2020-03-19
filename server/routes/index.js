@@ -22,7 +22,7 @@ router.get('/private', routeGuard, (req, res, next) => {
 router.post('/annoucement', uploader.single('picture'), (req, res, next) => {
   const { title, description } = req.body;
   let url;
-
+  let buildingId = req.user.buildingId
   if (req.file) {
     url = req.file.url;
   }
@@ -31,7 +31,8 @@ router.post('/annoucement', uploader.single('picture'), (req, res, next) => {
     title,
     description,
     picture: url,
-    creator: req.user._id
+    creator: req.user._id,
+    buildingId
   })
     .then(annoucement => {
       res.json({ annoucement });
@@ -113,7 +114,7 @@ router.post('/updateBuilding', (req, res, next) => {
 router.post('/doc', uploader.single('doc'), (req, res, next) => {
   const { title, description } = req.body;
   let url;
-
+  let buildingId = req.user.buildingId
   if (req.file) {
     url = req.file.url;
   }
@@ -122,7 +123,8 @@ router.post('/doc', uploader.single('doc'), (req, res, next) => {
     title,
     description,
     doc: url,
-    creator: req.user._id
+    creator: req.user._id,
+    buildingId
   })
     .then(doc => {
       res.json({ doc });
@@ -146,8 +148,9 @@ router.get('/doc', (req, res, next) => {
 router.post('/post', uploader.single('picture'), (req, res, next) => {
   const { title, description } = req.body;
   console.log('body', req.body);
-  console.log('file', req.file);
+  console.log('user', req.user);
   let url;
+  let buildingId = req.user.buildingId
 
   if (req.file) {
     url = req.file.url;
@@ -156,7 +159,8 @@ router.post('/post', uploader.single('picture'), (req, res, next) => {
   Post.create({
     title,
     description,
-    picture: url
+    picture: url,
+    buildingId
   })
     .then(post => {
       res.json({ post });
@@ -179,12 +183,13 @@ router.get('/post', (req, res, next) => {
 
 router.post('/services', (req, res, next) => {
   const { name, workField, price, phoneNumber } = req.body;
-
+  let buildingId = req.user.buildingId
   Services.create({
     name,
     workField,
     price,
-    phoneNumber
+    phoneNumber,
+    buildingId
   })
     .then(services => {
       res.json({ services });
@@ -207,10 +212,11 @@ router.get('/services', (req, res, next) => {
 
 router.post('/calendar', (req, res, next) => {
   const { title, start } = req.body;
-
+  let buildingId = req.user.buildingId
   Calendar.create({
     title,
-    start
+    start,
+    buildingId
   })
     .then(calendar => {
       res.json({ calendar });
@@ -232,9 +238,13 @@ router.get('/calendar', (req, res, next) => {
 
 router.post('/sendEmail', (req, res, next) => {
   const mail = req.body.name;
+<<<<<<< HEAD
   const buildingId = req.body.buildingId;
   const slotId = req.body.slotId;
   console.log('This is my friend', mail, buildingId, slotId);
+=======
+  
+>>>>>>> 5918988a92074afade80973b220f85ffb0a15168
 
   const nodemailer = require('nodemailer');
   const EMAIL = 'pick.me.today.adoption@gmail.com';
