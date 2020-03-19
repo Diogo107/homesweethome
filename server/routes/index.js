@@ -44,7 +44,8 @@ router.post('/annoucement', uploader.single('picture'), (req, res, next) => {
 module.exports = router;
 
 router.get('/annoucement', (req, res, next) => {
-  Annoucement.find()
+  let buildingId = req.user.buildingId;
+  Annoucement.find({ buildingId: buildingId })
     .sort({ timestamp: 'descending' })
     .then(annoucements => {
       res.json({ annoucements });
@@ -80,6 +81,7 @@ router.post('/building', uploader.single('picture'), (req, res, next) => {
 
 router.get('/building', (req, res, next) => {
   return (
+    
     Building.findOne()
       // this id is the buiding to find it
       .then(building => {
@@ -135,7 +137,8 @@ router.post('/doc', uploader.single('doc'), (req, res, next) => {
 });
 
 router.get('/doc', (req, res, next) => {
-  Doc.find()
+  let buildingId = req.user.buildingId;
+  Doc.find({ buildingId: buildingId })
     .sort({ timestamp: 'descending' })
     .then(doc => {
       res.json({ doc });
@@ -171,7 +174,8 @@ router.post('/post', uploader.single('picture'), (req, res, next) => {
 });
 
 router.get('/post', (req, res, next) => {
-  Post.find()
+  let buildingId = req.user.buildingId;
+  Post.find({ buildingId: buildingId })
     .sort({ timestamp: 'descending' })
     .then(posts => {
       res.json({ posts });
@@ -200,7 +204,8 @@ router.post('/services', (req, res, next) => {
 });
 
 router.get('/services', (req, res, next) => {
-  Services.find()
+  let buildingId = req.user.buildingId;
+  Services.find({ buildingId: buildingId })
     .sort({ timestamp: 'descending' })
     .then(services => {
       res.json({ services });
@@ -227,7 +232,8 @@ router.post('/calendar', (req, res, next) => {
 });
 
 router.get('/calendar', (req, res, next) => {
-  Calendar.find()
+  let buildingId = req.user.buildingId;
+  Calendar.find({ buildingId: buildingId })
     .then(calendar => {
       res.json({ calendar });
     })
