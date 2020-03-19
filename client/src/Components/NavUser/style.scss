@@ -4,13 +4,33 @@
   justify-content: flex-end;
   padding-left: 20px;
   padding-bottom: 20px;
-  background-image: linear-gradient(to bottom right, #fffffb, #dcedc8) 
+  background-image: linear-gradient(to right, #3494E6, #EC6EAD  ) 
 }
+
+//bluefluo: #11ccef
+//materialblue: #119fef
+//darkblue: #1172ef
+
+//blue: #3494E6
+//pink: #EC6EAD
 
 .mobile__menu__logo {
   display: none;
 }
 
+.navuser__path{
+  color: white;
+  &:hover{
+    color: whitesmoke
+  }
+}
+
+.mobilename{
+color: white;
+&:hover{
+  color: whitesmoke
+}
+}
 .bm-burger-button{
   display: none;
 }
@@ -34,10 +54,7 @@
   }
 
 
-html{
-  background-image: linear-gradient(to bottom right, #fffffb, #dcedc8);
-  background-repeat: repeat;
-}
+
 
   .mobile__menu__logo {
     display: flex;
