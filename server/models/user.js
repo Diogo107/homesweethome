@@ -32,6 +32,8 @@ const schema = new mongoose.Schema({
   buildingId: {
     type: String
   },
+  
+  admin: Boolean, 
 
   stripeCustomerId: {
     type: String

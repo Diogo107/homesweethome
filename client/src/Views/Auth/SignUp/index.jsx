@@ -32,8 +32,9 @@ export default class index extends Component {
     console.log('hsdjdasdhas', this.props);
     event.preventDefault();
     const { name, email, phoneNumber, code, passwordHash } = this.state;
+    let admin = true
     try {
-      const user = await signUp({ name, email, phoneNumber, code, passwordHash });
+      const user = await signUp({ name, email, phoneNumber, code, passwordHash,admin });
       this.props.updateUserInformation(user);
       this.props.history.push('/sign-up/create-building');
     } catch (error) {
