@@ -3,6 +3,7 @@ import { Form, Button } from 'react-bootstrap';
 //const cors = require('cors');
 import { post } from './../../../Services/otherServices';
 import TextField from '@material-ui/core/TextField';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 
 export default class index extends Component {
   constructor(props) {
@@ -72,30 +73,24 @@ export default class index extends Component {
             <Form.Text className="text-muted"></Form.Text>
           </Form.Group>
 
-
-          <TextField
-          id="outlined-textarea"
-          label="Multiline Placeholder"
-          placeholder="Placeholder"
-          multiline
-          variant="outlined"
-        />
-
           <Form.Group controlId="description">
-            <Form.Label>Description</Form.Label>
-            <Form.Control
+            <TextField
+              id="outlined-textarea"
+              label="Description"
+              placeholder="What's app?"
+              multiline
+              rows="5"
+              variant="outlined"
               type="text"
               as="textarea"
-              rows="3"
-              placeholder="Write here your description"
               name="description"
               onChange={this.handleInputChange}
             />
           </Form.Group>
 
-          <Form.Group controlId="picture">
+          <Form.Group className="mb-3" controlId="picture">
             <Form.Label>Picture</Form.Label>
-            <Form.Control
+            <Form.Control 
               type="file"
               placeholder="Insert the image"
               name="picture"
