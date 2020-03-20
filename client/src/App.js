@@ -23,7 +23,7 @@ import Schedule from './Views/Schedule';
 import CreateAnnouncement from './Views/CreateAnnouncement';
 import NavUser from './Components/NavUser';
 import CreateDocument from './Views/Documents/CreateDocument';
-import ViewPosts from './Views/posts/viewPosts';
+import PostsView from './Views/posts/viewPosts';
 
 class App extends Component {
   constructor(props) {
@@ -96,9 +96,10 @@ class App extends Component {
                     />
                     
                       <Route path="/profile" render={props => <Profile user={this.state.user} />} />
+                      
                       <Route
-                        path="/post"
-                        render={props => <NewPosts user={this.state.user} {...props} />}
+                        path="/view-post"
+                        render={props => <PostsView user={this.state.user} {...props} />}
                       />
                       <Route
                         path="/schedule"
