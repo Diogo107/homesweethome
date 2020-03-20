@@ -18,7 +18,7 @@ const app = express();
 const paymentMethodRouter = require('./routes/payment-method');
 const purchaseRouter = require('./routes/purchase');
 const productRouter = require('./routes/product');
-
+app.use(express.static(join(__dirname, './../client/build')));
 app.use(serveFavicon(join(__dirname, 'public/images', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(express.json());
@@ -49,6 +49,10 @@ app.use('/api/authentication', authenticationRouter);
 app.use('/api/payment-method', paymentMethodRouter);
 app.use('/api/purchase', purchaseRouter);
 app.use('/api/product', productRouter);
+
+app.get('*', (req, res, next) => {
+  res.sendFile(join(__dirname, './../client/build/index.html'));
+});
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {

@@ -5,7 +5,6 @@ import { Form, Button } from 'react-bootstrap';
 import { signOut } from '../../Services/authentication';
 import { Link, Redirect } from 'react-router-dom';
 import logo from '../../asset/images/logo.png';
-import { slide as Menu } from 'react-burger-menu';
 
 export default class index extends Component {
   constructor(props) {
@@ -19,15 +18,12 @@ export default class index extends Component {
   }
 
   componentDidMount() {
-    console.log('componentMount', this.props);
     this.setState({
       user: this.props.user
     });
-    console.log('nav', this.props);
   }
 
   handleSignOut() {
-    console.log('This is sign out', this.props);
     signOut();
     Redirect('/');
   }

@@ -75,6 +75,16 @@ class App extends Component {
                     render={props => <NavUser user={this.state.user} {...props} />}
                   />
                   <Switch>
+                  <Route
+                        path="/"
+                        exact
+                        render={props => <Dashboard user={this.state.user} {...props} />}
+                      />
+                      <Route
+                        path="/dashboard"
+                        
+                        render={props => <Dashboard user={this.state.user} {...props} />}
+                      />
                     <Route path="/profile" render={props => <Profile user={this.state.user} />} />
                     <Route
                       path="/post"
@@ -84,7 +94,7 @@ class App extends Component {
                       path="/schedule"
                       render={props => <Schedule user={this.state.user} {...props} />}
                     />
-                    <Switch>
+                    
                       <Route path="/profile" render={props => <Profile user={this.state.user} />} />
                       <Route
                         path="/post"
@@ -95,8 +105,10 @@ class App extends Component {
                         render={props => <Schedule user={this.state.user} {...props} />}
                       />
                       <Route path="/services" component={ServicesView} />
+                      
                       {this.state.user.admin && (
-                        <React.Fragment>
+                        <div>
+                        
                           <Route
                             path="/insert-bill"
                             render={props => <InsertBill user={this.state.user} {...props} />}
@@ -144,15 +156,14 @@ class App extends Component {
                               />
                             )}
                           />
-                        </React.Fragment>
-                      )}
-                      <Route
+                          </div>
+                        )}
+                    <Route
                         path="*"
-                        exact
-                        render={props => <Dashboard user={this.state.user} />}
-                      />
-                    </Switch>
+                        render={props => <Dashboard user={this.state.user} {...props} />}
+                       />
                   </Switch>
+                  
                 </div>
               </div>
             )) || (
