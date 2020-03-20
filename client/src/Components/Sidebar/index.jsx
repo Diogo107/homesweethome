@@ -34,7 +34,6 @@ export default class index extends Component {
         <div>
           <img className="sidebar__logo" src={logo} alt="logo" />
         </div>
-        <div className="user__dashboard">
           <div className="sidebar__item">
             <Link to="/">Dashboard</Link>
           </div>
@@ -50,7 +49,7 @@ export default class index extends Component {
           <div className="sidebar__item">
             <Link to="/services">Services</Link>
           </div>
-        </div>
+        
         {this.props.user.admin && (
           <div className="admin__dashboard">
             <div className="sidebar__item">

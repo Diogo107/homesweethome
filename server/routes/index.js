@@ -10,6 +10,7 @@ const Post = require('./../models/post');
 const Doc = require('./../models/doc');
 const Calendar = require('../models/calendar.js');
 const Services = require('./../models/services');
+const User = require('./../models/user');
 
 router.get('/', (req, res, next) => {
   res.json({ type: 'success', data: { title: 'Hello World' } });
@@ -80,10 +81,9 @@ router.post('/building', uploader.single('picture'), (req, res, next) => {
 });
 
 router.get('/building', (req, res, next) => {
-  let building = req.user.buildingId
-   
+  let building = req.user.buildingId;
+
   return (
-    
     Building.findById(building)
       // this id is the buiding to find it
       .then(building => {
@@ -268,4 +268,25 @@ router.post('/sendEmail', (req, res, next) => {
     subject: 'Hello from the Home Sweet Home',
     html: `<br /><br /><br />You were invited to your new home! Follow the link to know your new home: ${process.env.WORKING_URL2}/sign-up/user/${slotId}/${buildingId}`
   });
+});
+
+router.post('/updateProfile', (req, res, next) => {
+  console.log('in the server right now', req.body);
+  const name = req.body.name;
+  const email = req.body.email;
+  const phoneNumber = req.body.phoneNumber;
+  const id = req.body.id;
+  console.log('this is id', { name, email, phoneNumber });
+  return (
+    User.findByIdAndUpdate(id, { name, email, phoneNumber })
+      // this id is the buiding to find it
+      .then(building => {
+        console.log('Searching for:', building);
+        res.json({ building });
+      })
+      .catch(error => {
+        console.log(error);
+        next(error);
+      })
+  );
 });

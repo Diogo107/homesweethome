@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './style.scss';
 import { Container, Row, Col, Image, Navbar, Nav } from 'react-bootstrap';
+import Footer from '../../Components/Footer'
 
 import Background from '../../asset/images/background.jpg'
 import Resident from '../../asset/images/resident.png'
@@ -46,11 +47,8 @@ class LandingPage extends Component {
 
         </Container> 
 
-          <Navbar bg="light" expand="lg">
-            <Nav className="ml-auto">
-              <small>2020© homesweethome.com Develop by Diogo, Ricardo & Luca</small>
-            </Nav>
-          </Navbar>
+         
+          <Footer />
       </div>
 
     );

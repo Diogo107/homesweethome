@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
 //const cors = require('cors');
 import { post } from './../../../Services/otherServices';
+import TextField from '@material-ui/core/TextField';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 
 export default class index extends Component {
   constructor(props) {
@@ -61,10 +63,10 @@ export default class index extends Component {
         <h2>Create a New Post!</h2><br />
         <Form onSubmit={this.handleFormSubmission}>
           <Form.Group controlId="title">
-            <Form.Label>Title</Form.Label>
-            <Form.Control
+            <TextField
+              className="textfield"
+              id="outlined-basic" label="Title" variant="outlined"
               type="text"
-              placeholder="Title"
               name="title"
               onChange={this.handleInputChange}
             />
@@ -72,12 +74,15 @@ export default class index extends Component {
           </Form.Group>
 
           <Form.Group controlId="description">
-            <Form.Label>Description</Form.Label>
-            <Form.Control
+            <TextField
+              id="outlined-textarea"
+              label="Description"
+              placeholder="What's app?"
+              multiline
+              rows="5"
+              variant="outlined"
               type="text"
               as="textarea"
-              rows="3"
-              placeholder="Write here your description"
               name="description"
               onChange={this.handleInputChange}
             />
@@ -86,7 +91,7 @@ export default class index extends Component {
           <Form.Group controlId="picture">
             
             <Form.Label>Picture</Form.Label>
-            <Form.Control
+            <Form.Control 
               type="file"
               placeholder="Insert the image"
               name="picture"

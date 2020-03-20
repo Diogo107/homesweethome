@@ -15,12 +15,6 @@
 }
 
 
-@media screen and (max-width: 640px) {
-  .main__dashboard{
-  margin-left: auto;
-}
-}
-
 .form__dashboard {
   margin-left: 25%;
   margin-right: 25%;
@@ -28,6 +22,17 @@
   background: white;
   padding: 20px 20px 20px 20px;
   border-radius: 15px;
+}
+
+@media screen and (max-width: 640px) {
+  .main__dashboard{
+  margin-left: auto;
+  width: 100%;
+}
+  .form__dashboard {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
 }
 
 

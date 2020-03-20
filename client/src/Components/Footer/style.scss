@@ -1,0 +1,17 @@
+.footer {
+    padding-top: 21px;
+    display: flex;
+    justify-content: flex-end;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    background-image: linear-gradient(to right, #EC6EAD, #3494E6  ) ;
+    color: white
+}
+
+.footer__link {
+  color: white;
+  &:hover {
+    color: #999;
+    text-decoration: none;
+  }
+}

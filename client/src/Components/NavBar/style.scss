@@ -1,4 +1,25 @@
 .logo{
+  margin-left: 15px;
   width: 220px;
-  height: 45px
+  height: 45px;
+  filter: invert(0.5);
+  filter:  brightness(0) invert(1);
+}
+
+.navbar{
+  background-image: linear-gradient(to right, #3494E6, #EC6EAD ) 
+}
+
+.links a{
+  color:white; 
+ &:hover {
+  color: whitesmoke;
+  text-decoration: none
+ }
+ &:first-child {
+   padding-right: 25px
+ }
+ &:last-child {
+   padding-right: 20px
+ }
 }
