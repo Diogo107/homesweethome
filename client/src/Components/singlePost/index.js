@@ -5,13 +5,15 @@ import React from 'react';
 import './style.scss';
 
 const SingleService = props => {
+  console.log('seeing the props', props)
   return (
     <div>
+      {props.picture && <figure className="annoucement__image">
+        <img src={props.picture} alt={props.title} />
+      </figure>}
       
-  <h1>{props.name}</h1>
-  <h4>{props.workField}</h4>
-  <h5>{props.price}</h5>
-  <h5>{props.phoneNumber}</h5>
+      <h1>{props.title}</h1>
+  <h4>{props.description}</h4>
       </div>
         
       

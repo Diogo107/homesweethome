@@ -20,7 +20,7 @@ class CheckoutView extends Component {
   }
 
   render() {
-    console.log(this.props)
+ 
     return (
       <div>
         <h1>Checkout</h1>

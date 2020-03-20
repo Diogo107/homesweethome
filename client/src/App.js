@@ -23,7 +23,7 @@ import Schedule from './Views/Schedule';
 import CreateAnnouncement from './Views/CreateAnnouncement';
 import NavUser from './Components/NavUser';
 import CreateDocument from './Views/Documents/CreateDocument';
-import ViewPosts from './Views/posts/viewPosts';
+import PostsView from './Views/posts/viewPosts';
 
 class App extends Component {
   constructor(props) {
