@@ -80,10 +80,9 @@ router.post('/building', uploader.single('picture'), (req, res, next) => {
 });
 
 router.get('/building', (req, res, next) => {
-  let building = req.user.buildingId
-   
+  let building = req.user.buildingId;
+
   return (
-    
     Building.findById(building)
       // this id is the buiding to find it
       .then(building => {
@@ -268,4 +267,23 @@ router.post('/sendEmail', (req, res, next) => {
     subject: 'Hello from the Home Sweet Home',
     html: `<br /><br /><br />You were invited to your new home! Follow the link to know your new home: ${process.env.WORKING_URL2}/sign-up/user/${slotId}/${buildingId}`
   });
+});
+
+router.post('/updateProfile', (req, res, next) => {
+  console.log('in the server right now', req.body);
+  const id = req.body.id;
+  const numberOfApartments = req.body.list;
+  console.log('this is id', numberOfApartments);
+  /*  return (
+    User.findOneAndUpdate(id, { numberOfApartments })
+      // this id is the buiding to find it
+      .then(building => {
+        console.log('Searching for:', building);
+        res.json({ building });
+      })
+      .catch(error => {
+        console.log(error);
+        next(error);
+      })
+  ); */
 });

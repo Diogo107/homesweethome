@@ -186,3 +186,19 @@ const sendEmail = data => {
   });
 };
 export { sendEmail };
+
+const updateProfile = async data => {
+  console.log('Prepared to send', data);
+  const name = data.name;
+  const email = data.email;
+  const phoneNumber = data.phoneNumber;
+  try {
+    const building = await instance.post('/updateProfile', { name, email, phoneNumber });
+    console.log('on client', building);
+
+    return building;
+  } catch (error) {
+    console.log(error);
+  }
+};
+export { updateProfile };
