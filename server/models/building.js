@@ -24,7 +24,8 @@ const schema = new mongoose.Schema({
     {
       _id: String,
       slot: String,
-      email: String
+      email: String,
+      accepted: Boolean
     }
   ],
   picture: {

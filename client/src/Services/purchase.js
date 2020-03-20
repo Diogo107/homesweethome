@@ -14,4 +14,13 @@ const create = async id => {
   await instance.post('/create', { products: id });
 };
 
+
+
+const addToCart = async id => {
+  await instance.post('/cart', { products: id });
+
+};
+export default addToCart
+
+
 export { list, create };

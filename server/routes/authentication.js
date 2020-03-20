@@ -9,7 +9,21 @@ const uploader = require('./../multer-configure.js');
 const router = new Router();
 
 router.post('/sign-up', async (req, res, next) => {
-  const { name, email, phoneNumber, code, passwordHash,admin, payment,createdAt } = req.body;
+  console.log('This is on the server', req.body);
+  const {
+    name,
+    email,
+    phoneNumber,
+    code,
+    passwordHash,
+    admin,
+    slot,
+    payment,
+    buildingId,
+    createdAt,
+    blocked,
+    paymentMethods
+  } = req.body;
   let BuildingId;
   if (req.body.buildingId) BuildingId = req.body.buildingId;
   try {
@@ -22,23 +36,21 @@ router.post('/sign-up', async (req, res, next) => {
       code,
       passwordHash: hash,
       admin,
+      slot,
+      buildingId,
       stripeCustomerId: customer.id,
       ...(BuildingId ? { BuildingId } : {}),
       payment,
-      createdAt
-    })
+      createdAt,
+      paymentMethods,
+      blocked
+    });
     req.session.user = user._id;
     res.json({ user });
-  }
-   catch (error) {
+  } catch (error) {
     next(error);
-  }}    
-);
-
-
-
-
-
+  }
+});
 
 router.post('/sign-in', (req, res, next) => {
   let user;
@@ -77,19 +89,14 @@ router.get('/user-information', (req, res, next) => {
 });
 
 router.patch('/user-information', uploader.single('picture'), async (req, res, next) => {
-  const { buildingId } = req.body;
-  
+  const { buildingId, paymentMethods } = req.body;
+
   if (req.file) picture = req.file.url;
   try {
-    const user = await User.findByIdAndUpdate(
-      req.user._id,
-      {
-        
-        buildingId,
-        
-      },
-      
-    );
+    const user = await User.findByIdAndUpdate(req.user._id, {
+      paymentMethods,
+      buildingId
+    });
     res.json({ user });
   } catch (error) {
     next(error);
@@ -97,4 +104,3 @@ router.patch('/user-information', uploader.single('picture'), async (req, res, n
 });
 
 module.exports = router;
-

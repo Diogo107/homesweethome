@@ -31,7 +31,6 @@ export default class index extends Component {
   handleInputChange(event) {
     const value = event.target.value;
     const inputName = event.target.name;
-    console.log('this is the profile', inputName, value);
     console.log(value);
     this.setState({
       [inputName]: value

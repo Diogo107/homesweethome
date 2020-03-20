@@ -3,6 +3,8 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import PostsView from './../posts/viewPosts';
 import AnnoucementsView from './../ViewAnnoucements';
 import DocsView from './../Documents/ViewDocuments';
+import NeighborsView from './../../Components/DashboardNeighbors';
+
 export default class index extends Component {
   constructor(props) {
     super(props);
@@ -34,6 +36,7 @@ export default class index extends Component {
 
         <div>
           <h1>my path</h1>
+          <NeighborsView user={this.state} />
           <PostsView />
           <AnnoucementsView />
           <DocsView />

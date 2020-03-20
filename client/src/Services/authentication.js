@@ -6,6 +6,7 @@ const instance = axios.create({
 });
 
 const signUp = data => {
+  console.log('This is the clientInformation', data);
   return new Promise((resolve, reject) => {
     instance
       .post('/sign-up', data)
@@ -55,7 +56,7 @@ const loadUserInformation = () =>
 const editUserInformation = async data => {
   // console.log(data);
   const form = new FormData();
-  form.append('buildingId', data.buildingId )
+  form.append('buildingId', data.buildingId);
   const result = await instance.patch('/user-information', form);
   const user = result.data.user;
   return user;
@@ -69,5 +70,12 @@ const editUserInformation = async data => {
 //       })
 //       .catch(reject);
 //   });
-
-export { signIn, signUp, signOut, loadUserInformation, editUserInformation };
+const updatePaymentStatus = async data => {
+  
+  const form = new FormData();
+  form.append('paymentMethods', data )
+  const result = await instance.patch('/user-information', form);
+  const user = result.data.user;
+  return user;
+};
+export { signIn, signUp, signOut, loadUserInformation, editUserInformation, updatePaymentStatus };
