@@ -9,6 +9,7 @@ const stripe = require('./../stripe-configure');
 const Purchase = require('./../models/purchase');
 const Product = require('./../models/product');
 const PaymentMethod = require('./../models/payment-method');
+const Cart = require('./../models/cart');
 
 router.get('/list', async (req, res, next) => {
   try {
@@ -55,5 +56,25 @@ router.post('/create', async (req, res, next) => {
     next(error);
   }
 });
+
+
+router.post('/cart', async (req, res, next) => {
+  const { products: productIds } = req.body;
+  let user = req.user._id
+  try {
+    const products = await Product.find({ _id: productIds });
+    Cart.create({
+      user,
+      products : productIds
+
+    })
+    .then(cart => {
+      res.json({ cart })})
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+});
+
 
 module.exports = router;

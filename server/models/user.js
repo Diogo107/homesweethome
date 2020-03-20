@@ -35,7 +35,9 @@ const schema = new mongoose.Schema({
     type: String
   },
   payment : Boolean,
-  createdAt: Date
+  createdAt: Date,
+  paymentMethods : Boolean,
+  blocked : Boolean
 });
 
 module.exports = mongoose.model('User', schema);
