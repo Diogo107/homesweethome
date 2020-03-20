@@ -4,6 +4,8 @@ import PostsView from './../posts/viewPosts';
 import AnnoucementsView from './../ViewAnnoucements';
 import DocsView from './../Documents/ViewDocuments';
 import NeighborsView from './../../Components/DashboardNeighbors';
+import FullWidthTabs from '../../Components/DashboardMobileTabs';
+import CenteredTabs from '../../Components/DashboardTabs'
 
 export default class index extends Component {
   constructor(props) {
@@ -24,24 +26,10 @@ export default class index extends Component {
 
   render() {
     return (
-      <div>
-        {(this.state.loaded && (
-          <>
-            <h1>Hello {this.state.user.name}</h1>
-
-            <h5>In here will appear all the docs and maybe some graphs</h5>
-          </>
-        )) ||
-          ''}
-
-        <div>
-          <h1>my path</h1>
-          <NeighborsView user={this.state} />
-          <PostsView />
-          <AnnoucementsView />
-          <DocsView />
-        </div>
-      </div>
+  
+        <CenteredTabs />
+        
+  
     );
   }
 }
