@@ -198,6 +198,7 @@ class App extends Component {
                     )}
                   />
                   <Route path="*" component={LandingPage} />
+                  
                 </Switch>
               </>
             )}

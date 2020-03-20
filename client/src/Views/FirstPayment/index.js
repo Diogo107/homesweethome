@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 //import ProductItem from './../../components/ProductItem';
-import { create as createPurchase } from './../../Services/purchase';
+//import { create as createPurchase } from './../../Services/purchase';
+import addToCart from './../../Services/purchase'
 import PaymentMethodCreateView from './../../Views/PaymentMethodCreate';
 import SingleProduct from './../../Components/SubscriptionPlans'
 import { listOfPlans } from './../../Services/otherServices';
-import CheckoutView from './../../Views/Checkout'
+
 import './style.scss';
 
 class FirstPayment extends Component {
@@ -12,15 +13,16 @@ class FirstPayment extends Component {
     super(props);
     this.state = {
         plans:[],
-      cart:[]
+      cart:''
     };
-    this.handlePurchase = this.handlePurchase.bind(this);
+
     this.updateCart = this.updateCart.bind(this);
+    this.handlePurchase = this.handlePurchase.bind(this);
   }
 
   updateCart(item) {
-    this.setState(previousState => ({
-      cart: [...previousState.cart, item]
+    this.setState(() => ({
+      cart: item
     }));
   }
   componentDidMount() {
@@ -42,16 +44,17 @@ class FirstPayment extends Component {
   }
 
 
+  handleCartAddition() {
+    this.props.updateCart(this.state.plan);
+  }
   async handlePurchase() {
-    const id = this.props.cart.map(plan => plan._id);
+    const id = this.props.cart
     try {
-      await createPurchase(id);
-    } catch (error) {
+      await addToCart(id);
+      this.props.history.push('/')
+      } catch (error) {
       console.log(error);
     }
-  }
-  handleCartAddition() {
-    this.props.updateCart(this.state.product);
   }
 
   render() {
@@ -74,8 +77,8 @@ class FirstPayment extends Component {
              
         </div>
 
-        <CheckoutView cart={this.state.cart} updateCart={this.props.updateCart} />
-        
+      
+        <button onClick={this.handlePurchase}>Save this options</button>
       </div>
     );
   }

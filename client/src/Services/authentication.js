@@ -70,5 +70,12 @@ const editUserInformation = async data => {
 //       })
 //       .catch(reject);
 //   });
-
-export { signIn, signUp, signOut, loadUserInformation, editUserInformation };
+const updatePaymentStatus = async data => {
+  
+  const form = new FormData();
+  form.append('paymentMethods', data )
+  const result = await instance.patch('/user-information', form);
+  const user = result.data.user;
+  return user;
+};
+export { signIn, signUp, signOut, loadUserInformation, editUserInformation, updatePaymentStatus };

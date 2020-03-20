@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { CardElement, Elements, ElementsConsumer } from '@stripe/react-stripe-js';
-
+import {updatePaymentStatus} from './../../Services/authentication'
 import { create as paymentMethodCreate } from '../../Services/payment-method';
 
 import './style.scss';
@@ -35,6 +35,8 @@ class PaymentMethodView extends Component {
     } else {
       // console.log(paymentMethod);
       await paymentMethodCreate(paymentMethod.id);
+      const paymentMethods = true
+      await updatePaymentStatus(paymentMethods)
       this.toggleBox()
       
     }
