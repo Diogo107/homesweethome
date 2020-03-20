@@ -3,7 +3,7 @@ import { Form, Button } from 'react-bootstrap';
 //const cors = require('cors');
 import { post } from './../../../Services/otherServices';
 import TextField from '@material-ui/core/TextField';
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import UploadButton from '../../../Components/UploadButton'
 
 export default class index extends Component {
   constructor(props) {
@@ -88,6 +88,8 @@ export default class index extends Component {
             />
           </Form.Group>
 
+
+
           <Form.Group controlId="picture">
             
             <Form.Label>Picture</Form.Label>
@@ -96,10 +98,13 @@ export default class index extends Component {
               placeholder="Insert the image"
               name="picture"
               onChange={this.handleFileInputChange}
+              
             />
+            
             <Form.Text className="text-muted"></Form.Text>
           </Form.Group>
           
+         
 
           <Button variant="primary" type="submit">
             Submit
