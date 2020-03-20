@@ -84,6 +84,7 @@ export default class index extends Component {
           </Form.Group>
 
           <Form.Group controlId="picture">
+            
             <Form.Label>Picture</Form.Label>
             <Form.Control
               type="file"
@@ -93,6 +94,7 @@ export default class index extends Component {
             />
             <Form.Text className="text-muted"></Form.Text>
           </Form.Group>
+          
 
           <Button variant="primary" type="submit">
             Submit
