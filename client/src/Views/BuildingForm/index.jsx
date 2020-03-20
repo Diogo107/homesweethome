@@ -80,10 +80,12 @@ class Building extends React.Component {
         numberOfApartments,
         picture
       });
-      console.log(newBuilding.data.building._id)
-     let buildingId = newBuilding.data.building._id
-     const updateUser = await editUserInformation({buildingId})
+      console.log(newBuilding.data.building._id);
+      let buildingId = newBuilding.data.building._id;
+      const updateUser = await editUserInformation({ buildingId });
       this.props.history.push('/');
+      //this next line is to resolve the side bar not appearing after create building
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }

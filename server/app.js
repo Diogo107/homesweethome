@@ -18,7 +18,10 @@ const app = express();
 const paymentMethodRouter = require('./routes/payment-method');
 const purchaseRouter = require('./routes/purchase');
 const productRouter = require('./routes/product');
+
+//This line of code was put here to deployment
 app.use(express.static(join(__dirname, './../client/build')));
+
 app.use(serveFavicon(join(__dirname, 'public/images', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(express.json());
@@ -29,10 +32,10 @@ app.use(
     resave: true,
     saveUninitialized: false,
     cookie: {
-      maxAge: 60 * 60 * 24 * 15,
+      maxAge: 60 * 60 * 24 * 15 * 1000,
       sameSite: 'lax',
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production'
+      httpOnly: true
+      //secure: process.env.NODE_ENV === 'production'
     },
     store: new (connectMongo(expressSession))({
       mongooseConnection: mongoose.connection,
@@ -50,6 +53,7 @@ app.use('/api/payment-method', paymentMethodRouter);
 app.use('/api/purchase', purchaseRouter);
 app.use('/api/product', productRouter);
 
+//This line of code was put here to deployment
 app.get('*', (req, res, next) => {
   res.sendFile(join(__dirname, './../client/build/index.html'));
 });
