@@ -10,6 +10,7 @@ const Post = require('./../models/post');
 const Doc = require('./../models/doc');
 const Calendar = require('../models/calendar.js');
 const Services = require('./../models/services');
+const User = require('./../models/user');
 
 router.get('/', (req, res, next) => {
   res.json({ type: 'success', data: { title: 'Hello World' } });
@@ -271,11 +272,13 @@ router.post('/sendEmail', (req, res, next) => {
 
 router.post('/updateProfile', (req, res, next) => {
   console.log('in the server right now', req.body);
+  const name = req.body.name;
+  const email = req.body.email;
+  const phoneNumber = req.body.phoneNumber;
   const id = req.body.id;
-  const numberOfApartments = req.body.list;
-  console.log('this is id', numberOfApartments);
-  /*  return (
-    User.findOneAndUpdate(id, { numberOfApartments })
+  console.log('this is id', { name, email, phoneNumber });
+  return (
+    User.findByIdAndUpdate(id, { name, email, phoneNumber })
       // this id is the buiding to find it
       .then(building => {
         console.log('Searching for:', building);
@@ -285,5 +288,5 @@ router.post('/updateProfile', (req, res, next) => {
         console.log(error);
         next(error);
       })
-  ); */
+  );
 });

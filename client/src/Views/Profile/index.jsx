@@ -40,14 +40,13 @@ export default class index extends Component {
 
   updateProfile(event) {
     event.preventDefault();
+    const id = this.state.user._id;
     const { name, email, phoneNumber } = this.state;
-    updateProfile({ name, email, phoneNumber });
+    updateProfile({ name, email, phoneNumber, id });
+    window.location.reload();
   }
 
   render() {
-    {
-      console.log('Looking for......', this.state);
-    }
     return (
       <div className="profile__div">
         {(this.state.loaded && (
