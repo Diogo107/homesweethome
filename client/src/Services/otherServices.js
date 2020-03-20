@@ -141,6 +141,18 @@ const getBuilding = async id => {
 };
 export { getBuilding };
 
+const firstBuilding = async id => {
+  console.log('aqui está o me id', id);
+  try {
+    const result = await instance.get(`/firstBuilding/${id}`);
+    const building = result.data.building;
+    return building;
+  } catch (error) {
+    throw error;
+  }
+};
+export { firstBuilding };
+
 const updateBuilding = async (list, id) => {
   console.log('Prepared to send', list, 'this is id', id);
   try {
@@ -188,15 +200,12 @@ const sendEmail = data => {
 export { sendEmail };
 
 const updateProfile = async data => {
-  console.log('Prepared to send', data);
   const id = data.id;
   const name = data.name;
   const email = data.email;
   const phoneNumber = data.phoneNumber;
   try {
     const building = await instance.post('/updateProfile', { name, email, phoneNumber, id });
-    console.log('on client', building);
-
     return building;
   } catch (error) {
     console.log(error);
