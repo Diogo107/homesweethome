@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
 //const cors = require('cors');
 import { post } from './../../../Services/otherServices';
+import TextField from '@material-ui/core/TextField';
 
 export default class index extends Component {
   constructor(props) {
@@ -61,15 +62,24 @@ export default class index extends Component {
         <h2>Create a New Post!</h2><br />
         <Form onSubmit={this.handleFormSubmission}>
           <Form.Group controlId="title">
-            <Form.Label>Title</Form.Label>
-            <Form.Control
+            <TextField
+              className="textfield"
+              id="outlined-basic" label="Title" variant="outlined"
               type="text"
-              placeholder="Title"
               name="title"
               onChange={this.handleInputChange}
             />
             <Form.Text className="text-muted"></Form.Text>
           </Form.Group>
+
+
+          <TextField
+          id="outlined-textarea"
+          label="Multiline Placeholder"
+          placeholder="Placeholder"
+          multiline
+          variant="outlined"
+        />
 
           <Form.Group controlId="description">
             <Form.Label>Description</Form.Label>

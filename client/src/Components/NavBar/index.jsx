@@ -32,12 +32,12 @@ export default class index extends Component {
       <div>
         {(!this.state.user && (
         
-            <Navbar bg="transparent" expand="lg">
+            <Navbar className="navbar" bg="transparent" expand="lg">
             <Navbar.Brand href="/"><img className="logo" src={logo}/></Navbar.Brand>
-            <Nav className="ml-auto">
-              <Nav.Link href="/sign-in">Sign In</Nav.Link>
-              <Nav.Link href="/sign-up">Sign Up</Nav.Link>
-            </Nav>
+            <div className="ml-auto links">
+              <a href="/sign-in" className="nav__link">Sign In</a>
+              <a href="/sign-up">Sign Up</a>
+            </div>
           </Navbar>
                 )) ||
           ''}
