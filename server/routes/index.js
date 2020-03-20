@@ -81,10 +81,25 @@ router.post('/building', uploader.single('picture'), (req, res, next) => {
 });
 
 router.get('/building', (req, res, next) => {
+  console.log('on the server.................', req.user);
   let building = req.user.buildingId;
-
   return (
     Building.findById(building)
+      // this id is the buiding to find it
+      .then(building => {
+        console.log('Searching for:', building);
+        res.json({ building });
+      })
+      .catch(error => {
+        next(error);
+      })
+  );
+});
+
+router.get('/firstBuilding/:id', (req, res, next) => {
+  const id = req.params.id;
+  return (
+    Building.findById(id)
       // this id is the buiding to find it
       .then(building => {
         console.log('Searching for:', building);

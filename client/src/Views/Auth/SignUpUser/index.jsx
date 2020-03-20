@@ -3,7 +3,7 @@ import { signUp } from '../../../Services/authentication';
 import { Form, Button } from 'react-bootstrap';
 import './style.scss';
 import { Redirect } from 'react-router-dom';
-import { getBuilding } from './../../../Services/otherServices';
+import { firstBuilding } from './../../../Services/otherServices';
 
 export default class index extends Component {
   constructor(props) {
@@ -14,6 +14,7 @@ export default class index extends Component {
       phoneNumber: '',
       code: '',
       admin: false,
+      slot: '',
       buildingId: this.props.match.params.buildingId,
       passwordHash: ''
     };
@@ -22,13 +23,19 @@ export default class index extends Component {
   }
 
   async componentDidMount() {
-    const building = await getBuilding(this.props.match.params.buildingId);
-    const email = building.data.building.numberOfApartments.filter(
+    const building = await firstBuilding(this.props.match.params.buildingId);
+    const email = building.numberOfApartments.filter(
       user => user._id == this.props.match.params.slotId
     );
+    const slot = building.numberOfApartments.filter(
+      user => user._id == this.props.match.params.slotId
+    );
+    const finalSlot = slot[0].slot;
+    console.log('This is a test.......', this.props.match.params.buildingId);
     const final = email[0].email;
     this.setState({
-      email: email[0].email
+      email: final,
+      slot: finalSlot
     });
   }
 
@@ -43,7 +50,7 @@ export default class index extends Component {
 
   async sendMessage(event) {
     event.preventDefault();
-    const { name, email, phoneNumber, code, admin, buildingId, passwordHash } = this.state;
+    const { name, email, phoneNumber, code, admin, slot, buildingId, passwordHash } = this.state;
     try {
       const user = await signUp({
         name,
@@ -51,11 +58,13 @@ export default class index extends Component {
         phoneNumber,
         code,
         admin,
+        slot,
         buildingId,
         passwordHash
       });
       this.props.updateUserInformation(user);
-      this.props.history.push('/');
+      await this.props.history.push('/');
+      //window.location.reload();
     } catch (error) {
       console.log(error);
     }

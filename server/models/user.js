@@ -21,6 +21,9 @@ const schema = new mongoose.Schema({
     type: Number,
     trim: true
   },
+  slot: {
+    type: String
+  },
   passwordHash: {
     type: String
   },
@@ -34,10 +37,10 @@ const schema = new mongoose.Schema({
   stripeCustomerId: {
     type: String
   },
-  payment : Boolean,
+  payment: Boolean,
   createdAt: Date,
-  paymentMethods : Boolean,
-  blocked : Boolean
+  paymentMethods: Boolean,
+  blocked: Boolean
 });
 
 module.exports = mongoose.model('User', schema);

@@ -5,7 +5,6 @@ import { Input, Label } from 'reactstrap';
 const AppartmentInputs = props => {
   return (
     <div>
-      <h1>This is the view of appartments</h1>
       {props.appartments.map(slot => (
         <Form onSubmit={props.sendInvite}>
           <Label>{slot.slot}</Label>

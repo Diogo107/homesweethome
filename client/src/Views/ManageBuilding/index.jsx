@@ -29,7 +29,7 @@ export default class index extends Component {
 
   async searchBuilding(id) {
     const building = await getBuilding(id);
-    return building
+    return building;
   }
 
   sendInvite(email) {
@@ -64,6 +64,7 @@ export default class index extends Component {
       <div>
         {(this.state.loaded && (
           <div>
+            <h1>Neighbors</h1>
             <Appartments
               appartments={this.state.appartments}
               sendInvite={this.sendInvite}
