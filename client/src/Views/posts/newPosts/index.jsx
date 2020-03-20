@@ -96,7 +96,7 @@ export default class index extends Component {
               placeholder="Insert the image"
               name="picture"
               onChange={this.handleFileInputChange}
-            />
+            />z
             <Form.Text className="text-muted"></Form.Text>
           </Form.Group>
           

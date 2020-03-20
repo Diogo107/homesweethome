@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+
 import './App.scss';
 import NavBar from './Components/NavBar';
 import { loadUserInformation } from './Services/authentication';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect, Link } from 'react-router-dom';
 import SignInView from './Views/Auth/SignIn';
 import SignUpView from './Views/Auth/SignUp';
 import SignUpUserView from './Views/Auth/SignUpUser';
@@ -24,17 +25,27 @@ import CreateAnnouncement from './Views/CreateAnnouncement';
 import NavUser from './Components/NavUser';
 import CreateDocument from './Views/Documents/CreateDocument';
 import PostsView from './Views/posts/viewPosts';
-
+import { Toast, Col, Button, Row } from 'react-bootstrap';
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       loaded: false,
       user: null,
-      cart: []
+      cart: [],
+      toggleShowB: true
     };
     this.updateUserInformation = this.updateUserInformation.bind(this);
     this.updateCart = this.updateCart.bind(this);
+    this.toast = this.toast.bind(this);
+    
+  }
+  toast() {
+    this.setState({
+      toggleShowB: false
+  });
+    
+
   }
 
   async componentDidMount() {
@@ -50,7 +61,7 @@ class App extends Component {
       user
     });
   }
-
+  
   updateCart(item) {
     this.setState(previousState => ({
       cart: [...previousState.cart, item]
@@ -166,7 +177,27 @@ class App extends Component {
                       render={props => <Dashboard user={this.state.user} {...props} />}
                     />
                   </Switch>
+                  {!this.state.user.paymentMethods && (<div>
+        <div  aria-live="polite"  aria-atomic="true"  style={{ position: 'relative', minHeight: '100px'}}>
+  {this.state.toggleShowB && (
+
+<Toast style={{
+  backgroundColor: `rgb(236, 110, 173)` ,
+      position: 'fixed',
+      bottom: 0,
+      right: 0, }} onClose={this.toast} show={this.toggleShowB}  redirect="/" animation={false}>
+          <Toast.Header style={{backgroundColor: `rgb(52, 148, 230)`, color:`rgb(236, 110, 173)`}}>
+                        <strong className="mr-auto">Home Sweet Home</strong>
+           
+          </Toast.Header>
+          <Link to="/first-payment"><Toast.Body>Looks like you haven't set a payment method yet!<br/> Set it now!</Toast.Body></Link>
+        </Toast>
+        
+     )}
+   </div>
+        </div>)}
                 </div>
+                
               </div>
             )) || (
               <>
@@ -204,6 +235,7 @@ class App extends Component {
             )}
           </BrowserRouter>
         )}
+       
       </div>
     );
   }

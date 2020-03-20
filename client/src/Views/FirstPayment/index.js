@@ -71,7 +71,7 @@ class FirstPayment extends Component {
  
 
 
-        <div className="sidebar__item">
+        <div>
         
         <PaymentMethodCreateView />
              

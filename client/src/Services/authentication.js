@@ -70,10 +70,10 @@ const editUserInformation = async data => {
 //       .catch(reject);
 //   });
 const updatePaymentStatus = async data => {
-  
+  console.log('this is the data I WONNNNT',data)
   const form = new FormData();
   form.append('paymentMethods', data )
-  const result = await instance.patch('/user-information', form);
+  const result = await instance.patch('/paymentMethods', form);
   const user = result.data.user;
   return user;
 };
