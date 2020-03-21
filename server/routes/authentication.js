@@ -89,14 +89,36 @@ router.get('/user-information', (req, res, next) => {
 });
 
 router.patch('/user-information', uploader.single('picture'), async (req, res, next) => {
-  const { buildingId, paymentMethods } = req.body;
-
+  const { buildingId} = req.body;
+  
   if (req.file) picture = req.file.url;
   try {
-    const user = await User.findByIdAndUpdate(req.user._id, {
-      paymentMethods,
-      buildingId
-    });
+    const user = await User.findByIdAndUpdate(
+      req.user._id,
+      {
+         buildingId
+        
+      },
+      
+    );
+    res.json({ user });
+  } catch (error) {
+    next(error);
+  }
+});
+router.patch('/paymentMethods', async (req, res, next) => {
+ 
+  const paymentMethods = true 
+  console.log('this is thew req.body', req.body)
+  
+  
+  try {
+    const user = await User.findByIdAndUpdate(
+      req.user._id,
+      { paymentMethods
+        },
+      
+    );
     res.json({ user });
   } catch (error) {
     next(error);
