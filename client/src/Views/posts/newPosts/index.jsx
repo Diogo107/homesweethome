@@ -92,7 +92,6 @@ export default class index extends Component {
 
           <Form.Group controlId="picture">
             
-            <Form.Label>Picture</Form.Label>
             <Form.Control 
               type="file"
               placeholder="Insert the image"
@@ -106,8 +105,8 @@ export default class index extends Component {
           
          
 
-          <Button variant="primary" type="submit">
-            Submit
+          <Button className="button__test" type="submit">
+            Submit!
           </Button>
         </Form>
       </div>

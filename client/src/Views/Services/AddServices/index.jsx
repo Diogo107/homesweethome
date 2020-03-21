@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
+import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
 //const cors = require('cors');
 import { services } from './../../../Services/otherServices';
 
@@ -54,8 +56,9 @@ export default class CreateServices extends Component {
         <h2>Add a Services!</h2><br />
         <Form onSubmit={this.handleFormSubmission}>
           <Form.Group controlId="name">
-            <Form.Label>Name</Form.Label>
-            <Form.Control
+            <TextField
+              className="textfield"
+              id="outlined-basic" label="Title" variant="outlined"
               type="text"
               placeholder="Title"
               name="name"
@@ -65,34 +68,47 @@ export default class CreateServices extends Component {
           </Form.Group>
 
           <Form.Group controlId="workField">
-            <Form.Label>workField</Form.Label>
-            <Form.Control
+            <TextField
+              className="textfield"
+              id="outlined-basic" label="workField" variant="outlined"            
               type="text"
               as="textarea"
-              rows="3"
+              multiline
+              rows="4"
               placeholder="Write here your description"
               name="workField"
               onChange={this.handleInputChange}
             />
           </Form.Group>
+        
           <Form.Group controlId="price">
-            <Form.Label>Price</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Price for hour"
+            <TextField
+              className="textfield"
+              id="outlined-basic" label="Price for Hour" variant="outlined"
+              type="number"
               name="price"
+                    InputProps={{
+                      startAdornment: <InputAdornment position="start">€</InputAdornment>,
+                    }}
               onChange={this.handleInputChange}
             />
           </Form.Group>
           <Form.Group controlId="phoneNumber">
-            <Form.Label>Phone Number</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Phone Number"
+          
+            <TextField
+              className="textfield"
+              id="outlined-basic" label="Phone Number" variant="outlined"
+              type="number"
+              
+              InputProps={{
+                startAdornment: <InputAdornment position="start">+351</InputAdornment>,
+              }}
               name="phoneNumber"
               onChange={this.handleInputChange}
             />
           </Form.Group>
+
+          
           <Button variant="primary" type="submit">
             Submit
           </Button>

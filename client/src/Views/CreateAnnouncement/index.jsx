@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
 //const cors = require('cors');
 import { announcement } from './../../Services/otherServices';
+import TextField from '@material-ui/core/TextField';
 import '../../App.scss'
 
 export default class CreateAnnouncement extends Component {
@@ -59,13 +60,15 @@ export default class CreateAnnouncement extends Component {
   render() {
     return (
       <div className="form__dashboard">
-        <h2>Create a New Announcement!</h2>
+        <h2>Create a New Announcement!</h2><br />
         <Form onSubmit={this.handleFormSubmission}>
           <Form.Group controlId="title">
-            <Form.Label>Title</Form.Label>
-            <Form.Control
+            
+            <TextField
+              className="textfield"
+              id="outlined-basic" label="Title Announcement" variant="outlined"
               type="text"
-              placeholder="Title"
+              placeholder="Type your Announcement..."
               name="title"
               onChange={this.handleInputChange}
             />
@@ -73,19 +76,21 @@ export default class CreateAnnouncement extends Component {
           </Form.Group>
 
           <Form.Group controlId="description">
-            <Form.Label>Description</Form.Label>
-            <Form.Control
+           
+            <TextField
+              className="textfield"
+              id="outlined-textarea" label="Description" variant="outlined"
               type="text"
               as="textarea"
-              rows="3"
-              placeholder="Write here your description"
+              multiline
+              rows="4"
+              placeholder="Write here your description..."
               name="description"
               onChange={this.handleInputChange}
             />
           </Form.Group>
 
           <Form.Group controlId="picture">
-            <Form.Label>Picture</Form.Label>
             <Form.Control
               type="file"
               placeholder="Insert the image"
@@ -95,8 +100,8 @@ export default class CreateAnnouncement extends Component {
             <Form.Text className="text-muted"></Form.Text>
           </Form.Group>
 
-          <Button variant="primary" type="submit">
-            Submit
+          <Button className="button__test" type="submit">
+            Submit!
           </Button>
         </Form>
       </div>

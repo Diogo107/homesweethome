@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
 //const cors = require('cors');
 import { doc as document } from './../../../Services/otherServices';
+import TextField from '@material-ui/core/TextField';
 
 
 export default class CreateDocument extends Component {
@@ -63,10 +64,12 @@ export default class CreateDocument extends Component {
         <h2>Create a New Document!</h2><br />
         <Form onSubmit={this.handleFormSubmission}>
           <Form.Group controlId="title">
-            <Form.Label>Title</Form.Label>
-            <Form.Control
+            
+            <TextField
+              className="textfield"
+              id="outlined-basic" label="Document Title" variant="outlined"
               type="text"
-              placeholder="Title"
+              placeholder="Title..."
               name="title"
               onChange={this.handleInputChange}
             />
@@ -74,19 +77,22 @@ export default class CreateDocument extends Component {
           </Form.Group>
 
           <Form.Group controlId="description">
-            <Form.Label>Description</Form.Label>
-            <Form.Control
+            
+            <TextField
+              className="textfield"
+              id="outlined-basic" label="Description" variant="outlined"
               type="text"
               as="textarea"
-              rows="3"
-              placeholder="Write here your description"
+              multiline
+              rows="4"
+              placeholder="Write here your description..."
               name="description"
               onChange={this.handleInputChange}
             />
           </Form.Group>
 
           <Form.Group controlId="doc">
-            <Form.Label>Document</Form.Label>
+            
             <Form.Control
               type="file"
               placeholder="Insert the Document"

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
 //const cors = require('cors');
 import { post } from './../../Services/otherServices';
+import TextField from '@material-ui/core/TextField';
 
 export default class index extends Component {
   constructor(props) {
@@ -64,8 +65,10 @@ export default class index extends Component {
         <h2>Insert a New Bill!</h2><br />
         <Form onSubmit={this.handleFormSubmission}>
           <Form.Group controlId="title">
-            <Form.Label>Post Bill</Form.Label>
-            <Form.Control
+            
+            <TextField
+             className="textfield"
+             id="outlined-basic" label="Kind Of Bill" variant="outlined"
               type="text"
               placeholder="Title"
               name="title"
@@ -75,11 +78,14 @@ export default class index extends Component {
           </Form.Group>
 
           <Form.Group controlId="description">
-            <Form.Label>Description</Form.Label>
-            <Form.Control
+            <TextField
+              className="textfield"
+              id="outlined-textarea" label="Title" variant="outlined"
+              label="Description"
+              multiline
+              rows="4"
               type="text"
               as="textarea"
-              rows="3"
               placeholder="Write here your description"
               name="description"
               onChange={this.handleInputChange}
@@ -87,7 +93,7 @@ export default class index extends Component {
           </Form.Group>
 
           <Form.Group controlId="picture">
-            <Form.Label>Picture</Form.Label>
+    
             <Form.Control
               type="file"
               placeholder="Insert the image"
@@ -97,8 +103,8 @@ export default class index extends Component {
             <Form.Text className="text-muted"></Form.Text>
           </Form.Group>
 
-          <Button variant="primary" type="submit">
-            Submit
+          <Button className="button__test" type="submit">
+            Submit!
           </Button>
         </Form>
       </div>
