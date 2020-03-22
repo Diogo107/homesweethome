@@ -3,6 +3,7 @@ import { Form, Button } from 'react-bootstrap';
 //const cors = require('cors');
 import { announcement } from './../../Services/otherServices';
 import TextField from '@material-ui/core/TextField';
+import iconAnnouncement from '../../asset/images/announcement.png'
 import '../../App.scss'
 
 export default class CreateAnnouncement extends Component {
@@ -60,13 +61,17 @@ export default class CreateAnnouncement extends Component {
   render() {
     return (
       <div className="form__dashboard">
-        <h2>Create a New Announcement!</h2><br />
+         <img className="new__icon" src={iconAnnouncement} />
+       <div className="form__heading">
+        <h4>Create a New Announcement!</h4>
+        <small>It will appear in the dashboard for everyone!</small>
+       </div>
         <Form onSubmit={this.handleFormSubmission}>
           <Form.Group controlId="title">
             
             <TextField
               className="textfield"
-              id="outlined-basic" label="Title Announcement" variant="outlined"
+              id="outlined-basic" label="Announcement Title " variant="outlined"
               type="text"
               placeholder="Type your Announcement..."
               name="title"

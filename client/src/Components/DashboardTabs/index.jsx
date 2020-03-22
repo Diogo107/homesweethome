@@ -8,7 +8,6 @@ import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 import Announcements from '../../Views/ViewAnnoucements';
 import Posts from '../../Views/posts/viewPosts';
-import { grey } from '@material-ui/core/colors';
 import DocsView from '../../Views/Documents/ViewDocuments';
 
 

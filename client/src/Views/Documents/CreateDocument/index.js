@@ -3,6 +3,8 @@ import { Form, Button } from 'react-bootstrap';
 //const cors = require('cors');
 import { doc as document } from './../../../Services/otherServices';
 import TextField from '@material-ui/core/TextField';
+import iconDocument from '../../../asset/images/document.png'
+import '../../../App.scss'
 
 
 export default class CreateDocument extends Component {
@@ -61,7 +63,11 @@ export default class CreateDocument extends Component {
   render() {
     return (
       <div className="form__dashboard">
-        <h2>Create a New Document!</h2><br />
+           <img className="new__icon" src={iconDocument} />
+       <div className="form__heading">
+        <h4>Create a New Document!</h4>
+        <small>It will appear in the dashboard for everyone!</small>
+       </div>
         <Form onSubmit={this.handleFormSubmission}>
           <Form.Group controlId="title">
             

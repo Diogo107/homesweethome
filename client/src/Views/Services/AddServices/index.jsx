@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
+import iconService from '../../../asset/images/service.png'
 //const cors = require('cors');
 import { services } from './../../../Services/otherServices';
+import '../../../App.scss'
 
 export default class CreateServices extends Component {
   constructor(props) {
@@ -53,7 +55,11 @@ export default class CreateServices extends Component {
   render() {
     return (
       <div className="form__dashboard">
-        <h2>Add a Services!</h2><br />
+         <img className="new__icon" src={iconService} />
+       <div className="form__heading">
+        <h4>Create a New Service</h4>
+        <small>It will appear in the dashboard for everyone!</small>
+       </div>
         <Form onSubmit={this.handleFormSubmission}>
           <Form.Group controlId="name">
             <TextField
