@@ -34,11 +34,12 @@ class SingleProduct extends Component{
   render(){
     console.log('this is the id', this.props)
   return (
-    <div>
-      
-        <h1>This is the plan for {this.props.name}</h1>
-  <h4>Just for the humble price of {formatPrice(this.props.price)} €</h4>
-  <button onClick={this.handleCartAddition}>Subscribe this</button>
+    <div className='plan__container'>
+      <div className='plan__text'>
+        <h1>{this.props.name}</h1>
+  <h4>Just for {formatPrice(this.props.price)} €</h4>
+  <button className="button__plan" onClick={this.handleCartAddition}>Subscribe this</button>
+  </div>
         </div>
         
       

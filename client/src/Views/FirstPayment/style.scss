@@ -1,0 +1,50 @@
+// .plan__list{
+//     display: flex;
+//     flex-direction: row;
+//     width: 100%;
+//     flex-grow: 1;
+//     flex-shrink: 2;
+// }
+
+.plan__list {
+    @media (min-width: 30em) {
+      display: flex;
+      flex-wrap: wrap;
+          }
+  }
+
+  .creditCard{
+    @media (min-width: 30em) {
+      display: flex;
+      justify-content: center;
+          }
+    
+    }
+
+    .button__save{
+      color: #fff !important;
+      text-transform: uppercase;
+      text-decoration: none;
+      background: #3494E6;
+      padding: 20px;
+      display: inline-block;
+      border: none;
+      border-radius: 20px;
+      transition: all 0.4s ease 0s;
+      margin-bottom: 10px;
+  }
+  
+  .button__save:hover {
+    background: #EC6EAD;
+    text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.5);
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.30);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.30);
+    transition: all 0.4s ease 0s;
+    }
+    .button__save:focus {
+      background: #EC6EAD;
+      text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.5);
+      -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.30);
+      -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.30);
+      transition: all 0.4s ease 0s;
+      }

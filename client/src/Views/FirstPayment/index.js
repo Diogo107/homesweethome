@@ -62,7 +62,7 @@ class FirstPayment extends Component {
       console.log('now', this.props.updateCart)
     return (
       <div>
-       <div>
+       <div className="plan__list">
        {this.state.plans.map(plan => (
            
              <SingleProduct updateCart={this.updateCart} key={plan._id} {...plan} />))} 
@@ -71,14 +71,14 @@ class FirstPayment extends Component {
  
 
 
-        <div>
+        <div className="creditCard" >
         
         <PaymentMethodCreateView />
              
         </div>
 
       
-        <button onClick={this.handlePurchase}>Save this options</button>
+        <button className="button__save" onClick={this.handlePurchase}>Save this options</button>
       </div>
     );
   }
