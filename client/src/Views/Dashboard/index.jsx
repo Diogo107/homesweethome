@@ -6,6 +6,7 @@ import DocsView from './../Documents/ViewDocuments';
 import NeighborsView from './../../Components/DashboardNeighbors';
 import FullWidthTabs from '../../Components/DashboardMobileTabs';
 import CenteredTabs from '../../Components/DashboardTabs'
+import './style.scss'
 
 export default class index extends Component {
   constructor(props) {
@@ -26,9 +27,14 @@ export default class index extends Component {
 
   render() {
     return (
-  
-        <CenteredTabs />
-        
+<div>
+  <div className="centeredtabs">
+    <CenteredTabs />
+    </div>
+    <div  className="fullwidthtabs">
+    <FullWidthTabs />
+    </div>
+     </div>   
   
     );
   }

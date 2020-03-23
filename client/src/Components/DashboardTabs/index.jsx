@@ -8,7 +8,6 @@ import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 import Announcements from '../../Views/ViewAnnoucements';
 import Posts from '../../Views/posts/viewPosts';
-import { grey } from '@material-ui/core/colors';
 import DocsView from '../../Views/Documents/ViewDocuments';
 
 
@@ -65,7 +64,7 @@ export default function SimpleTabs() {
         centered>
           <Tab label="Announcements" {...a11yProps(0)} />
           <Tab label="Posts" {...a11yProps(1)} />
-          <Tab label="Services" {...a11yProps(2)} />
+          <Tab label="Docs" {...a11yProps(2)} />
         </Tabs>
      
       <TabPanel value={value} index={0}>

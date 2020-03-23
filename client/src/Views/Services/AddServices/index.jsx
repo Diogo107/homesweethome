@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
+import iconService from '../../../asset/images/service.png'
 //const cors = require('cors');
 import { services } from './../../../Services/otherServices';
+import '../../../App.scss'
 
 export default class CreateServices extends Component {
   constructor(props) {
@@ -53,14 +55,18 @@ export default class CreateServices extends Component {
   render() {
     return (
       <div className="form__dashboard">
-        <h2>Add a Services!</h2><br />
+         <img className="new__icon" src={iconService} />
+       <div className="form__heading">
+        <h4>Create a New Service</h4>
+        <small>It will appear in the dashboard for everyone!</small>
+       </div>
         <Form onSubmit={this.handleFormSubmission}>
           <Form.Group controlId="name">
             <TextField
               className="textfield"
-              id="outlined-basic" label="Title" variant="outlined"
+              id="outlined-basic" label="Name" variant="outlined"
               type="text"
-              placeholder="Title"
+              placeholder="Name"
               name="name"
               onChange={this.handleInputChange}
             />
@@ -70,12 +76,9 @@ export default class CreateServices extends Component {
           <Form.Group controlId="workField">
             <TextField
               className="textfield"
-              id="outlined-basic" label="workField" variant="outlined"            
+              id="outlined-basic" label="Work Field" variant="outlined"            
               type="text"
-              as="textarea"
-              multiline
-              rows="4"
-              placeholder="Write here your description"
+              placeholder="Work Field"
               name="workField"
               onChange={this.handleInputChange}
             />
@@ -85,7 +88,7 @@ export default class CreateServices extends Component {
             <TextField
               className="textfield"
               id="outlined-basic" label="Price for Hour" variant="outlined"
-              type="number"
+              type="text"
               name="price"
                     InputProps={{
                       startAdornment: <InputAdornment position="start">€</InputAdornment>,
@@ -98,8 +101,7 @@ export default class CreateServices extends Component {
             <TextField
               className="textfield"
               id="outlined-basic" label="Phone Number" variant="outlined"
-              type="number"
-              
+              type="text"
               InputProps={{
                 startAdornment: <InputAdornment position="start">+351</InputAdornment>,
               }}

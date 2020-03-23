@@ -3,6 +3,8 @@ import { Form, Button } from 'react-bootstrap';
 //const cors = require('cors');
 import { post } from './../../Services/otherServices';
 import TextField from '@material-ui/core/TextField';
+import iconBilling from '../../asset/images/billing.png'
+import '../../App.scss'
 
 export default class index extends Component {
   constructor(props) {
@@ -62,7 +64,11 @@ export default class index extends Component {
     }
     return (
       <div className="form__dashboard">
-        <h2>Insert a New Bill!</h2><br />
+          <img className="new__icon" src={iconBilling} />
+       <div className="form__heading">
+        <h4>Insert a New Bill</h4>
+        <small>It will appear in the dashboard for everyone!</small>
+       </div>
         <Form onSubmit={this.handleFormSubmission}>
           <Form.Group controlId="title">
             
