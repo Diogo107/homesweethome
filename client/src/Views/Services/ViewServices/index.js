@@ -47,7 +47,7 @@ get filteredServices(){
 
 
   render() {
-    console.log('services',this.state.services)
+   
     return (
       <div>
         <form>

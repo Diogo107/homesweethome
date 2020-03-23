@@ -49,7 +49,7 @@ module.exports = router;
 router.get('/annoucement', (req, res, next) => {
   let buildingId = req.user.buildingId;
   Annoucement.find({ buildingId: buildingId })
-    .sort({ timestamp: 'descending' })
+    .sort({ timestamp: 'ascending' })
     .then(annoucements => {
       res.json({ annoucements });
       console.log({ annoucements }, '123');
@@ -158,7 +158,7 @@ router.post('/doc', uploader.single('doc'), (req, res, next) => {
 router.get('/doc', (req, res, next) => {
   let buildingId = req.user.buildingId;
   Doc.find({ buildingId: buildingId })
-    .sort({ timestamp: 'descending' })
+    .sort({ timestamp: 'ascending' })
     .then(doc => {
       res.json({ doc });
     })
@@ -196,7 +196,7 @@ router.post('/post', uploader.single('picture'), (req, res, next) => {
 router.get('/post', (req, res, next) => {
   let buildingId = req.user.buildingId;
   Post.find({ buildingId: buildingId })
-    .sort({ timestamp: 'descending' })
+    .sort({ timestamp: 'ascending' })
     .then(posts => {
       res.json({ posts });
     })
@@ -226,7 +226,7 @@ router.post('/services', (req, res, next) => {
 router.get('/services', (req, res, next) => {
   let buildingId = req.user.buildingId;
   Services.find({ buildingId: buildingId })
-    .sort({ timestamp: 'descending' })
+    .sort({ timestamp: 'ascending' })
     .then(services => {
       res.json({ services });
     })
