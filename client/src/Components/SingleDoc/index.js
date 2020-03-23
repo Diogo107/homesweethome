@@ -1,21 +1,21 @@
 import React from 'react';
+import './style.scss'
 
 
 
-import './style.scss';
 
 const SingleDoc = props => {
   return (
-    <div>
-      
-  <h1>{props.title}</h1>
-  <h4>{props.description}</h4>
-  <figure className="doc">
-        <img src={props.doc} alt={props.title} />
-      </figure>
-  <h5>{props.creator}</h5>
-  <h5>{props.timestamp}</h5>
+    <div className="announcement__container">
+      <div>
+        <img className="annoucement__image" src={props.doc} alt={props.title} />
       </div>
+      <div className="announcement__text">
+        <strong>{props.title}</strong>
+        <small>{props.description}</small>
+        <small>{props.creator}</small>
+      </div>
+    </div>
         
       
     );

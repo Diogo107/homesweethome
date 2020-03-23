@@ -67,9 +67,7 @@ export default class index extends Component {
             <div className="sidebar__item">
               <Link to="/create-services">Create Service</Link>
             </div>
-            <div className="sidebar__item">
-              <Link to="/first-payment">Payment</Link>
-            </div>
+          
           </div>
         )}
 

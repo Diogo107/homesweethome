@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import { push as Menu } from 'react-burger-menu';
 import { Form, Button } from 'react-bootstrap';
 import logo from '../../asset/images/logo.png';
+import SwipeableTemporaryDrawer from '../BurgerTest'
+import Avatar from '@material-ui/core/Avatar';
 
 export default class index extends Component {
   constructor(props) {
@@ -73,7 +75,7 @@ export default class index extends Component {
       <div>
         {(this.state.user && (
           <div className="nav__user">
-  
+  {/*
        <Menu width={ '100%'} className="burger__menu" {...this.props}>
         <div>
           <img className="sidebar__logo" src={logo} alt="logo" />
@@ -116,7 +118,10 @@ export default class index extends Component {
           </Form>
         </div>
       </Menu>
-      
+  */}
+    <div className="button__menu__test">   
+    <SwipeableTemporaryDrawer />
+    </div>
             <Navbar.Brand className="navuser__path" href="/">
               {this.changeInput(this.props.history.location.pathname)}
             </Navbar.Brand>
@@ -124,7 +129,8 @@ export default class index extends Component {
               <img className="mobile__menu__logo" src={logo} alt="logo" />
              </div>
             <Nav className="ml-auto mobileuser">
-              <img className="small__profile__picture" src={this.state.user.picture} style={{ width: '50px' }} alt="small-profile-picture" />
+             
+              <Avatar alt="Remy Sharp" src={this.state.user.picture} />
               <Nav.Link className="mobilename" href="/profile">{this.state.user.name}</Nav.Link>
             </Nav>
           </div>

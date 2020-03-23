@@ -87,6 +87,7 @@ class App extends Component {
                     exact
                     render={props => <NavUser user={this.state.user} {...props} />}
                   />
+                  <div className="padding__test">
                   <Switch>
                     <Route
                       path="/"
@@ -174,12 +175,13 @@ class App extends Component {
                       render={props => <Dashboard user={this.state.user} {...props} />}
                     />
                   </Switch>
+                  </div>
                   {!this.state.user.paymentMethods && (
                     <div>
                       <div
                         aria-live="polite"
                         aria-atomic="true"
-                        style={{ position: 'relative', minHeight: '100px' }}
+                        style={{ position: 'fixed', minHeight: '100px' }}
                       >
                         {this.state.toggleShowB && (
                           <Toast

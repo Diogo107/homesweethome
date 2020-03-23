@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SingleService from './../../../Components/SingleService';
 import './style.scss';
-
+import TextField from '@material-ui/core/TextField';
 import { listOfservices } from './../../../Services/otherServices';
 
 class ServicesView extends Component {
@@ -49,11 +49,12 @@ get filteredServices(){
   render() {
    
     return (
-      <div>
+      <div className="search__bar">
+        <h5>Search for a Service</h5>
         <form>
-          <input type='search' name='query' value={this.state.query} onChange={this.handleInputChange} placeholder="Search" />
+        <TextField variant="outlined" type='search' name='query' value={this.state.query} onChange={this.handleInputChange} placeholder="Search" />
         </form>
-        <div>
+        <div className="services__list">
           {this.filteredServices.map(service => (
             <SingleService key={service._id} {...service} />
           ))}
