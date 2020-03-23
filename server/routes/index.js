@@ -7,6 +7,7 @@ const uploader = require('./../multer-configure.js');
 const Annoucement = require('./../models/announcement');
 const Building = require('./../models/building');
 const Post = require('./../models/post');
+const Bill = require('./../models/bill');
 const Doc = require('./../models/doc');
 const Calendar = require('../models/calendar.js');
 const Services = require('./../models/services');
@@ -24,7 +25,7 @@ router.post('/annoucement', uploader.single('picture'), (req, res, next) => {
   const { title, description } = req.body;
   let url;
   let buildingId = req.user.buildingId;
-  const creatorName = req.user.name
+  const creatorName = req.user.name;
   if (req.file) {
     url = req.file.url;
   }
@@ -173,7 +174,7 @@ router.post('/post', uploader.single('picture'), (req, res, next) => {
   console.log('user', req.user);
   let url;
   let buildingId = req.user.buildingId;
-  const creatorName = req.user.name
+  const creatorName = req.user.name;
   if (req.file) {
     url = req.file.url;
   }
@@ -196,6 +197,38 @@ router.post('/post', uploader.single('picture'), (req, res, next) => {
 router.get('/post', (req, res, next) => {
   let buildingId = req.user.buildingId;
   Post.find({ buildingId: buildingId })
+    .sort({ timestamp: 'descending' })
+    .then(posts => {
+      res.json({ posts });
+    })
+    .catch(error => {
+      next(error);
+    });
+});
+
+router.post('/bill', uploader.single('picture'), (req, res, next) => {
+  console.log('this is the server', req.body);
+  const { buildingId, id, type, purpose, amount, month, year, description, file } = req.body;
+  console.log('body', req.body);
+  console.log('user', req.user);
+  let url;
+  const creatorName = req.user.name;
+  if (req.file) {
+    url = req.file.url;
+  }
+
+  Bill.create({ buildingId, id, type, purpose, amount, month, year, description, file })
+    .then(post => {
+      res.json({ post });
+    })
+    .catch(error => {
+      next(error);
+    });
+});
+
+router.get('/bill', (req, res, next) => {
+  let buildingId = req.user.buildingId;
+  Bill.find({ buildingId: buildingId })
     .sort({ timestamp: 'descending' })
     .then(posts => {
       res.json({ posts });
