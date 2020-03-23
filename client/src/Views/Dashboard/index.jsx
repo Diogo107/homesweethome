@@ -6,7 +6,7 @@ import DocsView from './../Documents/ViewDocuments';
 import NeighborsView from './../../Components/DashboardNeighbors';
 import FullWidthTabs from '../../Components/DashboardMobileTabs';
 import CenteredTabs from '../../Components/DashboardTabs';
-import MoneyTrack from '../../Components/MoneyTrack';
+
 import './style.scss';
 
 export default class index extends Component {
@@ -35,7 +35,6 @@ export default class index extends Component {
         <div className="fullwidthtabs">
           <FullWidthTabs />
         </div>
-        <MoneyTrack />
       </div>
     );
   }

@@ -20,9 +20,10 @@ class SingleDoc extends Component {
 console.log('singleview prosp',this.props)
   
   return (
-    <div>
+    <div className="announcement__container">
+      <div>
       <Link to={{
-  pathname: '/pdfview',
+        pathname: '/pdfview',
   state: {
     title:this.props.title,
     bankAccountName:this.props.bankAccountName,
@@ -33,12 +34,15 @@ console.log('singleview prosp',this.props)
     amount:this.props.amount
 
   }
-}}> <img className="new__icon" src={iconBilling} /></Link>
-  <h1>{this.props.title}</h1>
-  <h5>{this.props.creatorName}</h5>
-  <h5>{this.props.timestamp}</h5>
-  
+}}>     <img className="annoucement__image" src={iconBilling} alt={this.props.title} /></Link>
       </div>
+      <div className="announcement__text">
+        <strong>{this.props.title}</strong>
+        <small>{this.props.creatorName}</small>
+        <small>{this.props.timestamp}</small>
+ 
+      </div>
+    </div>
         
       
     );

@@ -3,6 +3,8 @@ import { Form, Button } from 'react-bootstrap';
 import './style.scss';
 import { preventContextMenu } from '@fullcalendar/core';
 import { updateProfile } from './../../Services/otherServices';
+import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 export default class index extends Component {
   constructor(props) {
@@ -59,12 +61,16 @@ export default class index extends Component {
         {this.state.loaded && this.state.edit && (
           <div>
             <img className="profile__picture" src={this.state.user.picture} alt="profile picture" />
-            <h3>Name</h3>
+            <div className="profile__details">
+            <h5>Name</h5>
             <p>{this.state.name}</p>
-            <h3>Email</h3>
+            <h5>Email</h5>
             <p>{this.state.email}</p>
-            <h3>Phone Number</h3>
+            <h5>Phone Number</h5>
             <p>{this.state.phoneNumber}</p>
+            </div>
+            <div><Button onClick={this.edit} className="button__test">Edit Profile</Button></div>
+            <div><Button href="/first-payment" className="button__test">Payment</Button></div>
           </div>
         )}
         {(this.state.loaded && !this.state.edit && (
@@ -77,8 +83,9 @@ export default class index extends Component {
               />
             </Form.Group>
             <Form.Group controlId="formBasicEmail">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
+              <TextField
+                className="textfield"
+                id="outlined-basic" label="Name" variant="outlined"
                 type="text"
                 name="name"
                 value={this.state.name}
@@ -88,8 +95,10 @@ export default class index extends Component {
               <Form.Text className="text-muted"></Form.Text>
             </Form.Group>
             <Form.Group controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
+             
+              <TextField
+                className="textfield"
+                id="outlined-basic" label="Email" variant="outlined"
                 type="email"
                 placeholder="Enter email"
                 required
@@ -100,21 +109,26 @@ export default class index extends Component {
               <Form.Text className="text-muted"></Form.Text>
             </Form.Group>
             <Form.Group controlId="formBasicEmail">
-              <Form.Label>Phone Number</Form.Label>
-              <Form.Control
+              
+              <TextField
+                className="textfield"
+                id="outlined-basic" label="Phone Number" variant="outlined"
                 type="text"
                 name="phoneNumber"
                 value={this.state.phoneNumber}
                 placeholder="Enter phone number"
+                InputProps={{
+                  startAdornment: <InputAdornment position="start">+351</InputAdornment>,
+                }}
                 onChange={this.handleInputChange}
               />
               <Form.Text className="text-muted"></Form.Text>
             </Form.Group>
-            <Button type="submit">Update</Button>
+            <Button className="button__test" type="submit">Update</Button>
           </Form>
         )) ||
           ''}
-        <Button onClick={this.edit}>Edit Profile</Button>
+        
       </div>
     );
   }

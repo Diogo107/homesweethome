@@ -52,7 +52,7 @@ export default class index extends Component {
         description,
         file
       });
-      //this.props.history.push('/');
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }

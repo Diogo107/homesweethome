@@ -69,6 +69,17 @@ const getBill = async date => {
 };
 export { getBill };
 
+const eraseBill = async id => {
+  try {
+    const result = await instance.post('/eraseBill', { id });
+    const posts = result.data.posts;
+    return posts;
+  } catch (error) {
+    throw error;
+  }
+};
+export { eraseBill };
+
 const announcement = async data => {
   const form = new FormData();
   form.append('title', data.title);

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getBill } from './../../Services/otherServices';
+import { getBill, eraseBill } from '../../Services/otherServices';
 
 export default class index extends Component {
   constructor(props) {
@@ -8,6 +8,7 @@ export default class index extends Component {
       bills: []
     };
     this.fetchData = this.fetchData.bind(this);
+    this.erase = this.erase.bind(this);
   }
 
   componentDidMount() {
@@ -22,14 +23,30 @@ export default class index extends Component {
     console.log('this is bills', bills);
   }
 
+  async erase(event) {
+    event.preventDefault();
+    const id = event.target[0].id;
+    await eraseBill(id);
+    this.fetchData();
+  }
+
   render() {
+    {
+      console.log('This is the money', this.props);
+    }
     return (
       <div>
         {this.state.bills.map(bill => (
           <div>
             {console.log('bill', bill)}
-            <h1>{bill.purpose}</h1>
-            <h1>{bill.amount}</h1>
+            <h3>{bill.purpose}</h3>
+            <h3>{bill.amount}€</h3>
+            <p>{bill.description}</p>
+            {this.props.user.admin && (
+              <form onSubmit={this.erase}>
+                <button id={bill._id}>Erase</button>
+              </form>
+            )}
           </div>
         ))}{' '}
       </div>

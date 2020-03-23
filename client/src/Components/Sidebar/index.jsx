@@ -34,22 +34,25 @@ export default class index extends Component {
         <div>
           <img className="sidebar__logo" src={logo} alt="logo" />
         </div>
-          <div className="sidebar__item">
-            <Link to="/">Dashboard</Link>
-          </div>
-          <div className="sidebar__item">
-            <Link to="/profile">Profile</Link>
-          </div>
-          <div className="sidebar__item">
-            <Link to="/post">New Post</Link>
-          </div>
-          <div className="sidebar__item">
-            <Link to="/schedule">Schedule</Link>
-          </div>
-          <div className="sidebar__item">
-            <Link to="/services">Services</Link>
-          </div>
-        
+        <div className="sidebar__item">
+          <Link to="/">Dashboard</Link>
+        </div>
+        <div className="sidebar__item">
+          <Link to="/finance">Finance</Link>
+        </div>
+        <div className="sidebar__item">
+          <Link to="/profile">Profile</Link>
+        </div>
+        <div className="sidebar__item">
+          <Link to="/post">New Post</Link>
+        </div>
+        <div className="sidebar__item">
+          <Link to="/schedule">Schedule</Link>
+        </div>
+        <div className="sidebar__item">
+          <Link to="/services">Services</Link>
+        </div>
+
         {this.props.user.admin && (
           <div className="admin__dashboard">
             <div className="sidebar__item">
@@ -67,9 +70,7 @@ export default class index extends Component {
             <div className="sidebar__item">
               <Link to="/create-services">Create Service</Link>
             </div>
-            <div className="sidebar__item">
-              <Link to="/first-payment">Payment</Link>
-            </div>
+          
           </div>
         )}
 
