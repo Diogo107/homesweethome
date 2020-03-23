@@ -24,6 +24,7 @@ router.post('/annoucement', uploader.single('picture'), (req, res, next) => {
   const { title, description } = req.body;
   let url;
   let buildingId = req.user.buildingId;
+  const creatorName = req.user.name
   if (req.file) {
     url = req.file.url;
   }
@@ -33,7 +34,8 @@ router.post('/annoucement', uploader.single('picture'), (req, res, next) => {
     description,
     picture: url,
     creator: req.user._id,
-    buildingId
+    buildingId,
+    creatorName
   })
     .then(annoucement => {
       res.json({ annoucement });
@@ -47,7 +49,7 @@ module.exports = router;
 router.get('/annoucement', (req, res, next) => {
   let buildingId = req.user.buildingId;
   Annoucement.find({ buildingId: buildingId })
-    .sort({ timestamp: 'descending' })
+    .sort({ timestamp: 'ascending' })
     .then(annoucements => {
       res.json({ annoucements });
       console.log({ annoucements }, '123');
@@ -156,7 +158,7 @@ router.post('/doc', uploader.single('doc'), (req, res, next) => {
 router.get('/doc', (req, res, next) => {
   let buildingId = req.user.buildingId;
   Doc.find({ buildingId: buildingId })
-    .sort({ timestamp: 'descending' })
+    .sort({ timestamp: 'ascending' })
     .then(doc => {
       res.json({ doc });
     })
@@ -171,7 +173,7 @@ router.post('/post', uploader.single('picture'), (req, res, next) => {
   console.log('user', req.user);
   let url;
   let buildingId = req.user.buildingId;
-
+  const creatorName = req.user.name
   if (req.file) {
     url = req.file.url;
   }
@@ -180,7 +182,8 @@ router.post('/post', uploader.single('picture'), (req, res, next) => {
     title,
     description,
     picture: url,
-    buildingId
+    buildingId,
+    creatorName
   })
     .then(post => {
       res.json({ post });
@@ -193,7 +196,7 @@ router.post('/post', uploader.single('picture'), (req, res, next) => {
 router.get('/post', (req, res, next) => {
   let buildingId = req.user.buildingId;
   Post.find({ buildingId: buildingId })
-    .sort({ timestamp: 'descending' })
+    .sort({ timestamp: 'ascending' })
     .then(posts => {
       res.json({ posts });
     })
@@ -223,7 +226,7 @@ router.post('/services', (req, res, next) => {
 router.get('/services', (req, res, next) => {
   let buildingId = req.user.buildingId;
   Services.find({ buildingId: buildingId })
-    .sort({ timestamp: 'descending' })
+    .sort({ timestamp: 'ascending' })
     .then(services => {
       res.json({ services });
     })

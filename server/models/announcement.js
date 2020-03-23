@@ -23,6 +23,9 @@ const schema = new mongoose.Schema(
     },
     buildingId: {
       type: String
+    },
+    creatorName:{
+      type: String
     }
   },
   {
