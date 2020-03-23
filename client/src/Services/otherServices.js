@@ -41,6 +41,34 @@ const list = async () => {
 };
 export { list };
 
+const Bill = async data => {
+  console.log('this is the services', data);
+  const form = new FormData();
+  form.append('buildingId', data.buildingId);
+  form.append('id', data.id);
+  form.append('type', data.type);
+  form.append('purpose', data.purpose);
+  form.append('amount', data.amount);
+  form.append('month', data.month);
+  form.append('year', data.year);
+  form.append('description', data.description);
+  form.append('file', data.file);
+  const result = await instance.post('/bill', form);
+  //return result;
+};
+export { Bill };
+
+const getBill = async date => {
+  try {
+    const result = await instance.get('/bill', { date });
+    const posts = result.data.posts;
+    return posts;
+  } catch (error) {
+    throw error;
+  }
+};
+export { getBill };
+
 const announcement = async data => {
   const form = new FormData();
   form.append('title', data.title);

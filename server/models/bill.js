@@ -26,13 +26,16 @@ const schema = new mongoose.Schema(
       type: String,
       trim: true
     },
+    date: {
+      type: Date,
+      trim: true
+    },
     picture: {
       type: String,
       default: 'https://image.flaticon.com/icons/svg/1126/1126862.svg'
     },
     file: {
       type: String
-      //default: 'https://image.flaticon.com/icons/svg/1126/1126862.svg'
     },
     creatorId: {
       type: String,

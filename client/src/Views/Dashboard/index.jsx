@@ -5,8 +5,9 @@ import AnnoucementsView from './../ViewAnnoucements';
 import DocsView from './../Documents/ViewDocuments';
 import NeighborsView from './../../Components/DashboardNeighbors';
 import FullWidthTabs from '../../Components/DashboardMobileTabs';
-import CenteredTabs from '../../Components/DashboardTabs'
-import './style.scss'
+import CenteredTabs from '../../Components/DashboardTabs';
+import MoneyTrack from '../../Components/MoneyTrack';
+import './style.scss';
 
 export default class index extends Component {
   constructor(props) {
@@ -27,15 +28,15 @@ export default class index extends Component {
 
   render() {
     return (
-<div>
-  <div className="centeredtabs">
-    <CenteredTabs />
-    </div>
-    <div  className="fullwidthtabs">
-    <FullWidthTabs />
-    </div>
-     </div>   
-  
+      <div>
+        <div className="centeredtabs">
+          <CenteredTabs />
+        </div>
+        <div className="fullwidthtabs">
+          <FullWidthTabs />
+        </div>
+        <MoneyTrack />
+      </div>
     );
   }
 }
