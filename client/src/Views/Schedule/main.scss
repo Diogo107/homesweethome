@@ -14,4 +14,26 @@
 .demo-app-calendar {
   margin: 0 auto;
   max-width: 900px;
+  button{
+    background-color: #3494E6;
+    border-color:#3494E6 ;
+  }
+  button:hover{
+    background-color: #EC6EAD;
+    border-color:#EC6EAD ;
+  }
+  button:disabled{
+    background-color: #EC6EAD;
+    border-color:#EC6EAD ;
+  }
+  button:active{
+    background-color: #EC6EAD;
+    border-color:#EC6EAD ;
+    
+  }
+
+button.fc-dayGridMonth-button.fc-button.fc-button-primary.fc-button-active {
+  background-color: #EC6EAD;
+    border-color:#EC6EAD ;
+}
 }

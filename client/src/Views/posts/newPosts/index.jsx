@@ -3,6 +3,7 @@ import { Form, Button } from 'react-bootstrap';
 //const cors = require('cors');
 import { post } from './../../../Services/otherServices';
 import TextField from '@material-ui/core/TextField';
+import iconPost from '../../../asset/images/post.png'
 import UploadButton from '../../../Components/UploadButton'
 
 export default class index extends Component {
@@ -60,7 +61,11 @@ export default class index extends Component {
   render() {
     return (
       <div className="form__dashboard">
-        <h2>Create a New Post!</h2><br />
+         <img className="new__icon" src={iconPost} />
+        <div className="form__heading">
+          <h4>Create a New Post</h4>
+          <small>It will appear in the dashboard for everyone!</small>
+        </div>
         <Form onSubmit={this.handleFormSubmission}>
           <Form.Group controlId="title">
             <TextField

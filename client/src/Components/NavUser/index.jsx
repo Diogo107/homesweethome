@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import { push as Menu } from 'react-burger-menu';
 import { Form, Button } from 'react-bootstrap';
 import logo from '../../asset/images/logo.png';
+import SwipeableTemporaryDrawer from '../BurgerTest';
+import Avatar from '@material-ui/core/Avatar';
 
 export default class index extends Component {
   constructor(props) {
@@ -119,6 +121,53 @@ export default class index extends Component {
               </div>
             </Menu>
 
+            {/*
+       <Menu width={ '100%'} className="burger__menu" {...this.props}>
+        <div>
+          <img className="sidebar__logo" src={logo} alt="logo" />
+        </div>
+        <div className="sidebar__item">
+          <Link to="/">Dashboard</Link>
+        </div>
+        <div className="sidebar__item">
+          <Link to="/profile">Profile</Link>
+        </div>
+        <div className="sidebar__item">
+          <Link to="/post">New Post</Link>
+        </div>
+        <div className="sidebar__item">
+          <Link to="/services">Services</Link>
+        </div>
+        <div className="sidebar__item">
+          <Link to="/insert-bill">Insert Bill</Link>
+        </div>
+        <div className="sidebar__item">
+          <Link to="/manage-building">Manage Building</Link>
+        </div>
+        <div className="sidebar__item">
+          <Link to="/schedule">Schedule</Link>
+        </div>
+        <div className="sidebar__item">
+          <Link to="/create-announcement">Create Announcement</Link>
+        </div>
+        <div className="sidebar__item">
+          <Link to="/create-document">Create Document</Link>
+        </div>
+        <div className="sidebar__item">
+          <Link to="/create-services">Create Service</Link>
+        </div>
+        <div className="sidebar__item">
+          <Form onSubmit={this.handleSignOut}>
+            <Button variant="outline-dark" type="submit">
+              Sign Out
+            </Button>
+          </Form>
+        </div>
+      </Menu>
+  */}
+            <div className="button__menu__test">
+              <SwipeableTemporaryDrawer />
+            </div>
             <Navbar.Brand className="navuser__path" href="/">
               {this.changeInput(this.props.history.location.pathname)}
             </Navbar.Brand>
@@ -126,12 +175,7 @@ export default class index extends Component {
               <img className="mobile__menu__logo" src={logo} alt="logo" />
             </div>
             <Nav className="ml-auto mobileuser">
-              <img
-                className="small__profile__picture"
-                src={this.state.user.picture}
-                style={{ width: '50px' }}
-                alt="small-profile-picture"
-              />
+              <Avatar alt="Remy Sharp" src={this.state.user.picture} />
               <Nav.Link className="mobilename" href="/profile">
                 {this.state.user.name}
               </Nav.Link>

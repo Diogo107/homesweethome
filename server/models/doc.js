@@ -6,22 +6,31 @@ const schema = new mongoose.Schema(
   {
     title: {
       type: String,
-      required: true,
       trim: true
     },
-    description: {
+    bankAccountName: {
       type: String,
       trim: true
     },
-    doc: {
+    nif: {
       type: String,
-      default: 'https://ya-webdesign.com/images/avatar-png-1.png'
+      
     },
     creator: {
       type: String,
       trim: true
     },
+    creatorName: {
+      type: String,
+      
+    },
     buildingId: {
+      type: String
+    },
+    month: {
+      type: String
+    },
+    amount: {
       type: String
     },
   },

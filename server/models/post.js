@@ -15,7 +15,7 @@ const schema = new mongoose.Schema(
     },
     picture: {
       type: String,
-      default: 'https://ya-webdesign.com/images/avatar-png-1.png'
+      default: 'https://res.cloudinary.com/dhkwwgiic/image/upload/v1584974610/homesweethome/s7pzoodtxx6o7fbk1ej3.png'
     },
     creator: {
       type: String,

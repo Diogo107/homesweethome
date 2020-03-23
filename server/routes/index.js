@@ -133,20 +133,22 @@ router.post('/updateBuilding', (req, res, next) => {
   );
 });
 
-router.post('/doc', uploader.single('doc'), (req, res, next) => {
-  const { title, description } = req.body;
-  let url;
-  let buildingId = req.user.buildingId;
-  if (req.file) {
-    url = req.file.url;
-  }
-
-  Doc.create({
+router.post('/doc', (req, res, next) => {
+  const { title, bankAccountName, nif, month, amount } = req.body;
+  
+  let creatorName = req.user.name
+   let buildingId = req.user.buildingId;
+    Doc.create({
     title,
-    description,
-    doc: url,
+    bankAccountName,
+    nif,
+    month,
+    amount,
     creator: req.user._id,
-    buildingId
+    buildingId,
+    creatorName
+    
+    
   })
     .then(doc => {
       res.json({ doc });

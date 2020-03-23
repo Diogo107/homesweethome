@@ -1,24 +1,57 @@
-import React from 'react';
+import React, { Component } from 'react';
+import iconBilling from '../../asset/images/billing.png'
+import PdfViews from './../../Views/PdfView'
 
-
+import { BrowserRouter, Switch, Route, Redirect, Link } from 'react-router-dom';
 
 import './style.scss';
+import { render } from 'react-dom';
 
-const SingleDoc = props => {
+class SingleDoc extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+
+    }
+  }
+
+
+  render(){
+console.log('singleview prosp',this.props)
+  
   return (
-    <div>
-      
-  <h1>{props.title}</h1>
-  <h4>{props.description}</h4>
-  <figure className="doc">
-        <img src={props.doc} alt={props.title} />
-      </figure>
-  <h5>{props.creator}</h5>
-  <h5>{props.timestamp}</h5>
+    <div className="announcement__container">
+      <div>
+      <Link to={{
+        pathname: '/pdfview',
+  state: {
+    title:this.props.title,
+    bankAccountName:this.props.bankAccountName,
+    nif:this.props.nif,
+    creator: this.props.creator,
+    buildingId: this.props.buildingId,
+    month:this.props.month,
+    amount:this.props.amount
+
+  }
+}}>     <img className="annoucement__image" src={iconBilling} alt={this.props.title} /></Link>
       </div>
+      <div className="announcement__text">
+        <strong>{this.props.title}</strong>
+        <small>{this.props.creatorName}</small>
+        <small>{this.props.timestamp}</small>
+ 
+      </div>
+    </div>
         
       
     );
-};
+ 
+}
+}
+
 
 export default SingleDoc;
+
+
+

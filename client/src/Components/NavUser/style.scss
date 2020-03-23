@@ -43,14 +43,30 @@ color: white;
   display: none;
 }
 
+.button__menu__test{
+  display: none
+}
 
 @media screen and (max-width: 640px) {
+  
+  .button__menu__test{
+    display: flex;
+    margin-top: 7%;
+    margin-left: 15px;
+    margin-bottom: 20px;
+    background-color: whitesmoke;
+    border-radius: 50px
+  }
+
+
   .burger__menu{
     display: flex;
   }
 
   .nav__user{
-    background-image: linear-gradient(to bottom right, #fff, #fff)  
+    background-image: linear-gradient(to bottom right, #fff, #fff) !important;
+    
+    width: 105%
   }
 
 
@@ -60,8 +76,8 @@ color: white;
     display: flex;
     height: 40px;
     width: 200px;
-    margin-left: 55%;
-    margin-top: 15%
+    margin-left: 18%;
+    margin-top: 13%
   }
 
   .navuser__path {
@@ -78,7 +94,6 @@ color: white;
   }
   
   .nav__user{
-    
   margin-top: -21px;
   margin-left: -20px; 
   padding-right: 10px;

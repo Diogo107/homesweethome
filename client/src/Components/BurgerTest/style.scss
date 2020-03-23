@@ -1,0 +1,33 @@
+.mobile__sidebar{
+  display: flex;
+  flex-direction: column;
+}
+
+.test__item {
+  display: block;
+  float: left;
+  position: relative;
+  margin: 2px;
+  transition:.65s;
+  &.active {
+    background-color: #fff;
+    :only-child, :only-child:hover, &:focus {
+      opacity: 1;
+      color: #222;
+    }
+  }
+  :only-child {
+    position: relative;
+    display: block;
+    padding: 10px 20px;
+    color: #3494E6;
+    opacity: .5;
+    &:hover, &:focus {
+      text-decoration: none;
+      color: #EC6EAD;
+      opacity: 1;
+      border-left: 5px solid #3494E6;
+    }
+  }
+}
+

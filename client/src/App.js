@@ -12,7 +12,6 @@ import LandingPage from './Views/LandingPage/index';
 import CreateBuilding from './Views/BuildingForm';
 import Profile from './Views/Profile';
 import Dashboard from './Views/Dashboard';
-import Finance from './Views/Finance';
 import NewPosts from './Views/posts/newPosts';
 import CreateServices from './Views/Services/AddServices';
 import ServicesView from './Views/Services/ViewServices';
@@ -24,6 +23,8 @@ import InsertBill from './Views/InsertBill';
 import Schedule from './Views/Schedule';
 import CreateAnnouncement from './Views/CreateAnnouncement';
 import NavUser from './Components/NavUser';
+
+import PdfViews from './Views/PdfView';
 import CreateDocument from './Views/Documents/CreateDocument';
 import PostsView from './Views/posts/viewPosts';
 import { Toast, Col, Button, Row } from 'react-bootstrap';
@@ -74,22 +75,21 @@ class App extends Component {
             {!this.state.user && <NavBar user={this.state.user} />}
             {(this.state.user && (
               <div>
-                <div className="main__sidebar">
-                  <Route path="*" render={props => <SideBar user={this.state.user} {...props} />} />
-                </div>
+                {this.state.user.buildingId && (
+                  <div className="main__sidebar">
+                    <Route
+                      path="*"
+                      render={props => <SideBar user={this.state.user} {...props} />}
+                    />
+                  </div>
+                )}
                 <div className="main__dashboard">
                   <Route
                     path="*"
                     exact
                     render={props => <NavUser user={this.state.user} {...props} />}
                   />
-                  {!this.state.user.buildingId && (
-                    <Route
-                      path="*"
-                      render={props => <CreateBuilding user={this.state.user} {...props} />}
-                    />
-                  )}
-                  {this.state.user.buildingId && (
+                  <div className="padding__test">
                     <Switch>
                       <Route
                         path="/"
@@ -100,10 +100,6 @@ class App extends Component {
                         path="/dashboard"
                         render={props => <Dashboard user={this.state.user} {...props} />}
                       />
-                      <Route
-                        path="/finance"
-                        render={props => <Finance user={this.state.user} {...props} />}
-                      />
                       <Route path="/profile" render={props => <Profile user={this.state.user} />} />
                       <Route
                         path="/post"
@@ -122,6 +118,10 @@ class App extends Component {
                       <Route
                         path="/schedule"
                         render={props => <Schedule user={this.state.user} {...props} />}
+                      />
+                      <Route
+                        path="/pdfview"
+                        render={props => <PdfViews user={this.state.user} {...props} />}
                       />
                       <Route path="/services" component={ServicesView} />
 
@@ -130,6 +130,10 @@ class App extends Component {
                           <Route
                             path="/insert-bill"
                             render={props => <InsertBill user={this.state.user} {...props} />}
+                          />
+                          <Route
+                            path="/sign-up/create-building"
+                            render={props => <CreateBuilding user={this.state.user} {...props} />}
                           />
                           <Route
                             path="/manage-building"
@@ -147,7 +151,6 @@ class App extends Component {
                               <PaymentMethodListView user={this.state.user} {...props} />
                             )}
                           />
-
                           <Route
                             authorized={this.state.user}
                             redirect="/sign-in"
@@ -178,13 +181,13 @@ class App extends Component {
                         render={props => <Dashboard user={this.state.user} {...props} />}
                       />
                     </Switch>
-                  )}
+                  </div>
                   {!this.state.user.paymentMethods && (
                     <div>
                       <div
                         aria-live="polite"
                         aria-atomic="true"
-                        style={{ position: 'relative', minHeight: '100px' }}
+                        style={{ position: 'fixed', minHeight: '100px' }}
                       >
                         {this.state.toggleShowB && (
                           <Toast
