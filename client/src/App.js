@@ -38,14 +38,11 @@ class App extends Component {
     this.updateUserInformation = this.updateUserInformation.bind(this);
     this.updateCart = this.updateCart.bind(this);
     this.toast = this.toast.bind(this);
-    
   }
   toast() {
     this.setState({
       toggleShowB: false
-  });
-    
-
+    });
   }
 
   async componentDidMount() {
@@ -61,7 +58,7 @@ class App extends Component {
       user
     });
   }
-  
+
   updateCart(item) {
     this.setState(previousState => ({
       cart: [...previousState.cart, item]
@@ -177,27 +174,46 @@ class App extends Component {
                       render={props => <Dashboard user={this.state.user} {...props} />}
                     />
                   </Switch>
-                  {!this.state.user.paymentMethods && (<div>
-        <div  aria-live="polite"  aria-atomic="true"  style={{ position: 'relative', minHeight: '100px'}}>
-  {this.state.toggleShowB && (
-
-<Toast style={{
-  backgroundColor: `rgb(236, 110, 173)` ,
-      position: 'fixed',
-      bottom: 0,
-      right: 0, }} onClose={this.toast} show={this.toggleShowB}  redirect="/" animation={false}>
-          <Toast.Header style={{backgroundColor: `rgb(52, 148, 230)`, color:`rgb(236, 110, 173)`}}>
-                        <strong className="mr-auto">Home Sweet Home</strong>
-           
-          </Toast.Header>
-          <Link to="/first-payment"><Toast.Body>Looks like you haven't set a payment method yet!<br/> Set it now!</Toast.Body></Link>
-        </Toast>
-        
-     )}
-   </div>
-        </div>)}
+                  {!this.state.user.paymentMethods && (
+                    <div>
+                      <div
+                        aria-live="polite"
+                        aria-atomic="true"
+                        style={{ position: 'relative', minHeight: '100px' }}
+                      >
+                        {this.state.toggleShowB && (
+                          <Toast
+                            style={{
+                              backgroundColor: `rgb(236, 110, 173)`,
+                              position: 'fixed',
+                              bottom: 0,
+                              right: 0
+                            }}
+                            onClose={this.toast}
+                            show={this.toggleShowB}
+                            redirect="/"
+                            animation={false}
+                          >
+                            <Toast.Header
+                              style={{
+                                backgroundColor: `rgb(52, 148, 230)`,
+                                color: `rgb(236, 110, 173)`
+                              }}
+                            >
+                              <strong className="mr-auto">Home Sweet Home</strong>
+                            </Toast.Header>
+                            <Link to="/first-payment">
+                              <Toast.Body>
+                                Looks like you haven't set a payment method yet!
+                                <br /> Set it now!
+                              </Toast.Body>
+                            </Link>
+                          </Toast>
+                        )}
+                      </div>
+                    </div>
+                  )}
                 </div>
-                
               </div>
             )) || (
               <>
@@ -229,13 +245,11 @@ class App extends Component {
                     )}
                   />
                   <Route path="*" component={LandingPage} />
-                  
                 </Switch>
               </>
             )}
           </BrowserRouter>
         )}
-       
       </div>
     );
   }
