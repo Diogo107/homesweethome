@@ -24,6 +24,9 @@ const schema = new mongoose.Schema(
     buildingId: {
       type: String
     },
+    creatorName:{
+      type: String
+    }
   },
   {
     timestamp: { type: Date, default: Date.now }
