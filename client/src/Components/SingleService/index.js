@@ -1,23 +1,20 @@
 import React from 'react';
-
-
-
 import './style.scss';
 
-const SinglePost = props => {
+const SingleService = props => {
   return (
     <div>
-      <figure className="post__image">
+      <figure>
         <img src={props.picture} alt={props.title} />
       </figure>
-  <h1>{props.title}</h1>
-  <h4>{props.description}</h4>
-  <h5>{props.creator}</h5>
-  <h5>{props.timestamp}</h5>
+         <h1>{props.name}</h1>
+         <h4>{props.workField}</h4>
+         <h4>{props.price}</h4>
+         <h4>{props.phoneNumber}</h4>
       </div>
         
       
     );
 };
 
-export default SinglePost;
+export default SingleService;

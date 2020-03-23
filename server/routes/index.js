@@ -24,6 +24,7 @@ router.post('/annoucement', uploader.single('picture'), (req, res, next) => {
   const { title, description } = req.body;
   let url;
   let buildingId = req.user.buildingId;
+  const creatorName = req.user.name
   if (req.file) {
     url = req.file.url;
   }
@@ -33,7 +34,8 @@ router.post('/annoucement', uploader.single('picture'), (req, res, next) => {
     description,
     picture: url,
     creator: req.user._id,
-    buildingId
+    buildingId,
+    creatorName
   })
     .then(annoucement => {
       res.json({ annoucement });
@@ -171,7 +173,7 @@ router.post('/post', uploader.single('picture'), (req, res, next) => {
   console.log('user', req.user);
   let url;
   let buildingId = req.user.buildingId;
-
+  const creatorName = req.user.name
   if (req.file) {
     url = req.file.url;
   }
@@ -180,7 +182,8 @@ router.post('/post', uploader.single('picture'), (req, res, next) => {
     title,
     description,
     picture: url,
-    buildingId
+    buildingId,
+    creatorName
   })
     .then(post => {
       res.json({ post });

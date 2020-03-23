@@ -64,7 +64,7 @@ export default function SimpleTabs() {
         centered>
           <Tab label="Announcements" {...a11yProps(0)} />
           <Tab label="Posts" {...a11yProps(1)} />
-          <Tab label="Services" {...a11yProps(2)} />
+          <Tab label="Docs" {...a11yProps(2)} />
         </Tabs>
      
       <TabPanel value={value} index={0}>

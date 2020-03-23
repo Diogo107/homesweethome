@@ -15,7 +15,7 @@ const schema = new mongoose.Schema(
     },
     picture: {
       type: String,
-      //default: 'https://ya-webdesign.com/images/avatar-png-1.png'
+      default: 'https://ya-webdesign.com/images/avatar-png-1.png'
     },
     creator: {
       type: String,
@@ -24,6 +24,9 @@ const schema = new mongoose.Schema(
     buildingId: {
       type: String
     },
+    creatorName:{
+      type: String
+    }
   },
   {
     timestamp: { type: Date, default: Date.now }

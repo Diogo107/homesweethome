@@ -4,7 +4,7 @@ import React from 'react';
 
 import './style.scss';
 
-const SingleService = props => {
+const SinglePost = props => {
   console.log('seeing the props', props)
   return (
       <div className="announcement__container">
@@ -21,4 +21,4 @@ const SingleService = props => {
     );
 };
 
-export default SingleService;
+export default SinglePost;

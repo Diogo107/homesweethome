@@ -7,6 +7,7 @@ import iconDocument from '../../../asset/images/document.png'
 import '../../../App.scss'
 
 
+
 export default class CreateDocument extends Component {
   constructor(props) {
     super(props);
@@ -112,6 +113,7 @@ export default class CreateDocument extends Component {
             Submit
           </Button>
         </Form>
+        
       </div>
     );
   }
