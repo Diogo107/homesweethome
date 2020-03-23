@@ -4,11 +4,13 @@ import './style.scss';
 const SingleService = props => {
   return (
     <div>
-      <figure className="post__image">
+      <figure>
         <img src={props.picture} alt={props.title} />
       </figure>
          <h1>{props.name}</h1>
-         <h4>{props.workfield}</h4>
+         <h4>{props.workField}</h4>
+         <h4>{props.price}</h4>
+         <h4>{props.phoneNumber}</h4>
       </div>
         
       
