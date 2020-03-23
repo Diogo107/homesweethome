@@ -12,6 +12,7 @@ import LandingPage from './Views/LandingPage/index';
 import CreateBuilding from './Views/BuildingForm';
 import Profile from './Views/Profile';
 import Dashboard from './Views/Dashboard';
+import Finance from './Views/Finance';
 import NewPosts from './Views/posts/newPosts';
 import CreateServices from './Views/Services/AddServices';
 import ServicesView from './Views/Services/ViewServices';
@@ -73,107 +74,111 @@ class App extends Component {
             {!this.state.user && <NavBar user={this.state.user} />}
             {(this.state.user && (
               <div>
-                {this.state.user.buildingId && (
-                  <div className="main__sidebar">
-                    <Route
-                      path="*"
-                      render={props => <SideBar user={this.state.user} {...props} />}
-                    />
-                  </div>
-                )}
+                <div className="main__sidebar">
+                  <Route path="*" render={props => <SideBar user={this.state.user} {...props} />} />
+                </div>
                 <div className="main__dashboard">
                   <Route
                     path="*"
                     exact
                     render={props => <NavUser user={this.state.user} {...props} />}
                   />
-                  <Switch>
-                    <Route
-                      path="/"
-                      exact
-                      render={props => <Dashboard user={this.state.user} {...props} />}
-                    />
-                    <Route
-                      path="/dashboard"
-                      render={props => <Dashboard user={this.state.user} {...props} />}
-                    />
-                    <Route path="/profile" render={props => <Profile user={this.state.user} />} />
-                    <Route
-                      path="/post"
-                      render={props => <NewPosts user={this.state.user} {...props} />}
-                    />
-                    <Route
-                      path="/schedule"
-                      render={props => <Schedule user={this.state.user} {...props} />}
-                    />
-
-                    <Route path="/profile" render={props => <Profile user={this.state.user} />} />
-                    <Route
-                      path="/post"
-                      render={props => <NewPosts user={this.state.user} {...props} />}
-                    />
-                    <Route
-                      path="/schedule"
-                      render={props => <Schedule user={this.state.user} {...props} />}
-                    />
-                    <Route path="/services" component={ServicesView} />
-
-                    {this.state.user.admin && (
-                      <div>
-                        <Route
-                          path="/insert-bill"
-                          render={props => <InsertBill user={this.state.user} {...props} />}
-                        />
-                        <Route
-                          path="/sign-up/create-building"
-                          render={props => <CreateBuilding user={this.state.user} {...props} />}
-                        />
-                        <Route
-                          path="/manage-building"
-                          render={props => <ManageBuilding user={this.state.user} {...props} />}
-                        />
-                        <Route path="/create-announcement" component={CreateAnnouncement} />
-                        <Route path="/create-document" component={CreateDocument} />
-                        <Route path="/create-services" component={CreateServices} />
-
-                        <Route
-                          authorized={this.state.user}
-                          redirect="/sign-in"
-                          path="/payment-method/list"
-                          render={props => (
-                            <PaymentMethodListView user={this.state.user} {...props} />
-                          )}
-                        />
-                        <Route
-                          authorized={this.state.user}
-                          redirect="/sign-in"
-                          path="/payment-method/create"
-                          exact
-                          render={props => (
-                            <PaymentMethodCreateView user={this.state.user} {...props} />
-                          )}
-                        />
-                        <Route
-                          authorized={this.state.user}
-                          redirect="/sign-in"
-                          path="/first-payment"
-                          exact
-                          render={props => (
-                            <FirstPayment
-                              cart={this.state.cart}
-                              updateCart={this.updateCart}
-                              user={this.state.user}
-                              {...props}
-                            />
-                          )}
-                        />
-                      </div>
-                    )}
+                  {!this.state.user.buildingId && (
                     <Route
                       path="*"
-                      render={props => <Dashboard user={this.state.user} {...props} />}
+                      render={props => <CreateBuilding user={this.state.user} {...props} />}
                     />
-                  </Switch>
+                  )}
+                  {this.state.user.buildingId && (
+                    <Switch>
+                      <Route
+                        path="/"
+                        exact
+                        render={props => <Dashboard user={this.state.user} {...props} />}
+                      />
+                      <Route
+                        path="/dashboard"
+                        render={props => <Dashboard user={this.state.user} {...props} />}
+                      />
+                      <Route
+                        path="/finance"
+                        render={props => <Finance user={this.state.user} {...props} />}
+                      />
+                      <Route path="/profile" render={props => <Profile user={this.state.user} />} />
+                      <Route
+                        path="/post"
+                        render={props => <NewPosts user={this.state.user} {...props} />}
+                      />
+                      <Route
+                        path="/schedule"
+                        render={props => <Schedule user={this.state.user} {...props} />}
+                      />
+
+                      <Route path="/profile" render={props => <Profile user={this.state.user} />} />
+                      <Route
+                        path="/post"
+                        render={props => <NewPosts user={this.state.user} {...props} />}
+                      />
+                      <Route
+                        path="/schedule"
+                        render={props => <Schedule user={this.state.user} {...props} />}
+                      />
+                      <Route path="/services" component={ServicesView} />
+
+                      {this.state.user.admin && (
+                        <div>
+                          <Route
+                            path="/insert-bill"
+                            render={props => <InsertBill user={this.state.user} {...props} />}
+                          />
+                          <Route
+                            path="/manage-building"
+                            render={props => <ManageBuilding user={this.state.user} {...props} />}
+                          />
+                          <Route path="/create-announcement" component={CreateAnnouncement} />
+                          <Route path="/create-document" component={CreateDocument} />
+                          <Route path="/create-services" component={CreateServices} />
+
+                          <Route
+                            authorized={this.state.user}
+                            redirect="/sign-in"
+                            path="/payment-method/list"
+                            render={props => (
+                              <PaymentMethodListView user={this.state.user} {...props} />
+                            )}
+                          />
+
+                          <Route
+                            authorized={this.state.user}
+                            redirect="/sign-in"
+                            path="/payment-method/create"
+                            exact
+                            render={props => (
+                              <PaymentMethodCreateView user={this.state.user} {...props} />
+                            )}
+                          />
+                          <Route
+                            authorized={this.state.user}
+                            redirect="/sign-in"
+                            path="/first-payment"
+                            exact
+                            render={props => (
+                              <FirstPayment
+                                cart={this.state.cart}
+                                updateCart={this.updateCart}
+                                user={this.state.user}
+                                {...props}
+                              />
+                            )}
+                          />
+                        </div>
+                      )}
+                      <Route
+                        path="*"
+                        render={props => <Dashboard user={this.state.user} {...props} />}
+                      />
+                    </Switch>
+                  )}
                   {!this.state.user.paymentMethods && (
                     <div>
                       <div

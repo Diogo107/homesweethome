@@ -226,6 +226,18 @@ router.post('/bill', uploader.single('picture'), (req, res, next) => {
     });
 });
 
+router.post('/eraseBill', (req, res, next) => {
+  const id = req.body.id;
+  console.log('im on the server', id);
+  Bill.findByIdAndRemove(id)
+    .then(() => {
+      res.json();
+    })
+    .catch(error => {
+      next(error);
+    });
+});
+
 router.get('/bill', (req, res, next) => {
   let buildingId = req.user.buildingId;
   Bill.find({ buildingId: buildingId })

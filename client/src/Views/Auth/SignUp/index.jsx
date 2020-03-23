@@ -14,7 +14,6 @@ export default class index extends Component {
       email: '',
       phoneNumber: '',
       passwordHash: ''
-      
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.sendMessage = this.sendMessage.bind(this);
@@ -31,16 +30,25 @@ export default class index extends Component {
   }
 
   async sendMessage(event) {
-    console.log('hsdjdasdhas', this.props);
     event.preventDefault();
     const { name, email, phoneNumber, passwordHash } = this.state;
     let admin = true;
     let payment = false;
-    let blocked = false
-    let paymentMethods = false
-    let createdAt = Date.now()
+    let blocked = false;
+    let paymentMethods = false;
+    let createdAt = Date.now();
     try {
-      const user = await signUp({ name, email, phoneNumber, passwordHash, admin, payment, createdAt,blocked,paymentMethods });
+      const user = await signUp({
+        name,
+        email,
+        phoneNumber,
+        passwordHash,
+        admin,
+        payment,
+        createdAt,
+        blocked,
+        paymentMethods
+      });
       this.props.updateUserInformation(user);
       this.props.history.push('/sign-up/create-building');
     } catch (error) {
@@ -60,7 +68,9 @@ export default class index extends Component {
           <Form.Group controlId="formBasicEmail">
             <TextField
               className="textfield"
-              id="outlined-basic" label="Name" variant="outlined"
+              id="outlined-basic"
+              label="Name"
+              variant="outlined"
               type="text"
               name="name"
               placeholder="Enter your Name"
@@ -72,7 +82,9 @@ export default class index extends Component {
           <Form.Group controlId="formBasicEmail">
             <TextField
               className="textfield"
-              id="outlined-basic" label="Email" variant="outlined"
+              id="outlined-basic"
+              label="Email"
+              variant="outlined"
               type="email"
               placeholder="Enter email"
               required
@@ -85,7 +97,9 @@ export default class index extends Component {
           <Form.Group controlId="formBasicEmail">
             <TextField
               className="textfield"
-              id="outlined-basic" label="Phone Number" variant="outlined"
+              id="outlined-basic"
+              label="Phone Number"
+              variant="outlined"
               type="number"
               name="phoneNumber"
               placeholder="Your Phone Number"
@@ -104,7 +118,7 @@ export default class index extends Component {
             />
             <Form.Text className="text-muted"></Form.Text>
           </Form.Group> */}
-          <Form.Group controlId="formBasicPassword">  
+          <Form.Group controlId="formBasicPassword">
             <TextField
               id="outlined-password-input"
               label="Password"
