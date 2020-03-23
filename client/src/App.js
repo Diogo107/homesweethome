@@ -23,6 +23,8 @@ import InsertBill from './Views/InsertBill';
 import Schedule from './Views/Schedule';
 import CreateAnnouncement from './Views/CreateAnnouncement';
 import NavUser from './Components/NavUser';
+
+import PdfViews from './Views/PdfView'
 import CreateDocument from './Views/Documents/CreateDocument';
 import PostsView from './Views/posts/viewPosts';
 import { Toast, Col, Button, Row } from 'react-bootstrap';
@@ -117,6 +119,10 @@ class App extends Component {
                       path="/schedule"
                       render={props => <Schedule user={this.state.user} {...props} />}
                     />
+                    <Route
+      path="/pdfview"
+      render={props => <PdfViews user={this.state.user} {...props} />}
+      />
                     <Route path="/services" component={ServicesView} />
 
                     {this.state.user.admin && (
