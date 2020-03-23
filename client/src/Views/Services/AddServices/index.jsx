@@ -64,9 +64,9 @@ export default class CreateServices extends Component {
           <Form.Group controlId="name">
             <TextField
               className="textfield"
-              id="outlined-basic" label="Title" variant="outlined"
+              id="outlined-basic" label="Name" variant="outlined"
               type="text"
-              placeholder="Title"
+              placeholder="Name"
               name="name"
               onChange={this.handleInputChange}
             />
@@ -76,12 +76,9 @@ export default class CreateServices extends Component {
           <Form.Group controlId="workField">
             <TextField
               className="textfield"
-              id="outlined-basic" label="workField" variant="outlined"            
+              id="outlined-basic" label="Work Field" variant="outlined"            
               type="text"
-              as="textarea"
-              multiline
-              rows="4"
-              placeholder="Write here your description"
+              placeholder="Work Field"
               name="workField"
               onChange={this.handleInputChange}
             />
@@ -91,7 +88,7 @@ export default class CreateServices extends Component {
             <TextField
               className="textfield"
               id="outlined-basic" label="Price for Hour" variant="outlined"
-              type="number"
+              type="text"
               name="price"
                     InputProps={{
                       startAdornment: <InputAdornment position="start">€</InputAdornment>,
@@ -104,8 +101,7 @@ export default class CreateServices extends Component {
             <TextField
               className="textfield"
               id="outlined-basic" label="Phone Number" variant="outlined"
-              type="number"
-              
+              type="text"
               InputProps={{
                 startAdornment: <InputAdornment position="start">+351</InputAdornment>,
               }}
