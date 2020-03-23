@@ -9,6 +9,7 @@ export default class index extends Component {
     super(props);
     this.state = {
       loaded: false,
+      edit: true,
       name: '',
       email: '',
       phoneNumber: '',
@@ -16,6 +17,7 @@ export default class index extends Component {
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.updateProfile = this.updateProfile.bind(this);
+    this.edit = this.edit.bind(this);
   }
 
   componentDidMount() {
@@ -25,6 +27,12 @@ export default class index extends Component {
       phoneNumber: this.props.user.phoneNumber,
       user: this.props.user,
       loaded: true
+    });
+  }
+
+  edit() {
+    this.setState({
+      edit: !this.state.edit
     });
   }
 
@@ -48,7 +56,18 @@ export default class index extends Component {
   render() {
     return (
       <div className="profile__div">
-        {(this.state.loaded && (
+        {this.state.loaded && this.state.edit && (
+          <div>
+            <img className="profile__picture" src={this.state.user.picture} alt="profile picture" />
+            <h3>Name</h3>
+            <p>{this.state.name}</p>
+            <h3>Email</h3>
+            <p>{this.state.email}</p>
+            <h3>Phone Number</h3>
+            <p>{this.state.phoneNumber}</p>
+          </div>
+        )}
+        {(this.state.loaded && !this.state.edit && (
           <Form onSubmit={this.updateProfile}>
             <Form.Group>
               <img
@@ -58,6 +77,17 @@ export default class index extends Component {
               />
             </Form.Group>
             <Form.Group controlId="formBasicEmail">
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                type="text"
+                name="name"
+                value={this.state.name}
+                placeholder="Enter name"
+                onChange={this.handleInputChange}
+              />
+              <Form.Text className="text-muted"></Form.Text>
+            </Form.Group>
+            <Form.Group controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
               <Form.Control
                 type="email"
@@ -65,17 +95,6 @@ export default class index extends Component {
                 required
                 value={this.state.email}
                 name="email"
-                onChange={this.handleInputChange}
-              />
-              <Form.Text className="text-muted"></Form.Text>
-            </Form.Group>
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                type="text"
-                name="name"
-                value={this.state.name}
-                placeholder="Enter name"
                 onChange={this.handleInputChange}
               />
               <Form.Text className="text-muted"></Form.Text>
@@ -95,6 +114,7 @@ export default class index extends Component {
           </Form>
         )) ||
           ''}
+        <Button onClick={this.edit}>Edit Profile</Button>
       </div>
     );
   }
