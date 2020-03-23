@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
 //const cors = require('cors');
-import { doc as document } from './../../../Services/otherServices';
 import TextField from '@material-ui/core/TextField';
 import iconDocument from '../../../asset/images/document.png'
 import '../../../App.scss'
-
+import {doc} from './../../../Services/doc'
 
 
 export default class CreateDocument extends Component {
@@ -13,8 +12,10 @@ export default class CreateDocument extends Component {
     super(props);
     this.state = {
       title: '',
-      description: '',
-      doc: null
+      bankAccountName: '',
+      nif: 0,
+      month:'',
+      amount:0,
     };
     //this.componentDidMount = this.componentDidMount.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -29,13 +30,18 @@ export default class CreateDocument extends Component {
 
   async handleFormSubmission(event) {
     event.preventDefault();
-    const { title, description, doc } = this.state;
+    
+    const { title, bankAccountName, nif, month, amount } = this.state;
     try {
-      const data = await document({
+      const data = await doc({
         title,
-        description,
-        doc
+        bankAccountName,
+        nif,
+        month,
+        amount,
+        
       });
+      console.log("sending data",data, this.state)
       this.props.history.push('/');
     } catch (error) {
       console.log(error);
@@ -66,49 +72,69 @@ export default class CreateDocument extends Component {
       <div className="form__dashboard">
            <img className="new__icon" src={iconDocument} />
        <div className="form__heading">
-        <h4>Create a New Document!</h4>
-        <small>It will appear in the dashboard for everyone!</small>
+        <h4>Create a New Quote!</h4>
+        <small>It will appear for evry condominuse to pay this quote!</small>
        </div>
         <Form onSubmit={this.handleFormSubmission}>
           <Form.Group controlId="title">
             
             <TextField
               className="textfield"
-              id="outlined-basic" label="Document Title" variant="outlined"
+              id="outlined-basic" label="title" variant="outlined"
               type="text"
-              placeholder="Title..."
+              placeholder="Quotes Payment for example..."
               name="title"
               onChange={this.handleInputChange}
             />
             <Form.Text className="text-muted"></Form.Text>
           </Form.Group>
 
-          <Form.Group controlId="description">
+          <Form.Group controlId="bankAccountName">
             
             <TextField
               className="textfield"
-              id="outlined-basic" label="Description" variant="outlined"
+              id="outlined-basic" label="Bank Account Name" variant="outlined"
               type="text"
-              as="textarea"
-              multiline
-              rows="4"
-              placeholder="Write here your description..."
-              name="description"
+              placeholder="Bank Account Name"
+              name="bankAccountName"
+              onChange={this.handleInputChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="NIF">
+            
+            <TextField
+              className="textfield"
+              id="outlined-basic" label="NIF" variant="outlined"
+              type="text"
+              placeholder="NIF"
+              name="nif"
               onChange={this.handleInputChange}
             />
           </Form.Group>
 
-          <Form.Group controlId="doc">
+          <Form.Group controlId="Month">
             
-            <Form.Control
-              type="file"
-              placeholder="Insert the Document"
-              name="doc"
-              onChange={this.handleFileInputChange}
+            <TextField
+              className="textfield"
+              id="outlined-basic" label="Month" variant="outlined"
+              type="text"
+              placeholder="Month or Months of this payment"
+              name="month"
+              onChange={this.handleInputChange}
             />
-            <Form.Text className="text-muted"></Form.Text>
           </Form.Group>
-
+          <Form.Group controlId="amount">
+            
+            <TextField
+              className="textfield"
+              id="outlined-basic" label="Amount" variant="outlined"
+              type="text"
+              placeholder="Amount"
+              name="amount"
+              onChange={this.handleInputChange}
+            />
+          </Form.Group>
+          
           <Button variant="primary" type="submit">
             Submit
           </Button>

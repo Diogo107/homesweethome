@@ -62,15 +62,7 @@ const listOfAnnoucements = async () => {
 };
 export { listOfAnnoucements };
 
-const doc = async data => {
-  const form = new FormData();
-  form.append('title', data.title);
-  form.append('description', data.description);
-  form.append('doc', data.doc);
-  const result = await instance.post('/doc', form);
-  return result;
-};
-export { doc };
+
 
 const listOfdocs = async () => {
   try {
