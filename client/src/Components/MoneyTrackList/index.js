@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import { getBill, eraseBill } from '../../Services/otherServices';
+import TextField from '@material-ui/core/TextField';
+import './style.scss';
 
 export default class index extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      query: '',
       bills: []
     };
     this.fetchData = this.fetchData.bind(this);
     this.erase = this.erase.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   componentDidMount() {
@@ -30,21 +34,53 @@ export default class index extends Component {
     this.fetchData();
   }
 
+  handleInputChange(event) {
+    const value = event.target.value;
+    const inputName = event.target.name;
+    this.setState({
+      [inputName]: value
+    });
+  }
+  get filteredServices() {
+    const filteredServices = this.state.bills.filter(service => {
+      return service.purpose.toLowerCase().includes(this.state.query.toLowerCase());
+    });
+    return filteredServices;
+  }
+
   render() {
     {
-      console.log('This is the money', this.props);
+      console.log('this state', this.state.bills);
+      console.log('this state', this.state.query);
     }
+
     return (
       <div className="post__list">
-        {this.state.bills.map(bill => (
+        <h5>Search for specific bill</h5>
+        <form className="search_form">
+          <TextField
+            variant="outlined"
+            type="search"
+            name="query"
+            value={this.state.query}
+            onChange={this.handleInputChange}
+            placeholder="Search"
+          />
+        </form>
+        {this.filteredServices.map(bill => (
           <div className="announcement__container">
             <div className="announcement__text">
-              <strong>{bill.purpose}</strong>
-              <small>{bill.amount}€</small>
-              <small>{bill.description}</small>
+              <h5>
+                <strong>{bill.purpose}</strong>
+              </h5>
+              <h6>
+                <small>{bill.amount}€</small>
+              </h6>
               {this.props.user.admin && (
                 <form onSubmit={this.erase}>
-                  <button id={bill._id}>Erase</button>
+                  <button id={bill._id} className="button__test">
+                    Erase
+                  </button>
                 </form>
               )}
             </div>
