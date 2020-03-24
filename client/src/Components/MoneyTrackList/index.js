@@ -35,20 +35,21 @@ export default class index extends Component {
       console.log('This is the money', this.props);
     }
     return (
-      <div>
+      <div className="post__list">
         {this.state.bills.map(bill => (
-          <div>
-            {console.log('bill', bill)}
-            <h3>{bill.purpose}</h3>
-            <h3>{bill.amount}€</h3>
-            <p>{bill.description}</p>
-            {this.props.user.admin && (
-              <form onSubmit={this.erase}>
-                <button id={bill._id}>Erase</button>
-              </form>
-            )}
+          <div className="announcement__container">
+            <div className="announcement__text">
+              <strong>{bill.purpose}</strong>
+              <small>{bill.amount}€</small>
+              <small>{bill.description}</small>
+              {this.props.user.admin && (
+                <form onSubmit={this.erase}>
+                  <button id={bill._id}>Erase</button>
+                </form>
+              )}
+            </div>
           </div>
-        ))}{' '}
+        ))}
       </div>
     );
   }
