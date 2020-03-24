@@ -78,49 +78,6 @@ export default class index extends Component {
       <div>
         {(this.state.user && (
           <div className="nav__user">
-            <Menu width={'100%'} className="burger__menu" {...this.props}>
-              <div>
-                <img className="sidebar__logo" src={logo} alt="logo" />
-              </div>
-              <div className="sidebar__item">
-                <Link to="/">Dashboard</Link>
-              </div>
-              <div className="sidebar__item">
-                <Link to="/profile">Profile</Link>
-              </div>
-              <div className="sidebar__item">
-                <Link to="/post">New Post</Link>
-              </div>
-              <div className="sidebar__item">
-                <Link to="/services">Services</Link>
-              </div>
-              <div className="sidebar__item">
-                <Link to="/insert-bill">Insert Bill</Link>
-              </div>
-              <div className="sidebar__item">
-                <Link to="/manage-building">Manage Building</Link>
-              </div>
-              <div className="sidebar__item">
-                <Link to="/schedule">Schedule</Link>
-              </div>
-              <div className="sidebar__item">
-                <Link to="/create-announcement">Create Announcement</Link>
-              </div>
-              <div className="sidebar__item">
-                <Link to="/create-document">Create Document</Link>
-              </div>
-              <div className="sidebar__item">
-                <Link to="/create-services">Create Service</Link>
-              </div>
-              <div className="sidebar__item">
-                <Form onSubmit={this.handleSignOut}>
-                  <Button variant="outline-dark" type="submit">
-                    Sign Out
-                  </Button>
-                </Form>
-              </div>
-            </Menu>
-
             {/*
        <Menu width={ '100%'} className="burger__menu" {...this.props}>
         <div>

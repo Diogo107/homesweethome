@@ -195,7 +195,7 @@ class App extends Component {
                         {this.state.toggleShowB && (
                           <Toast
                             style={{
-                              backgroundColor: `rgb(236, 110, 173)`,
+                              backgroundColor: `rgb(255, 255, 255)`,
                               position: 'fixed',
                               bottom: 0,
                               right: 0
@@ -208,7 +208,7 @@ class App extends Component {
                             <Toast.Header
                               style={{
                                 backgroundColor: `rgb(52, 148, 230)`,
-                                color: `rgb(236, 110, 173)`
+                                color: `rgb(255, 255, 255)`
                               }}
                             >
                               <strong className="mr-auto">Home Sweet Home</strong>
