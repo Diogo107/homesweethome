@@ -76,14 +76,9 @@ class App extends Component {
             {!this.state.user && <NavBar user={this.state.user} />}
             {(this.state.user && (
               <div>
-                {this.state.user.buildingId && (
-                  <div className="main__sidebar">
-                    <Route
-                      path="*"
-                      render={props => <SideBar user={this.state.user} {...props} />}
-                    />
-                  </div>
-                )}
+                <div className="main__sidebar">
+                  <Route path="*" render={props => <SideBar user={this.state.user} {...props} />} />
+                </div>
                 <div className="main__dashboard">
                   <Route
                     path="*"
@@ -92,6 +87,12 @@ class App extends Component {
                   />
                   <div className="padding__test">
                     <Switch>
+                      {!this.state.user.buildingId && (
+                        <Route
+                          path="*"
+                          render={props => <CreateBuilding user={this.state.user} {...props} />}
+                        />
+                      )}
                       <Route
                         path="/"
                         exact
@@ -136,10 +137,7 @@ class App extends Component {
                             path="/insert-bill"
                             render={props => <InsertBill user={this.state.user} {...props} />}
                           />
-                          <Route
-                            path="/sign-up/create-building"
-                            render={props => <CreateBuilding user={this.state.user} {...props} />}
-                          />
+
                           <Route
                             path="/manage-building"
                             render={props => <ManageBuilding user={this.state.user} {...props} />}
@@ -197,7 +195,7 @@ class App extends Component {
                         {this.state.toggleShowB && (
                           <Toast
                             style={{
-                              backgroundColor: `rgb(236, 110, 173)`,
+                              backgroundColor: `rgb(255, 255, 255)`,
                               position: 'fixed',
                               bottom: 0,
                               right: 0
@@ -210,7 +208,7 @@ class App extends Component {
                             <Toast.Header
                               style={{
                                 backgroundColor: `rgb(52, 148, 230)`,
-                                color: `rgb(236, 110, 173)`
+                                color: `rgb(255, 255, 255)`
                               }}
                             >
                               <strong className="mr-auto">Home Sweet Home</strong>
