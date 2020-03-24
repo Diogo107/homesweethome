@@ -11,7 +11,7 @@ const SingleAnnoucement = props => {
         <strong>{props.title}</strong>
         <small>{props.description}</small>
         <small>
-          <i>From: {props.creator}</i>
+          <i>From: {props.creatorName}</i>
         </small>
         <h5>{props.timestamp}</h5>
       </div>

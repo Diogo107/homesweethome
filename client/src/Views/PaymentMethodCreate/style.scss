@@ -3,3 +3,41 @@
     padding: 1em;
     box-shadow: 0.25em 0 1em -0.5em hsla(230, 20%, 80%, 1);
   }
+
+.paymentBox{
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin: 10%
+  
+  
+}
+
+  
+  .button__payment{
+    color: #fff !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #3494E6;
+    padding: 10px;
+    display: inline-block;
+    border: none;
+    border-radius: 20px;
+    transition: all 0.4s ease 0s;
+    margin-bottom: 10px;
+}
+
+.button__payment:hover {
+  background: #EC6EAD;
+  text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.5);
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.30);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.30);
+  transition: all 0.4s ease 0s;
+  }
+  .button__payment:focus {
+    background: #EC6EAD;
+    text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.5);
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.30);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.30);
+    transition: all 0.4s ease 0s;
+    }

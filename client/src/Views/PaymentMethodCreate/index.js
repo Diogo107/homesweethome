@@ -64,15 +64,15 @@ class PaymentMethodView extends Component {
       }
     };
     return (
-      <div>
+      <div className='paymentBox'>
         <h3>Add new Payment Method</h3>
-        <Elements stripe={this.stripePromise}>
+        <Elements  stripe={this.stripePromise}>
           <ElementsConsumer>
             {({ stripe, elements }) => (
               <form onSubmit={event => this.handleFormSubmission(event, stripe, elements)}>
                 {/* <label htmlFor="name">Name</label> */}
                 <CardElement options={STRIPE_ELEMENT_OPTIONS} />
-                {this.state.opened &&(<button>Add Payment Method</button>)}
+                {this.state.opened &&(<button className='button__payment'>Add Payment Method</button>)}
               </form>
             )}
           </ElementsConsumer>

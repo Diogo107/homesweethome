@@ -107,7 +107,7 @@ super(props)
             dateClick={ this.handleDateClick }
             />
         </div>
-      </div>
+      </div>  
     )
   }
 

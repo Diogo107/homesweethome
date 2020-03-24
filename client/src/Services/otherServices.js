@@ -21,6 +21,7 @@ const building = async data => {
 export { building };
 
 const post = async data => {
+  console.log('this is the post',data)
   const form = new FormData();
   form.append('title', data.title);
   form.append('description', data.description);
