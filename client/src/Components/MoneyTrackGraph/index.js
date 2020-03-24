@@ -282,32 +282,77 @@ export default class index extends Component {
 
     return (
       <div>
-        <button onClick={this.pieChart}>Change Graph</button>
-
-        {this.state.graphType == 2 && (
-          <Doughnut
-            data={this.state.charData}
-            width={50}
-            height={50}
-            options={{ maintainAspectRatio: false }}
-          />
-        )}
-        {this.state.graphType == 3 && (
-          <Doughnut
-            data={this.state.charData}
-            width={50}
-            height={50}
-            options={{ maintainAspectRatio: false }}
-          />
-        )}
-        {this.state.graphType == 1 && (
-          <Bar
-            data={this.state.charData}
-            width={50}
-            height={100}
-            options={{ maintainAspectRatio: false }}
-          />
-        )}
+        <button onClick={this.pieChart} className="button__test">
+          Change Graph
+        </button>
+        <div style={({ width: '50em' }, { maxHeight: '50em' })}>
+          {this.state.graphType == 2 && (
+            <>
+              <h3>Income vs Expenses</h3>
+              <Doughnut
+                data={this.state.charData}
+                width={150}
+                height={150}
+                options={{
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  layout: {
+                    padding: {
+                      top: 5,
+                      left: 15,
+                      right: 15,
+                      bottom: 15
+                    }
+                  }
+                }}
+              />
+            </>
+          )}
+          {this.state.graphType == 3 && (
+            <>
+              <h3>Expenses Categories</h3>
+              <Doughnut
+                data={this.state.charData}
+                width={150}
+                height={150}
+                options={{
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  layout: {
+                    padding: {
+                      top: 5,
+                      left: 15,
+                      right: 15,
+                      bottom: 15
+                    }
+                  }
+                }}
+              />
+            </>
+          )}
+          {this.state.graphType == 1 && (
+            <>
+              <h3>Monthly Revenue</h3>
+              <Bar
+                data={this.state.charData}
+                width={100}
+                height={180}
+                options={{
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  layout: {
+                    padding: {
+                      top: 5,
+                      left: 15,
+                      right: 15,
+                      bottom: 15
+                    }
+                  }
+                }}
+              />
+            </>
+          )}
+        </div>
       </div>
     );
   }
