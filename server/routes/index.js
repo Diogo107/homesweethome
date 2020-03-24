@@ -330,7 +330,7 @@ router.post('/sendEmail', (req, res, next) => {
     from: `Welcome to Home Sweet Home <${EMAIL}>`,
     to: mail,
     subject: 'Hello from the Home Sweet Home',
-    html: `<br /><br /><br />You were invited to your new home! Follow the link to know your new home: ${process.env.WORKING_URL2}/sign-up/user/${slotId}/${buildingId}`
+    html: `<br /><br /><br />You were invited to your new home! Follow the link to know your new home: ${process.env.WORKING_URL2}sign-up/user/${slotId}/${buildingId}`
   });
 });
 
