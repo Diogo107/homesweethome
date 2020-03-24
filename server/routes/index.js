@@ -161,7 +161,7 @@ router.post('/doc', (req, res, next) => {
 router.get('/doc', (req, res, next) => {
   let buildingId = req.user.buildingId;
   Doc.find({ buildingId: buildingId })
-    .sort({ timestamp: 'ascending' })
+    .sort()
     .then(doc => {
       res.json({ doc });
     })
