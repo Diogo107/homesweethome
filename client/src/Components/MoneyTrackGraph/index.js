@@ -285,7 +285,7 @@ export default class index extends Component {
         <button onClick={this.pieChart} className="button__test">
           Change Graph
         </button>
-        <div style={({ width: '50em' }, { maxHeight: '50em' })}>
+        <div style={({ width: '20em' }, { maxHeight: '20em' })}>
           {this.state.graphType == 2 && (
             <>
               <h3>Income vs Expenses</h3>
@@ -298,7 +298,7 @@ export default class index extends Component {
                   maintainAspectRatio: false,
                   layout: {
                     padding: {
-                      top: 5,
+                      top: 30,
                       left: 15,
                       right: 15,
                       bottom: 15
