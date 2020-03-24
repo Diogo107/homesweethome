@@ -55,7 +55,7 @@ export default class index extends Component {
     }
 
     return (
-      <div className="post__list">
+      <div className="bill__list">
         <h5>Search for specific bill</h5>
         <form className="search_form">
           <TextField
@@ -68,8 +68,8 @@ export default class index extends Component {
           />
         </form>
         {this.filteredServices.map(bill => (
-          <div className="announcement__container">
-            <div className="announcement__text">
+          <div className="bill__container">
+            <div className="bill__text">
               <h5>
                 <strong>{bill.purpose}</strong>
               </h5>

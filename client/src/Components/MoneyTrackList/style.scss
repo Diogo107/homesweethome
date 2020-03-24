@@ -1,4 +1,4 @@
-.post__list :not() {
+.bill__list :not() {
   margin-top: 15em;
   h5 {
     margin-top: 6em;
@@ -9,7 +9,7 @@
   }
 }
 
-.announcement__text {
+.bill__text {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -18,6 +18,6 @@
   margin: 0.3em;
 }
 
-.announcement__container {
+.bill__container {
   margin-top: 2em;
 }
