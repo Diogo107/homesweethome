@@ -76,14 +76,9 @@ class App extends Component {
             {!this.state.user && <NavBar user={this.state.user} />}
             {(this.state.user && (
               <div>
-                {this.state.user.buildingId && (
-                  <div className="main__sidebar">
-                    <Route
-                      path="*"
-                      render={props => <SideBar user={this.state.user} {...props} />}
-                    />
-                  </div>
-                )}
+                <div className="main__sidebar">
+                  <Route path="*" render={props => <SideBar user={this.state.user} {...props} />} />
+                </div>
                 <div className="main__dashboard">
                   <Route
                     path="*"
@@ -92,6 +87,12 @@ class App extends Component {
                   />
                   <div className="padding__test">
                     <Switch>
+                      {!this.state.user.buildingId && (
+                        <Route
+                          path="*"
+                          render={props => <CreateBuilding user={this.state.user} {...props} />}
+                        />
+                      )}
                       <Route
                         path="/"
                         exact
@@ -136,10 +137,7 @@ class App extends Component {
                             path="/insert-bill"
                             render={props => <InsertBill user={this.state.user} {...props} />}
                           />
-                          <Route
-                            path="/sign-up/create-building"
-                            render={props => <CreateBuilding user={this.state.user} {...props} />}
-                          />
+
                           <Route
                             path="/manage-building"
                             render={props => <ManageBuilding user={this.state.user} {...props} />}

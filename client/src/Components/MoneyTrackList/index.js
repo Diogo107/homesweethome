@@ -54,16 +54,3 @@ export default class index extends Component {
     );
   }
 }
-
-{
-  /* <div className="announcement__container">
-  <div>
-    <img className="annoucement__image" src={props.picture} alt={props.title} />
-  </div>
-  <div className="announcement__text">
-    <strong>{props.title}</strong>
-    <small>{props.description}</small>
-  </div>
-</div>;
- */
-}
