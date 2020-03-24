@@ -4,6 +4,8 @@ import { Form, Button } from 'react-bootstrap';
 import './style.scss';
 import { Redirect } from 'react-router-dom';
 import { firstBuilding } from './../../../Services/otherServices';
+import TextField from '@material-ui/core/TextField';
+import Apartment from '../../../asset/images/apartment.png';
 
 export default class index extends Component {
   constructor(props) {
@@ -74,13 +76,19 @@ export default class index extends Component {
     console.log('something', this.state);
     return (
       <div className="sign-up">
+        <img className="img__apartment" src={Apartment} />
+        <h2>Sign Up</h2>
+
         <Form onSubmit={this.sendMessage} method="POST">
           <Form.Group controlId="formBasicEmail">
-            <Form.Label>Your Name</Form.Label>
-            <Form.Control
+            <TextField
+              className="textfield"
+              id="outlined-basic"
+              label="Name"
+              variant="outlined"
               type="text"
               name="name"
-              placeholder="Enter name"
+              placeholder="Enter your Name"
               onChange={this.handleInputChange}
             />
             <Form.Text className="text-muted"></Form.Text>
@@ -97,11 +105,14 @@ export default class index extends Component {
             <Form.Text className="text-muted"></Form.Text>
           </Form.Group> */}
           <Form.Group controlId="formBasicEmail">
-            <Form.Label>Phone Number</Form.Label>
-            <Form.Control
+            <TextField
+              className="textfield"
+              id="outlined-basic"
+              label="Phone Number"
+              variant="outlined"
               type="number"
               name="phoneNumber"
-              placeholder="Enter phone number"
+              placeholder="Your Phone Number"
               onChange={this.handleInputChange}
             />
             <Form.Text className="text-muted"></Form.Text>
@@ -117,17 +128,21 @@ export default class index extends Component {
             />
             <Form.Text className="text-muted"></Form.Text>
           </Form.Group> */}
+
           <Form.Group controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
+            <TextField
+              id="outlined-password-input"
+              label="Password"
               type="password"
+              variant="outlined"
+              autoComplete="current-password"
               placeholder="Password"
               required
               name="passwordHash"
               onChange={this.handleInputChange}
             />
           </Form.Group>
-          <Button variant="outline-success" type="submit">
+          <Button className="button__test" type="submit">
             Sign Up!
           </Button>
         </Form>
