@@ -9,6 +9,7 @@ import '@fullcalendar/daygrid/main.css';
 import './main.scss'
 import { calendar } from './../../Services/otherServices';
 import { calendarDates } from './../../Services/otherServices';
+import iconCalendar from '../../asset/images/calendar.png'
 
 // 'GPL-My-Project-Is-Open-Source'
 //<FullCalendar schedulerLicenseKey="XXX" plugins={[ resourceTimelinePlugin ]} />
@@ -88,8 +89,12 @@ super(props)
   render() {
     console.log('this one' , calendarDates())
     return (
-      
       <div className='demo-app'>
+      <div className="schedule__text">
+      <img className="new__icon" src={iconCalendar} />
+        <h5>Schedule Calendar</h5>
+        <small>Here you can see the other schedule, an add also!</small>
+      </div>
         
         <div className='demo-app-calendar'>
           <FullCalendar 

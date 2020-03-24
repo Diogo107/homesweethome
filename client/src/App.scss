@@ -5,7 +5,7 @@
 
 .main__dashboard{
   margin-left: 19%;
-  height: 100%;
+  height: 100;
   width: 81%;
   position: absolute;
   top: 0;
@@ -35,8 +35,9 @@
 .form__dashboard {
   margin-left: 25%;
   margin-right: 25%;
-  margin-top: 70px;
-  background: white;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  background-color: white;
   padding: 20px 20px 20px 20px;
   border-radius: 15px;
 }

@@ -65,6 +65,9 @@ export default function SwipeableTemporaryDrawer() {
           <Link to="/">Dashboard</Link>
         </div>
         <div className="test__item">
+          <Link to="/finance">Finance</Link>
+        </div>
+        <div className="test__item">
           <Link to="/profile">Profile</Link>
         </div>
         <div className="test__item">
