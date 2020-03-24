@@ -26,8 +26,12 @@ const schema = new mongoose.Schema(
       type: String,
       trim: true
     },
-    date: {
-      type: Date,
+    month: {
+      type: Number,
+      trim: true
+    },
+    year: {
+      type: Number,
       trim: true
     },
     picture: {

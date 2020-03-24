@@ -135,10 +135,10 @@ router.post('/updateBuilding', (req, res, next) => {
 
 router.post('/doc', (req, res, next) => {
   const { title, bankAccountName, nif, month, amount } = req.body;
-  
-  let creatorName = req.user.name
-   let buildingId = req.user.buildingId;
-    Doc.create({
+
+  let creatorName = req.user.name;
+  let buildingId = req.user.buildingId;
+  Doc.create({
     title,
     bankAccountName,
     nif,
@@ -147,8 +147,6 @@ router.post('/doc', (req, res, next) => {
     creator: req.user._id,
     buildingId,
     creatorName
-    
-    
   })
     .then(doc => {
       res.json({ doc });
@@ -245,6 +243,7 @@ router.get('/bill', (req, res, next) => {
   Bill.find({ buildingId: buildingId })
     .sort({ timestamp: 'descending' })
     .then(posts => {
+      console.log(posts);
       res.json({ posts });
     })
     .catch(error => {

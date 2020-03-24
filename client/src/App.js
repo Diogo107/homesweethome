@@ -12,6 +12,7 @@ import LandingPage from './Views/LandingPage/index';
 import CreateBuilding from './Views/BuildingForm';
 import Profile from './Views/Profile';
 import Dashboard from './Views/Dashboard';
+import Finance from './Views/Finance';
 import NewPosts from './Views/posts/newPosts';
 import CreateServices from './Views/Services/AddServices';
 import ServicesView from './Views/Services/ViewServices';
@@ -99,6 +100,10 @@ class App extends Component {
                       <Route
                         path="/dashboard"
                         render={props => <Dashboard user={this.state.user} {...props} />}
+                      />
+                      <Route
+                        path="/finance"
+                        render={props => <Finance user={this.state.user} {...props} />}
                       />
                       <Route path="/profile" render={props => <Profile user={this.state.user} />} />
                       <Route
