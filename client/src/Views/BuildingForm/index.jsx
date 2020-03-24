@@ -1,7 +1,8 @@
 import React from 'react';
 import { building } from '../../Services/otherServices';
 import { editUserInformation } from '../../Services/authentication';
-
+import './style.scss';
+import Apartment from '../../asset/images/apartment.png';
 // reactstrap components
 import {
   Button,
@@ -115,11 +116,14 @@ class Building extends React.Component {
     return (
       <>
         {(this.state.loaded && (
-          <Col lg="6" md="8">
-            <Card className="bg-secondary shadow border-0">
+          
+          <Col className="form__col">
+            <Card className="bg-light shadow border-0">
               <CardBody className="px-lg-5 py-lg-5">
                 <div className="text-center text-muted mb-4">
-                  <small>Sign up</small>
+          <img className="img__apartment" src={Apartment} /><br />
+                  <strong>Create your Building!</strong><br/>
+                  <small>And set the apartments that you have in your Building</small>
                 </div>
 
                 <FormGroup>
@@ -166,7 +170,7 @@ class Building extends React.Component {
                       onChange={this.handleInputChange}
                     />
                   </InputGroup>
-                </FormGroup>
+                </FormGroup><br />
                 {/*  <FormGroup>
                   <InputGroup className="input-group-alternative mb-3">
                     <InputGroupAddon addonType="prepend">
@@ -202,14 +206,14 @@ class Building extends React.Component {
                       />
                     </InputGroup>
                   </FormGroup>
-                  <Button>Add Appartment</Button>
+                  <Button className="button__test">Add Appartment</Button>
                 </Form>
-                <ul>
+                <ul className="list__style">
                   {this.state.numberOfApartments.map(slot => (
-                    <li key={slot.slot}>
+                    <li className="list__apart" key={slot.slot}>
                       {slot.slot}{' '}
-                      <button id={slot.slot} onClick={() => this.eraseSlot(slot.slot)}>
-                        x
+                      <button className="button__erase"id={slot.slot} onClick={() => this.eraseSlot(slot.slot)}>
+                        X
                       </button>
                     </li>
                   ))}
@@ -232,7 +236,7 @@ class Building extends React.Component {
                 </FormGroup>
                 <Form role="form" onSubmit={this.sendMessage} method="POST">
                   <div className="text-center">
-                    <Button className="mt-4" color="primary" type="submit">
+                    <Button className="button__test" type="submit">
                       Create Building
                     </Button>
                   </div>

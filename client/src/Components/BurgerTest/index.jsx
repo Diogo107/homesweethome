@@ -16,6 +16,7 @@ import { Link } from 'react-router-dom';
 import { Form } from 'react-bootstrap';
 import './style.scss'
 import logot from '../../asset/images/document.png'
+import Logoff from '../SignOutTest'
 
 const useStyles = makeStyles({
   list: {
@@ -90,9 +91,9 @@ export default function SwipeableTemporaryDrawer() {
         <div className="test__item">
           <Link to="/create-services">Create Service</Link>
         </div>
-        <div className="test__item">
-         
-        </div>
+        
+          <Logoff />
+        
         </div>
         
       </List>
