@@ -3,6 +3,8 @@ import { getBuilding } from '../../Services/otherServices';
 import { sendEmail } from '../../Services/otherServices';
 import { updateBuilding } from '../../Services/otherServices';
 import Appartments from './../../Components/AppartmentInputs';
+import Apartment from '../../asset/images/apartment.png';
+import './style.scss'
 
 export default class index extends Component {
   constructor(props) {
@@ -63,8 +65,11 @@ export default class index extends Component {
     return (
       <div>
         {(this.state.loaded && (
-          <div>
-            <h1>Neighbors</h1>
+          <div className="form__manage">
+           
+            <img className="img__apartment" src={Apartment} />
+            <h5>Manage Building Apartments</h5>
+            <small>Here you have a list of the apartments inside your building.<br /> Fill it with the email of the People and send them an Invite!</small>
             <Appartments
               appartments={this.state.appartments}
               sendInvite={this.sendInvite}

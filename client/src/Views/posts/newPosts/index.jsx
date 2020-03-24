@@ -4,7 +4,7 @@ import { Form, Button } from 'react-bootstrap';
 import { post } from './../../../Services/otherServices';
 import TextField from '@material-ui/core/TextField';
 import iconPost from '../../../asset/images/post.png'
-import UploadButton from '../../../Components/UploadButton'
+import UploadButtons from '../../../Components/UploadButton'
 
 export default class index extends Component {
   constructor(props) {
@@ -42,10 +42,11 @@ export default class index extends Component {
   handleFileInputChange(event) {
     console.dir(event.target);
 
-    const { name, files } = event.target;
+    const { files } = event.target;
+
 
     this.setState({
-      [name]: files[0]
+      picture: files[0]
     });
   }
 
@@ -97,13 +98,8 @@ export default class index extends Component {
 
           <Form.Group controlId="picture">
             
-            <Form.Control 
-              type="file"
-              placeholder="Insert the image"
-              name="picture"
-              onChange={this.handleFileInputChange}
-              
-            />
+           
+          <UploadButtons imageChange={this.handleFileInputChange}/>
             
             <Form.Text className="text-muted"></Form.Text>
           </Form.Group>

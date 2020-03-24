@@ -111,7 +111,7 @@ export default class CreateServices extends Component {
           </Form.Group>
 
           
-          <Button variant="primary" type="submit">
+          <Button className="button__test" type="submit">
             Submit
           </Button>
         </Form>

@@ -1,28 +1,33 @@
-.form__manage{
-  padding-left: 10%;
-  padding-right: 10%;
-  background-color: #f3f5fa;
-  padding-bottom: 5%
+.manage__form{
+
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
 }
 
 
-.button__test{
+.button__test__invite{
   color: #fff !important;
   text-transform: uppercase;
   text-decoration: none;
+  
   background: #3494E6;
-  padding: 10px;
-  display: inline-block;
+  padding: 7px 35px;
+  display: flex;
   border: none;
   transition: all 0.4s ease 0s;
-  margin-bottom: 20px;
-  margin-top: 10px;
+  margin-bottom: 25px;
+  
 }
 
-.button__test:hover {
+.button__test__invite:hover {
 background: #EC6EAD;
 text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.5);
 -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.30);
 -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.30);
 transition: all 0.4s ease 0s;
+}
+
+.form__label{
+  padding-right: 10px
 }
